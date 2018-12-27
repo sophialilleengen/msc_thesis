@@ -3,10 +3,31 @@
 
 \subsubsection{Energy and angular momentum}
 \subsubsection{Actions}
+\begin{itemize}
+    \item General action introduction (heuristic / properly)
+    \item explain Staeckel fudge
+    \item mention galpy
+    
+\end{itemize}
 \subsection{Merger tree}
 figure: Merger tree of Auriga 24. 
 \subsection{Globular cluster sample selection}
-\\figure: Selected CG particles in snapshot before merger and in \textit{z} = 0 snapshot.
+Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, we set one stellar particle as one \ac{GC}. We find the three biggest \ac{DG} merger events in the merger tree. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $\rm{R}_d \<= 0.1 \ R_{200}$ and the height $\rm{z}_d = 0.03\ R_d$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - or changed signs between successive snapshots while being inside the disk radius since we assume that in these cases the \ac{GC} would be disrupted. 
+
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+         \makecell{name}& \makecell{Merger time}& \makecell{mass of \ac{DG}\\ at merger} & \makecell{num of \\accreted particles} & \makecell{mass of \\accreted particles}\\
+         \hline
+         prog2& & &&\\
+         prog3& & &&\\
+         prog4& & &&
+    \end{tabular}
+    \caption{Progenitor parameters}
+    \label{tab:prog_overview}
+\end{table}
+
 
 \begin{figure}[htbp]
     \centering
@@ -52,8 +73,11 @@ figure: Merger tree of Auriga 24.
 \end{figure}
 
 
-\subsection{Globular clusters in action space}
-\subsubsection{Best fit potential}
+\subsection{Globular clusters in action space}\label{subsec:GCs_action_space}
+Now, we look at the \ac{GC} distribution in action space. Our assumption is that in the "true" potential, \acp{GC} are very clumped since they should retain dynamical memory from their former \ac{DG} and therefore their \ac{DF} should be a delta function. In section \ref{subsubsec:GCs_actions_right_pot}, we will look at the distribution in the fitted potential at redshift 0. In section \ref{subsubsec:GCs_actions_varying_pot}, we evaluate actions in varying potentials to test our assumption of \acp{GC} being most clumped in action space in the "true" potential. 
+
+\subsubsection{Best fit potential}\label{subsubsec:GCs_actions_right_pot}
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{plots/Dynamics/prog234_actions_snap_127.png}
@@ -63,7 +87,7 @@ figure: Merger tree of Auriga 24.
 
 
 
-\subsubsection{Varying potentials}
+\subsubsection{Varying potentials}\label{subsubsec:GCs_actions_varying_pot}
 
 \begin{figure}[htbp]
     \centering
@@ -85,10 +109,12 @@ figure: Merger tree of Auriga 24.
 \caption{.}
 \end{figure}
 
-\subsection{Time evolution of actions}
+\subsection{Time evolution of actions}\ref{subsec:}
+We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the actions evolved and to see if there was a point - probably shortly after their mergers - where the \acp{GC} were more clumped in action space. We calculate the actions of the selected particles in the best fit potential in each snapshot.  
+
 \begin{figure}[htbp]
     \centering
-	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_box_hist_mean.png}
+	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_hist_mean.png}
 	\label{fig:time_ev_all_GCs}
 	\caption{.}
 \end{figure}

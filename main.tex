@@ -1,4 +1,7 @@
-\documentclass[a4paper,12pt,abstracton]{scrartcl}
+\documentclass[a4paper,12pt,abstracton, twoside]{scrartcl}
+%\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry} % for printed thesis
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=10mm]{geometry}
+\usepackage[onehalfspacing]{setspace}
 \usepackage[ngerman, english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -15,15 +18,37 @@
 \usepackage[export]{adjustbox}
 \usepackage{subcaption}
 \usepackage{makecell}
-\usepackage[]{units}
+\usepackage{siunitx}
 \usepackage{natbib}
 \usepackage{aas_macros}
 \usepackage{enumerate}
 \usepackage{verbatim}
+\usepackage{makecell}
+\usepackage[parfill]{parskip}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{booktabs} 
+
+\renewcommand{\arraystretch}{1.3} 
+\pagestyle{fancy}
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+\let\Subsectionmark\subsectionmark
+\def\subsectionmark#1{\def\Subsectionname{#1}\Subsectionmark{#1}}
+\let\Subsubsectionmark\subsubsectionmark
+\def\subsubsectionmark#1{\def\Subsubsectionname{#1}\Subsubsectionmark{#1}}
+
 
 \title{MSc thesis}
-\author{Sophia Milanov}
+\author{Sophia Lilleengen}
 \date{\today}
+
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RO,LE]{\thesubsection.\ \Subsectionname}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{Section \thesection}
 
 \begin{document}
 
@@ -66,6 +91,7 @@
 \section*{Acronyms}
 \begin{acronym}[NFW]
     \acro{AGN}{active galactic nuclei}
+    \acro{DF}{distribution function}
     \acro{DG}{dwarf galaxy}
 	\acro{DM}{dark matter}
 	\acro{GC}{globular cluster}

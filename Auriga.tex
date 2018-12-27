@@ -2,14 +2,13 @@
 Code from Timo Halbesma, Federico Marinacci, Rob Grand, Wilma Trick
 
 
-\subsection{About Auriga}
-\subsubsection{Hydrodynamical galaxy simulations}
+\subsection{About Auriga}\label{subsec:auria}
+\subsubsection{Hydrodynamical galaxy simulations}\label{subsubsec:hydro_sim}
 To understand how our Universe and everything in it has formed and evolved, astronomers use simulations of it two ways: trying to match observations of real galaxies and thus checking if the input 'recipes' are correct and predicting observations which then are to be found by observers. These simulations stretch over a large range of astronomical scales, from stars and planets to the evolution of the cosmic web, but also over different numerical techniques, from more empirical, statistical Monte-Carlo methods to cosmological hydrodynamical \textit{N}-body simulations. To learn more about the formation and evolution of galaxies, these hydrodynamical cosmological simulations are a wealthy tool to exploit. 
-
 
 \\This work focuses on the Auriga \citep{AurigaGrand} simulations, which try to recreate spiral galaxies such as our own. 
 
-\subsubsection{Auriga}
+\subsubsection{Auriga}\label{subsubsec:auriga_intro}
 Auriga \citep{AurigaGrand} is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like galaxy. It is build with AREPO \citep{AREPO} and includes galaxy physics, \ac{AGN} feedback and magnetic fields. Its goal is to match the observables of the \ac{MW} today and to produce its history which can be compared to observations of spiral galaxies in earlier stages of development. The snapshots go from redshift 127, which is close to the beginning of the universe, to redshift 0, today. All 30 galaxies are run in normal resolution and 3 selected are run in low and high resolution as well. At redshift = 0, different galaxy shapes are evolved. Most of them are spirals but a few are in a merger process. All galaxies have a rich merger history.
 
 
@@ -59,10 +58,10 @@ Auriga \citep{AurigaGrand} is a magnetohydrodynamical zoom-in simulation of an i
     \caption{Stellar distribution of main galaxy at $\textit{z}=0$.}\label{fig:Stars_AU24}
 \end{figure}
 
-\subsection{Best fit potential}
+\subsection{Best fit potential}\label{subsec:best_fit_pot}
 The best fit potential of a galaxy should be a analytic, axisymmetric potential so that we are able  to compare our results to the results of observers, since they mostly fit external galaxies in such a structure. We need to take into account that the galaxy evolved not isolated but went through many mergers and therefore its potential is either analytic nor axisymmetric but has a lot of substructure. The fit is only a vague approximation. Also it is self-consistent so changes in potential influence the velocities of the objects inside and changes on the positions of the objects will change the gravitational potential. Since we fit a potential to each snapshot we have a time-dependent potential. We also need to include a disk and bulge decomposition which is not natural in a cosmological simulation. As the gas evolves in cells, we cannot calculate its density easily. Therefore, we do not consider it in our potential fits. Since we want to recreate observers way of looking at galaxies we do not need to include gas as observers in e.g. \ac{MGE} fits \citep{MGE...Monnet, MGE...Emsellem} also only take stellar light into account. 
 
-\subsubsection{Component decomposition}
+\subsubsection{Component decomposition}\label{subsubsec:decomp}
 To fit a potential to each component, we first need to decompose the different parts. We assume that all \ac{DM} particles belonging to the main galaxy make up its halo. The stellar particles belong to either the spheroid or the disk. We distinguish these components by the use of the circularity parameter 
 \begin{equation}
     \epsilon = \frac{L_z}{L_{z,max}(E)}
@@ -70,18 +69,22 @@ To fit a potential to each component, we first need to decompose the different p
 where $L_{z,max}(E)$ is the maximum angular momentum allowed for the orbital energy $E$. 
 $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ is a retrograde circular orbit in the disc plane. $\epsilon \sim 0$ is an orbit with a very low $z$-component of angular momentum which may be highly inclined to the disc spin axis and/or be highly eccentric.  
 
-\cite{AurigaGrand} uses two different methods two distinguish the components:
+\cite{AurigaGrand} uses two different methods two distinguish the components and to get their mass ratio:
 \begin{enumerate}
-\item Mirror negative $\epsilon$ as bulge material, the rest belongs to the disk.
-\item All particles with $\epsilon > 0.7$ are assigned to the disk.
+\item Under the assumption, that the bulge has zero net rotation, mirror negative $\epsilon$ as bulge material, the rest belongs to the disk.
+\item All particles with $\epsilon > const$ are assigned to the disk, where $const = 0.7$ is set heuristically.
 \end{enumerate}
 
-We use the second method. 
+\cite{AurigaGrand} find that the first method generally overestimates the disk-to-total ratio while the second approach underestimates it by choosing only kinematically very cold particles. Since we do not only want to get the mass ratio of disk-to-total but also want to tag each particle clearly, we use the second method. Nevertheless, the true assignment lies somewhere between these method. In Figure \ref{fig:decomposition}, we show a histogram of the circularity with our decomposition. The blue part is the disk portion while the yellow part is the spheroid. Together they add up to the black solid line, the total number. 
+Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to.
 
-
-\\figure: Decomposition of stellar disk and spheroid using the circularity
-
-\subsubsection{Disk potential}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/Auriga/decomposition_snap_127.png}
+    \caption{Decomposition of stellar disk and spheroid by their kinematics. }
+    \label{fig:decomposition}
+\end{figure}
+\subsubsection{Disk potential}\label{subsubsec:disk_pot}
 We fit the disk with a \citet{MNprofile} potential following the profile 
 \begin{equation}
 \Phi(R,z) = -\frac{GM}{\sqrt{R^2+(a+\sqrt{z^2+b^2})^2}}
@@ -95,7 +98,7 @@ with scale length $a$ and scale height $b$ which provides a disk with a finite t
     \label{fig:MND}
 \end{figure}
 
-\subsubsection{Spheroid potential}\label{subsec:spher_pot}
+\subsubsection{Spheroid potential}\label{subsubsec:spher_pot}
 For the central stellar spheroid, we apply a \citet{Hernquistprofile} potential which has the density 
 \begin{equation}
     \rho = \frac{M}{2\pi}\frac{a}{r}\frac{1}{(r+a)^3}
@@ -106,18 +109,44 @@ where $M$ is the total stellar mass and $a$ is the scale length.
 
 
 
-\subsubsection{Halo Potential}
+\subsubsection{Halo Potential}\label{subsubsec:halo_pot}
 We model the \ac{DM} halo with a \citet{NFWprofile} profile following the formula 
 \begin{equation}
     \frac{\rho(r)}{\rho_{crit}} = \frac{\delta_c}{(r/r_s)(1+r/r_s)^2}
-\end{equation} with the critical density $\rho_{crit} = 3H^2 / 8\pi G $, scale radius $r_s$  and a characteristic and dimensionless density $\delta_c$. 
+\end{equation} with the critical density $\rho_{crit} = 3H^2 / 8\pi G $, scale radius $r_s$  and a characteristic and dimensionless density $\delta_c$. The \ac{NFW} profile is derived from \ac{DM} only hydrodynamical simulations 
 
 
 
 
 
 
-\subsubsection{Total potential}
+\subsubsection{Total potential}\label{subsubsec:tot_pot}
+After fitting each component individually, we add them up to get a total potential. In Table \ref{tab:pot_best_fit_params}, we summarize our results for the last snapshot. \textbf{put in here a description of the potential and how each component contributes}
+In Figure \ref{fig:pot_val_evol}, we show the time evolution of the potential parameters for the last \SI{10.5}{Gyr}. \textbf{here: describe evolution of potential and how mergers seem to influence them}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{@{}llll@{}}
+         \toprule
+         Component& Potential & Parameters &fitting method  \\
+         \midrule
+         stellar disk& Miyamoto-Nagai&\multirow[t]{3}{a_{\rm{MND}} = \SI{3}{kpc}\\b_{MND} = \SI{2}{kpc}\\v_0_{MN} = \SI{100}{km.s^{-1}}} & \multirow[t]{3}{\ac{MN} density fitted to density bins of disk in $(R,z)$.} \\
+         & & & \\
+         &&&\\
+         \midrule
+         stellar spheroid& Hernquist&\multirow[t]{2}{a_{\rm{HB}} = \SI{3}{kpc}\\v_0_{HB} = \SI{100}{km.s^{-1}}}& \multirow[t]{2}{Hernquist density fitted to density shells of spheroid in $(r)$.}\\
+         &&&\\
+         \midrule
+         \ac{DM} halo&\ac{NFW}&\multirow[t]{2}{a_{\rm{NFWH}} = \SI{3}{kpc}\\v_0_{NFWH} = \SI{150}{km.s^{-1}}}&\multirow[t]{2}{Total potential fitted to 'pot' value of random DM particles where NFWH parameters where fitting parameters.}\\
+         &&&\\
+         \bottomrule 
+    \end{tabular}
+    \caption{Best fit potential overview: components, used potentials, their parameters and their fitting methods}
+    \label{tab:pot_best_fit_params}
+\end{table}
+
+
+
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
@@ -174,10 +203,9 @@ We model the \ac{DM} halo with a \citet{NFWprofile} profile following the formul
 	\label{fig:pot_val_evol}
 \end{figure}
 
-\subsection{What not to do when fitting a gravitational potential}
+\subsection{What not to do when fitting a gravitational potential}\label{subsec:wrong_pot_fit}
 
 
 
-%\subsection{Globular clusters and mass distribution}
 
 
