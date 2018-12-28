@@ -75,8 +75,8 @@ $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ i
 \item All particles with $\epsilon > const$ are assigned to the disk, where $const = 0.7$ is set heuristically.
 \end{enumerate}
 
-\cite{AurigaGrand} find that the first method generally overestimates the disk-to-total ratio while the second approach underestimates it by choosing only kinematically very cold particles. Since we do not only want to get the mass ratio of disk-to-total but also want to tag each particle clearly, we use the second method. Nevertheless, the true assignment lies somewhere between these method. In Figure \ref{fig:decomposition}, we show a histogram of the circularity with our decomposition. The blue part is the disk portion while the yellow part is the spheroid. Together they add up to the black solid line, the total number. 
-Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to.
+\cite{AurigaGrand} find that the first method generally overestimates the \ac{D/T} ratio while the second approach underestimates it by choosing only kinematically very cold particles. Since we do not only want to get the mass ratio of \ac{D/T} but also want to tag each particle clearly, we use the second method. Nevertheless, the true assignment lies somewhere between these method. In Figure \ref{fig:decomposition}, we show a histogram of the circularity with our decomposition. The blue part is the disk portion while the yellow part is the spheroid. Together they add up to the black solid line, the total number. The \ac{D/T} ratio is 0.47.
+Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to. 
 
 \begin{figure}
     \centering
@@ -113,7 +113,7 @@ where $M$ is the total stellar mass and $a$ is the scale length.
 We model the \ac{DM} halo with a \citet{NFWprofile} profile following the formula 
 \begin{equation}
     \frac{\rho(r)}{\rho_{crit}} = \frac{\delta_c}{(r/r_s)(1+r/r_s)^2}
-\end{equation} with the critical density $\rho_{crit} = 3H^2 / 8\pi G $, scale radius $r_s$  and a characteristic and dimensionless density $\delta_c$. The \ac{NFW} profile is derived from \ac{DM} only hydrodynamical simulations 
+\end{equation} with the critical density $\rho_{crit} = 3H^2 / 8\pi G $, scale radius $r_s$  and a characteristic and dimensionless density $\delta_c$. The \ac{NFW} profile is derived from \ac{DM} only hydrodynamical simulations and found to very accurately describe \ac{DM} halos\ref{?????}.
 
 
 
@@ -124,27 +124,26 @@ We model the \ac{DM} halo with a \citet{NFWprofile} profile following the formul
 After fitting each component individually, we add them up to get a total potential. In Table \ref{tab:pot_best_fit_params}, we summarize our results for the last snapshot. \textbf{put in here a description of the potential and how each component contributes}
 In Figure \ref{fig:pot_val_evol}, we show the time evolution of the potential parameters for the last \SI{10.5}{Gyr}. \textbf{here: describe evolution of potential and how mergers seem to influence them}
 
+%\iffalse
 \begin{table}[htbp]
     \centering
     \begin{tabular}{@{}llll@{}}
          \toprule
-         Component& Potential & Parameters &fitting method  \\
+         component& potential & parameters &fitting method  \\
          \midrule
-         stellar disk& Miyamoto-Nagai&\multirow[t]{3}{a_{\rm{MND}} = \SI{3}{kpc}\\b_{MND} = \SI{2}{kpc}\\v_0_{MN} = \SI{100}{km.s^{-1}}} & \multirow[t]{3}{\ac{MN} density fitted to density bins of disk in $(R,z)$.} \\
-         & & & \\
-         &&&\\
-         \midrule
-         stellar spheroid& Hernquist&\multirow[t]{2}{a_{\rm{HB}} = \SI{3}{kpc}\\v_0_{HB} = \SI{100}{km.s^{-1}}}& \multirow[t]{2}{Hernquist density fitted to density shells of spheroid in $(r)$.}\\
-         &&&\\
-         \midrule
-         \ac{DM} halo&\ac{NFW}&\multirow[t]{2}{a_{\rm{NFWH}} = \SI{3}{kpc}\\v_0_{NFWH} = \SI{150}{km.s^{-1}}}&\multirow[t]{2}{Total potential fitted to 'pot' value of random DM particles where NFWH parameters where fitting parameters.}\\
-         &&&\\
+         stellar disk& \makecell[tl]{Miyamoto\\-Nagai}&\makecell[tl]{a$_{\mathrm{MND}}$ = \SI{2.97}{kpc}\\b$_{\mathrm{MND}}$ = \SI{2}{kpc}\\v$_{0,\mathrm{MND}}$ = \SI{100}{km.s^{-1}}} & \makecell[tl]{\ac{MN} \\density fitted to density\\ bins of disk in $(R,z)$.}\vspace{3mm}\\
+         %\midrule
+         \makecell[tl]{stellar\\ spheroid}& Hernquist&\makecell[tl]{a$_{\mathrm{HB}}$ = \SI{3}{kpc}\\v$_{0,\mathrm{HB}}$ = \SI{100}{km.s^{-1}}}& \makecell[tl]{Hernquist density fitted\\ to density shells of \\spheroid in $(r)$.}\vspace{3mm}\\
+         %\midrule
+         \ac{DM} halo&\ac{NFW}&\makecell[tl]{a$_{\mathrm{NFWH}}$ = \SI{25.18}{kpc}\\v$_{0,\mathrm{NFWH}}$ = \SI{150}{km.s^{-1}}}&\makecell[tl]{Total potential fitted to \\'pot' value of random \ac{DM} \\particles where \ac{NFW}\\ parameters were fitting \\parameters.}\vspace{3mm}\\
+         %\midrule
+         total & \makecell[tl]{sum of these\\ potentials} & \makecell[tl]{R$_0$ = \SI{8.03}{kpc} \\ v$_{0,\mathrm{tot}}$ at \SI{221.31}{km.s^{-1}}}& \makecell[tl]{R$_0$ is $1/3$ of the galaxy \\radius. v$_0$ is the sum of \\the fitted circular velocities.}\vspace{3mm}\\
          \bottomrule 
     \end{tabular}
-    \caption{Best fit potential overview: components, used potentials, their parameters and their fitting methods}
+    \caption{Best fit potential overview: components, used potentials, their parameters and their fitting methods.}
     \label{tab:pot_best_fit_params}
 \end{table}
-
+%\fi
 
 
 \begin{figure}

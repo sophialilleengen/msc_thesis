@@ -9,7 +9,11 @@
     \item mention galpy
     
 \end{itemize}
+
+\subsubsection{Excursion: coordinate transformations}
+private communication with Wilma Trick
 \subsection{Merger tree}
+We say th
 figure: Merger tree of Auriga 24. 
 \subsection{Globular cluster sample selection}
 Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, we set one stellar particle as one \ac{GC}. We find the three biggest \ac{DG} merger events in the merger tree. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $\rm{R}_d \<= 0.1 \ R_{200}$ and the height $\rm{z}_d = 0.03\ R_d$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - or changed signs between successive snapshots while being inside the disk radius since we assume that in these cases the \ac{GC} would be disrupted. 
@@ -17,12 +21,14 @@ Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, w
 
 \begin{table}[htbp]
     \centering
-    \begin{tabular}{c|c|c|c|c}
-         \makecell{name}& \makecell{Merger time}& \makecell{mass of \ac{DG}\\ at merger} & \makecell{num of \\accreted particles} & \makecell{mass of \\accreted particles}\\
-         \hline
-         prog2& & &&\\
-         prog3& & &&\\
-         prog4& & &&
+    \begin{tabular}{@{}lllll@{}}
+        \toprule
+         \makecell[l]{name}& \makecell[l]{merger time}& \makecell[l]{mass of \ac{DG}\\ at merger} & \makecell[l]{num of \\accreted particles} & \makecell[l]{mass of \\accreted particles}\\
+         \midrule
+         prog2& & && &\\
+         prog3& & &&&\\
+         prog4& & &&&
+         \bottomrule
     \end{tabular}
     \caption{Progenitor parameters}
     \label{tab:prog_overview}
