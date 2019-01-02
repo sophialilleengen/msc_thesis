@@ -1,4 +1,4 @@
-\section{Adaptive dynamics: Can actions of accreted globular clusters constrain the gravitational potential?}
+\section{Adaptive dynamics: Can actions of accreted globular clusters constrain the gravitational potential?}\label{sec:Dynamics}
 \subsection{Integrals of motion}
 
 \subsubsection{Energy and angular momentum}
@@ -15,11 +15,13 @@ private communication with Wilma Trick
 \subsection{Merger tree}
 We say th
 figure: Merger tree of Auriga 24. 
-\subsection{Globular cluster sample selection}
+\subsection{Globular cluster sample selection}\label{subsec:GC_selection}
 Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, we set one stellar particle as one \ac{GC}. We find the three biggest \ac{DG} merger events in the merger tree. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $\rm{R}_d \<= 0.1 \ R_{200}$ and the height $\rm{z}_d = 0.03\ R_d$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - or changed signs between successive snapshots while being inside the disk radius since we assume that in these cases the \ac{GC} would be disrupted. 
 
 
 \begin{table}[htbp]
+\captionsetup{format=plain}
+
     \centering
     \begin{tabular}{@{}lllll@{}}
         \toprule
@@ -36,6 +38,8 @@ Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, w
 
 
 \begin{figure}[htbp]
+\captionsetup{format=plain}
+
     \centering
     \begin{subfigure}[c]{0.45\textwidth}
     \centering
@@ -85,6 +89,7 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
 \subsubsection{Best fit potential}\label{subsubsec:GCs_actions_right_pot}
 
 \begin{figure}[htbp]
+\captionsetup{format=plain}
     \centering
     \includegraphics[width=1.0\textwidth]{plots/Dynamics/prog234_actions_snap_127.png}
     \caption{Selected \acp{GC} from three different \acp{DG} in action space.}
@@ -95,42 +100,53 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
 
 \subsubsection{Varying potentials}\label{subsubsec:GCs_actions_varying_pot}
 
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[width=0.6\textwidth]{plots/Dynamics/prog2/a_NFW_diagnostic_plot_std_prog2_all.png}
-	\label{fig:NFW_diag_prog2}
+\begin{SCfigure}%[htbp]
+\captionsetup{format=plain}
+\centering
+\includegraphics[width=0.6\textwidth]{plots/Dynamics/prog2/a_NFW_diagnostic_plot_std_prog2_all.png}
+\label{fig:NFW_diag_prog2}
 \caption{.}
-\end{figure}
+\end{SCfigure}
 
-\begin{figure}[b]
-    \centering
-	\includegraphics[width=0.6\textwidth]{plots/Dynamics/prog3/a_NFW_diagnostic_plot_std_prog3_all.png}
-    \label{fig:NFW_diag_prog3}
-\caption{.}
-\end{figure}
-\begin{figure}[b]
-    \centering
-	\includegraphics[width=0.6\textwidth]{plots/Dynamics/prog4/a_NFW_diagnostic_plot_std_prog4_all.png}
-    \label{fig:NFW_diag_prog4}
-\caption{.}
-\end{figure}
 
-\subsection{Time evolution of actions}\ref{subsec:}
+\begin{SCfigure}%[b]
+\captionsetup{format=plain}
+\centering
+\includegraphics[width=0.6\textwidth]{plots/Dynamics/prog3/a_NFW_diagnostic_plot_std_prog3_all.png}
+\label{fig:NFW_diag_prog3}
+\caption{.}
+\end{SCfigure}
+
+
+\begin{SCfigure}%[b]
+\captionsetup{format=plain}
+\centering
+\includegraphics[width=0.6\textwidth]{plots/Dynamics/prog4/a_NFW_diagnostic_plot_std_prog4_all.png}
+\label{fig:NFW_diag_prog4}
+\caption{.}
+\end{SCfigure}
+
+\subsection{Time evolution of actions}\label{subsec:time_evo_actions}
 We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the actions evolved and to see if there was a point - probably shortly after their mergers - where the \acp{GC} were more clumped in action space. We calculate the actions of the selected particles in the best fit potential in each snapshot.  
 
 \begin{figure}[htbp]
+\captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_hist_mean.png}
 	\label{fig:time_ev_all_GCs}
 	\caption{.}
 \end{figure}
+
 \begin{figure}
+\captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog3/action_time_evolution_hist_mean.png}
     \label{fig:time_ev_box_GCs}
     \caption{.}\label{fig:actions_time_evolution}
 \end{figure}
-\begin{figure}
+
+\begin{figure}[htbp]
+\captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog4/action_time_evolution_hist_mean.png}
     \label{fig:time_ev_box_GCs}

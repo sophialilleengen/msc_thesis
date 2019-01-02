@@ -9,13 +9,15 @@
 \usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{color}
-\usepackage{setspace}
 \usepackage{hyperref}
 \usepackage[printonlyused]{acronym}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[export]{adjustbox}
+\usepackage[parfill]{parskip} 
+\usepackage{sidecap} % to have text next to figures
+
 \usepackage{subcaption}
 \usepackage{siunitx}
 \usepackage{natbib}
@@ -23,10 +25,10 @@
 \usepackage{enumerate}
 \usepackage{verbatim}
 \usepackage{makecell}
-\usepackage[parfill]{parskip}
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} % to have the nice header and footer
 %\usepackage{multirow}
-\usepackage{booktabs} 
+\usepackage{booktabs} % nice lines in tables
+\usepackage[font=small,labelfont=bf]{caption}
 
 %#\renewcommand{\arraystretch}{1.3} 
 \pagestyle{fancy}
@@ -38,25 +40,24 @@
 \def\subsubsectionmark#1{\def\Subsubsectionname{#1}\Subsubsectionmark{#1}}
 
 
+
+
 \title{MSc thesis}
 \author{Sophia Lilleengen}
 \date{\today}
 
-\fancyhf{}
-\fancyhead{}
-\fancyhead[RO,LE]{\thesubsection.\ \Subsectionname}
-\fancyfoot{}
-\fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO,RE]{Section \thesection}
+
 
 \begin{document}
 
 \bibliographystyle{glenn} 
 \pagenumbering{roman}
+\renewcommand{\bibname}{Bibliography}
 
-\onehalfspacing
-\include{./titlepages-eng.tex}
-\titlepage
+\include{titlepages-eng}
+
+\newpage
+\thispagestyle{empty}
 \begin{abstract}
 \hspace{-12pt}Many astrophysical and galaxy-scale cosmological problems require a well determined gravitational potential. Globular clusters (GCs) surrounding galaxies can be used as dynamical tracers of the total and dark matter distribution at large (kpc) scales. This M.Sc. project investigates - by means of the Auriga galaxy simulations and in anticipation of high-resolution IFU data of external galaxies - if a novel action-based approach could tightly constrain the gravitational potential. In the Milky Way, action-angles of resolved stars in stellar streams were found to be useful in constraining its gravitational potential. In external galaxies, no individual stars but only GCs can be resolved (2D projected position and line-of-sight velocities as observables). Actions are integrals of motion with an intuitive physical meaning - e.g. the radial action quantifies the radial oscillation of the orbit - and therefore make excellent orbit labels. In a slowly varying potential, actions are assumed to stay constant. We find, that within the Auriga simulations actions show a significant variation over time and we cannot rely on them being constant. Moreover, varying the gravitational potential of the host within reasonable ranges does not significantly change the distribution of GCs in action space. Testing this approach also in Gaia DR2 by calculating the actions of Gaia-Enceladus in different MW potentials we confirm that we cannot distinguish between them in GC action space distribution. We find, that we cannot use this method to constrain the gravitational potential of galaxies. In reverse, calculating actions does not require a well-determined gravitational potential so we can use them as strong probes for other astrophysical problems. 
 
@@ -69,11 +70,24 @@
 \end{abstract}
 
 \newpage
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RO,LE]{Contents}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{}
+
 \addtocontents{toc}{}
 \tableofcontents
 \newpage
 \pagenumbering{arabic}
 
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RO,LE]{\thesubsection.\ \Subsectionname}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{}
 \include{Introduction}
 
 %\include{Theory}
@@ -86,6 +100,12 @@
 
 
 \newpage
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RO,LE]{Acronyms}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{}
 \section*{Acronyms}
 \begin{acronym}[NFW]
     \acro{AGN}{active galactic nuclei}
@@ -103,6 +123,15 @@
 
 \end{acronym}
 \newpage
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RO,LE]{Bibliography}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{}
 \bibliography{mybib}{}
 \bibliographystyle{mnras}
+\newpage
+\thispagestyle{plain}
+\include{deposition}
 \end{document}
