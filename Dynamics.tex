@@ -44,40 +44,40 @@ Due to the resolution of the simulation, $\mathrm{M} = 5 \cdot 10 ^ 4\ M_{\odot}
 \captionsetup{format=plain}
 
     \centering
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[c]{0.48\textwidth}
     \centering
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xy_dist_selected_GCs_prog_2_snap_127.png}
     	\label{fig:prog2_xy}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
     %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[c]{0.48\textwidth}
         \centering
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xz_dist_selected_GCs_prog_2_snap_127.png}
 	    \label{fig:prog2_xz}
     \end{subfigure}
     
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[c]{0.48\textwidth}
     \centering
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xy_dist_selected_GCs_prog_3_snap_127.png}
     	\label{fig:prog3_xy}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
     %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[c]{0.48\textwidth}
         \centering
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xz_dist_selected_GCs_prog_3_snap_127.png}
 	    \label{fig:prog3_xz}
     \end{subfigure}
     
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[c]{0.48\textwidth}
     \centering
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xy_dist_selected_GCs_prog_4_snap_127.png}
     	\label{fig:prog4_xy}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
     %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[c]{0.48\textwidth}
         \centering
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xz_dist_selected_GCs_prog_4_snap_127.png}
 	    \label{fig:prog4_xz}
@@ -98,19 +98,20 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
     \caption{Selected \acp{GC} from three different \acp{DG} in action space. The diagonal elements show histograms of each action and the other panels show 2d histograms of each action pair. In pink/blue/yellow, we see the action distribution of the remnants of prog2/prog3/prog4. Since we have many more particles from prog2, the histograms in the diagonal elements are dominated by their distribution. In the correlation panels, we can clearly distinguish prog 2 and prog 4 while prog 3 is very dispersed and does not have an identifiable center in any action. Even though the merger of prog4 happened the longest ago, it is still very clumped in all combinations, with the most clumpiness in J$_\mathrm{R}$-L$_\mathrm{Z}$. The distribution of prog2 is narrow in L$_\mathrm{Z}$ but very broad in J$_\mathrm{R}$-J$_\mathrm{Z}$. prog2 is corotating with the disk but with a higher angular momentum than the disk has (\(\bar{\mathrm{L_z}} = -2235\) kpc km s$^{-1}$). prog4 is clearly counter rotating.}
     \label{fig:act_all_merg_best_pot}
 \end{figure}
-We calculate the actions of the remnants of each progenitor in the best fit potential and plot them in Figure \ref{fig:act_all_merg_best_pot}. The remnants of the different merger events are best distinguishable in L$_\mathrm{Z}$
+We calculate the actions of the remnants of each progenitor in the best fit potential and plot them in Figure \ref{fig:act_all_merg_best_pot}. The remnants of the different merger events are best distinguishable in L$_\mathrm{Z}$. Prog2 is corotating with the disk but with higher angular momentum. Prog4 is counter rotating. Prog3 is more dispersed in L$_\mathrm{Z}$ but its mean is corotating with the disk as well. In the vertical action, the three remnant groups are not distinguishable and have means at \SI{1000-2000}{kpc.km.s^{-1}}. In J$_\mathrm{R}$, the groups are again distinguishable. 
+\\The idea of this method is that in the right potential, these groups minimize their spread in action space. Prog4 is the most compact group, while especially prog3 is very dispersed. To quantify the compactness, we measure the standard deviation of each action. In the next Section, we compare the standard deviations of the radial and vertical actions of each group in different potentials to see, if we minimize them in the 'true' potential.
 
 \subsubsection{Varying potentials}\label{subsubsec:GCs_actions_varying_pot}
-
+To vary the potential in way it should affect the groups the most, we vary the \ac{DM} halo. We do this by keeping all best fit potential parameters constant and only vary the scale length a$_\mathrm{NFW}$. For the three groups in these potentials, we calculate the actions in the $z=0$ snapshot.
 \begin{figure}[!ht]
 \captionsetup{format=plain}
    \subfloat{\includegraphics[width=0.48\textwidth]{plots/Dynamics/prog2/a_NFW_diagnostic_plot_std_prog2_all.png}}\hfill%
    \subfloat{\includegraphics[width=0.48\textwidth]{plots/Dynamics/prog3/a_NFW_diagnostic_plot_std_prog3_all.png}}\vspace*{0.5cm}\par
    \subfloat{\includegraphics[width=0.48\textwidth]{plots/Dynamics/prog4/a_NFW_diagnostic_plot_std_prog4_all.png}}\hfill%
    \parbox[b][.3\textheight]{.48\textwidth}%
-     {\vskip-\abovecaptionskip\RawCaption{\caption{Standard deviations of the radial and vertical actions of all three mergers in potentials with varying scale length of the \ac{DM} halo and all other parameters kept on their best fit value. }\vfill\label{fig:a_NFW_diagnostic_plots}}}
+     {\vskip-\abovecaptionskip\RawCaption{\caption{Standard deviations of the radial and vertical actions of all three mergers (prog2-pink / prog3-blue / prog4-yellow) in potentials with varying scale length of the \ac{DM} halo and all other parameters kept on their best fit value. We would expect the standard deviation to be mimized at the best fit potential which is indicated with the vertical grey line. We see that the radial action would prefer a lower scale length (at \SI{17}{kpc}) while two of the three vertical actions would prefer higher scale lengths. The differences in $\sigma_\mathrm{J_z}$ are much smaller than the one in $\sigma_\mathrm{J_R}$.}\vfill\label{fig:a_NFW_diagnostic_plots}}}
 \end{figure}
-
+In Figure \ref{fig:a_NFW_diagnostic_plots}, we see how the standard deviations evolve in the different potentials. 
 
 \subsection{Time evolution of actions}\label{subsec:time_evo_actions}
 We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the actions evolved and to see if there was a point - probably shortly after their mergers - where the \acp{GC} were more clumped in action space. We calculate the actions of the selected particles in the best fit potential in each snapshot.  
@@ -121,21 +122,21 @@ We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_hist_mean.png}
 
-	\caption{.}\label{fig:actions_time_evolution_prog2}
+	\caption{Evolution of actions of prog2 \acp{GC} over time. The pink vertical line indicates the time of the merger. \textit{Upper panel}: Radial action. \textit{Middle panel}: Angular momentum. \textit{Lower panel}: Vertical action. Before the merger, radial and vertical action were much higher and all three actions had higher standard deviations. With the merger, they have settled and L$_\mathrm{Z}$ and J$_\mathrm{Z}$ have a constant mean and standard deviation. J$_\mathrm{R}$ has minimized in mean and standard deviation shortly after the merger but since then both have increased again.}\label{fig:actions_time_evolution_prog2}
 \end{figure}
 
 \begin{figure}
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog3/action_time_evolution_hist_mean.png}
-    \caption{.}\label{fig:actions_time_evolution_prog3}
+    \caption{Same as in Figure \ref{fig:actions_time_evolution_prog2}, only for prog3. Now the pink and blue lines indicate times of the mergers of prog2 and prog3, respectively. }\label{fig:actions_time_evolution_prog3}
 \end{figure}
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog4/action_time_evolution_hist_mean.png}
-    \caption{.}\label{fig:actions_time_evolution_prog4}
+    \caption{Same as in Figure \ref{fig:actions_time_evolution_prog2}, only for prog4. Now the pink, blue and yellow lines indicate times of the mergers of prog2, prog3 and prog4, respectively.  }\label{fig:actions_time_evolution_prog4}
 \end{figure}
 
 \subsubsection{Mean best fit potential}\label{subsubsec:GCs_actions_time_mean_right_pot}
@@ -144,7 +145,7 @@ We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=0.8\textwidth]{plots/Dynamics/mean_pot/potential_evolution_with_mean_dec18.png}
-    \caption{.}\label{fig:potential_mean_evolution}
+    \caption{Time evolution of best fit potential parameters and their mean values since the merger of prog2 (indicated in pink).}\label{fig:potential_mean_evolution}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -152,21 +153,21 @@ We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/mean_pot/action_time_evolution_hist_mean_prog2.png}
 
-	\caption{.}\label{fig:actions_time_evolution_mean_pot_prog2}
+	\caption{Same as Figure \ref{fig:actions_time_evolution_prog2}, only for a constant potential since the merger of prog2.}\label{fig:actions_time_evolution_mean_pot_prog2}
 \end{figure}
 
 \begin{figure}
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/mean_pot/action_time_evolution_hist_mean_prog3.png}
-    \caption{.}\label{fig:actions_time_evolution_mean_pot_prog3}
+    \caption{Same as Figure \ref{fig:actions_time_evolution_prog3}, only for a constant potential since the merger of prog2.}\label{fig:actions_time_evolution_mean_pot_prog3}
 \end{figure}
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/mean_pot/action_time_evolution_hist_mean_prog4.png}
-    \caption{.}\label{fig:actions_time_evolution_mean_pot_prog4}
+    \caption{Same as Figure \ref{fig:actions_time_evolution_prog4}, only for a constant potential since the merger of prog2.}\label{fig:actions_time_evolution_mean_pot_prog4}
 \end{figure}
 
 \subsubsection{Energy evolution}\label{subsubsec:energy_evol}
@@ -174,21 +175,21 @@ We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/energy_time_evolution_hist_mean.png}
-	\caption{.}\label{fig:energy_time_evolution_prog2}
+	\caption{Time evolution of the energy of the particles of prog2. \textit{Upper panel}: The true energy, which the particles have according to their kinetic energy and their 'pot' value. \textit{Middle panel}: Energy calculated in the best fit potential. \textit{Lower panel}: Angular momentum.}\label{fig:energy_time_evolution_prog2}
 \end{figure}
 
 \begin{figure}
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog3/energy_time_evolution_hist_mean.png}
-    \caption{.}\label{fig:energy_time_evolution_prog3}
+    \caption{Same as \ref{fig:energy_time_evolution_prog2} but for prog3. }\label{fig:energy_time_evolution_prog3}
 \end{figure}
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog4/energy_time_evolution_hist_mean.png}
-    \caption{.}\label{fig:energy_time_evolution_prog4}
+    \caption{ame as \ref{fig:energy_time_evolution_prog2} but for prog4.}\label{fig:energy_time_evolution_prog4}
 \end{figure}
 
 \subsection{Test: evolution of \acp{GC} on same orbit at $z=0$}\label{subsec:box_GCs}
@@ -197,19 +198,19 @@ We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_box_hist_mean.png}
 
-	\caption{.}\label{fig:actions_box_time_evolution_prog2}
+	\caption{Action time evolution of 17 particles of prog2 which are found to be on similar orbits in the $z=0$ snapshot. }\label{fig:actions_box_time_evolution_prog2}
 \end{figure}
 
 \begin{figure}
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog3/action_time_evolution_box_hist_mean.png}
-    \caption{.}\label{fig:actions_box_time_evolution_prog3}
+    \caption{Action time evolution of xx particles of prog3 which are found to be on similar orbits in the $z=0$ snapshot.}\label{fig:actions_box_time_evolution_prog3}
 \end{figure}
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
 	\includegraphics[width=\textwidth]{plots/Dynamics/prog4/action_time_evolution_box_hist_mean.png}
-    \caption{.}\label{fig:actions_box_time_evolution_prog4}
+    \caption{Action time evolution of xx particles of prog4 which are on as similar orbits as possible. }\label{fig:actions_box_time_evolution_prog4}
 \end{figure}
