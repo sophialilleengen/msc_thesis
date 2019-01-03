@@ -63,7 +63,7 @@ Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like
 \\A face-on and edge-on view of the main galaxy is presented in Figure \ref{fig:Stars_AU24_zoomin}. We can see axisymmetric features such as bulge and disk and clear non-axisymmetric features such as a bar and spiral arms. This galaxy resembles the \ac{MW} and other late-type galaxies.
 \subsection{Best fit potential}\label{subsec:best_fit_pot}
 The best fit potential of a galaxy should be a analytic, axisymmetric potential so that we are able  to compare our results to the results of observers, since they mostly fit external galaxies in such a structure. We need to take into account that the galaxy evolved not isolated but went through many mergers and therefore its potential is either analytic nor axisymmetric but has a lot of substructure. The fit is only a vague approximation. Also it is self-consistent so changes in potential influence the velocities of the objects inside and changes on the positions of the objects will change the gravitational potential. Since we fit a potential to each snapshot we have a time-dependent potential. The routine and results in this Section are for the $z=0$ snapshot but the same routine was applied for all snapshots since a lookback time of \SI{10.5}{Gyr}. We also need to include a disk and bulge decomposition which is not natural in a cosmological simulation. As the gas evolves in cells, we cannot calculate its density easily. Therefore, we do not consider it in our potential fits. Since we want to recreate observers way of looking at galaxies we do not need to include gas as observers in e.g. \ac{MGE} fits \citep{MGE...Monnet, MGE...Emsellem} also only take stellar light into account. 
-\\The potentials we fit and use as well as action calculation routines are implemented in galpy \citep{Bovy...galpy...2015}.
+\\The potentials we fit and use as well as the action calculation routines are implemented in galpy \citep{Bovy...galpy...2015}.
 
 \subsubsection{galpy}\label{subsubsec:galpy}
 galpy is a well tested and well documented python package for galactic dynamics. It includes analytic spherical, axisymmetric and ellipsoidal triaxial potentials and fast routines, additionally implemented in C, for the calculation of orbits, action-angles and \acp{DF}. galpy has its own internal units which has to be considered and understood before using it.
@@ -123,7 +123,7 @@ where $M$ is the stellar mass of the spheroid and $a$ is its scale length. It ha
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.7\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
+    \includegraphics[width=0.75\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
     \caption{Spheroid density: data with errors(grey dots) and best fit (green line). The data is binned logarithmically in r. Their standard deviation is too small to be seen. In the inner part, r$<10$kpc, the density is both under and over estimated. In the outer parts, the fit matches the data.}
     \label{fig:spheroid_fit}
 \end{SCfigure}

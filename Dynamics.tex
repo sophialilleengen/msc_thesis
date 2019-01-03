@@ -2,6 +2,7 @@
 \subsection{Integrals of motion}
 
 \subsubsection{Energy and angular momentum}
+mention lefthand orientation of coordinate system
 \subsubsection{Actions}
 \begin{itemize}
     \item General action introduction (heuristic / properly)
@@ -12,12 +13,14 @@
 
 \subsubsection{Excursion: coordinate transformations}
 private communication with Wilma Trick
+
+\iffalse
 \subsection{Merger tree}
 We say th
 figure: Merger tree of Auriga 24. 
+\fi
 \subsection{Globular cluster sample selection}\label{subsec:GC_selection}
-Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, we set one stellar particle as one \ac{GC}. We find the three biggest \ac{DG} merger events in the merger tree. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $\rm{R}_d \<= 0.1 \ R_{200}$ and the height $\rm{z}_d = 0.03\ R_d$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - or changed signs between successive snapshots while being inside the disk radius since we assume that in these cases the \ac{GC} would be disrupted. 
-
+Due to the resolution of the simulation, $\mathrm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, we set one stellar particle as one \ac{GC}. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $\mathrm{R}_d <= 0.1  \mathrm{R}_{200}$ and the height $\mathrm{z}_d = 0.03\ R_d$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - or changed signs between successive snapshots while being inside the disk radius since we assume that in these cases the \ac{GC} would be disrupted. 
 
 \begin{table}[htbp]
 \captionsetup{format=plain}
@@ -25,14 +28,14 @@ Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, w
     \centering
     \begin{tabular}{@{}lllll@{}}
         \toprule
-         \makecell[l]{name}& \makecell[l]{merger time}& \makecell[l]{mass of \ac{DG}\\ at merger} & \makecell[l]{num of \\accreted particles} & \makecell[l]{mass of \\accreted particles}\\
+         \makecell[l]{name}& \makecell[l]{merger time \\[Gyr]}& \makecell[l]{mass of \ac{DG}\\ at merger} & \makecell[l]{num of \\accreted particles} & \makecell[l]{total mass of \\accreted particles}\\
          \midrule
-         prog2& & && &\\
-         prog3& & &&&\\
-         prog4& & &&&
+         prog2& 3.15 & && &\\
+         prog3& 8.70 & &&&\\
+         prog4& 9.46 & &&&
          \bottomrule
     \end{tabular}
-    \caption{Progenitor parameters}
+    \caption{Progenitor parameters. The selected progenitors ar}
     \label{tab:prog_overview}
 \end{table}
 
@@ -79,9 +82,9 @@ Due to the resolution of the simulation, $\rm{M} = 5 \cdot 10 ^ 4\ M_{\odot}$, w
     	\includegraphics[width=\textwidth]{plots/Dynamics/dist/xz_dist_selected_GCs_prog_4_snap_127.png}
 	    \label{fig:prog4_xz}
     \end{subfigure}
-    \caption{.}\label{fig:progenitors_distribution}
+    \caption{Remnants of the three biggest \ac{DG} mergers which were not destroyed by the disk. The left panels show the x-y number distribution, the right panels the x-z distribution. In grey, the main galaxy and its satellites are plotted (as in Figure \ref{fig:Stars_AU24}). \textit{Upper panels}: The remnants of the most recent merger are plotted in pink. \textit{Middle panel}: The blue points are remnants of the second biggest merger. \textit{Lower panel}: The yellow points are remnants of the third biggest merger which is the most long ago of these three. These remnants will be considered the \ac{GC} populations of each merger event.}\label{fig:progenitors_distribution}
 \end{figure}
-
+The positions of the remnants of these three merger events are shown in Figure \ref{fig:progenitors_distribution}. Progenitor 3 and 4 are totally dispersed in the galaxy while progenitor 2 still shows some merging features such as broad streams, especially visible face-on. Progenitor 2 has nearly a factor of 100 more remaining \acp{GC} than the other two progenitors. This is due the short time it is in the main galaxy and therefore could these \acp{GC} are neither as much dissolved as the others nor as much disrupted by the disk. Since these three mergers are so different at redshift 0, it is interesting to test their behaviour in action space, where dynamical features are expected to be visible longer. 
 
 \subsection{Globular clusters in action space}\label{subsec:GCs_action_space}
 Now, we look at the \ac{GC} distribution in action space. Our assumption is that in the "true" potential, \acp{GC} are very clumped since they should retain dynamical memory from their former \ac{DG} and therefore their \ac{DF} should be a delta function. In section \ref{subsubsec:GCs_actions_right_pot}, we will look at the distribution in the fitted potential at redshift 0. In section \ref{subsubsec:GCs_actions_varying_pot}, we evaluate actions in varying potentials to test our assumption of \acp{GC} being most clumped in action space in the "true" potential. 
@@ -92,11 +95,10 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
 \captionsetup{format=plain}
     \centering
     \includegraphics[width=1.0\textwidth]{plots/Dynamics/prog234_actions_snap_127.png}
-    \caption{Selected \acp{GC} from three different \acp{DG} in action space.}
-    \label{fig:act_both_merg_best_pot}
+    \caption{Selected \acp{GC} from three different \acp{DG} in action space. The diagonal elements show histograms of each action and the other panels show 2d histograms of each action pair. In pink/blue/yellow, we see the action distribution of the remnants of prog2/prog3/prog4. Since we have many more particles from prog2, the histograms in the diagonal elements are dominated by their distribution. In the correlation panels, we can clearly distinguish prog 2 and prog 4 while prog 3 is very dispersed and does not have an identifiable center in any action. Even though the merger of prog4 happened the longest ago, it is still very clumped in all combinations, with the most clumpiness in J$_\mathrm{R}$-L$_\mathrm{Z}$. The distribution of prog2 is narrow in L$_\mathrm{Z}$ but very broad in J$_\mathrm{R}$-J$_\mathrm{Z}$. prog2 is corotating with the disk but with a higher angular momentum than the disk has (\(\bar{\mathrm{L_z}} = -2235\) kpc km s$^{-1}$). prog4 is clearly counter rotating.}
+    \label{fig:act_all_merg_best_pot}
 \end{figure}
-
-
+We calculate the actions of the remnants of each progenitor in the best fit potential and plot them in Figure \ref{fig:act_all_merg_best_pot}. The remnants of the different merger events are best distinguishable in L$_\mathrm{Z}$
 
 \subsubsection{Varying potentials}\label{subsubsec:GCs_actions_varying_pot}
 
@@ -129,6 +131,7 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
 \subsection{Time evolution of actions}\label{subsec:time_evo_actions}
 We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the actions evolved and to see if there was a point - probably shortly after their mergers - where the \acp{GC} were more clumped in action space. We calculate the actions of the selected particles in the best fit potential in each snapshot.  
 
+\subsubsection{Best fit potential}\label{subsubsec:GCs_action_time_right_pot}
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
@@ -152,3 +155,7 @@ We evaluate the time evolution of the orbits of the accreted \acp{GC} to how the
     \label{fig:time_ev_box_GCs}
     \caption{.}\label{fig:actions_time_evolution}
 \end{figure}
+
+\subsubsection{Mean best fit potential}\label{subsubsec:GCs_actions_time_mean_right_pot}
+
+\subsection{Test: evolution of \acp{GC} on same orbit at $z=0$}\label{subsec:box_GCs}
