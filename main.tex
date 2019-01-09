@@ -14,10 +14,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{empheq}
 \usepackage[export]{adjustbox}
 \usepackage[parfill]{parskip} 
 \usepackage{sidecap} % to have text next to figures
-
+\usepackage{url}
 \usepackage{subcaption}
 \usepackage{siunitx}
 \usepackage{natbib}
@@ -50,7 +51,7 @@
 
 \begin{document}
 
-\bibliographystyle{glenn} 
+\bibliographystyle{glenn_new} 
 \pagenumbering{roman}
 \renewcommand{\bibname}{Bibliography}
 
@@ -59,7 +60,10 @@
 \newpage
 \thispagestyle{empty}
 \begin{abstract}
-\hspace{-12pt}Many astrophysical and galaxy-scale cosmological problems require a well determined gravitational potential. Globular clusters (GCs) surrounding galaxies can be used as dynamical tracers of the total and dark matter distribution at large (kpc) scales. This M.Sc. project investigates - by means of the Auriga galaxy simulations and in anticipation of high-resolution IFU data of external galaxies - if a novel action-based approach could tightly constrain the gravitational potential. In the Milky Way, action-angles of resolved stars in stellar streams were found to be useful in constraining its gravitational potential. In external galaxies, no individual stars but only GCs can be resolved (2D projected position and line-of-sight velocities as observables). Actions are integrals of motion with an intuitive physical meaning - e.g. the radial action quantifies the radial oscillation of the orbit - and therefore make excellent orbit labels. In a slowly varying potential, actions are assumed to stay constant. We find, that within the Auriga simulations actions show a significant variation over time and we cannot rely on them being constant. Moreover, varying the gravitational potential of the host within reasonable ranges does not significantly change the distribution of GCs in action space. Testing this approach also in Gaia DR2 by calculating the actions of Gaia-Enceladus in different MW potentials we confirm that we cannot distinguish between them in GC action space distribution. We find, that we cannot use this method to constrain the gravitational potential of galaxies. In reverse, calculating actions does not require a well-determined gravitational potential so we can use them as strong probes for other astrophysical problems. 
+\hspace{-12pt}Many astrophysical and galaxy-scale cosmological problems require a well-determined gravitational potential to solve. Globular clusters (GCs) surrounding galaxies can be used as dynamical tracers of the luminous and dark matter distribution at large (kpc) scales. This M.Sc. project investigates - by means of the Auriga galaxy simulations and in anticipation of high-resolution IFU data of external galaxies - if a novel action-based approach could provide a constraint for an axisymmetric approximation of the gravitational potential. \\
+In an axisymmetric potential, actions (radial J$_\mathrm{R}$, vertical J$_\mathrm{z}$ and angular momentum L$_\mathrm{z}$) are integrals of motion and can be used to characterize and label orbits. In the Milky Way (MW), the assumption that stars in cold streams are on similar orbits was found to be a useful first order constraint of its gravitational potential. In external galaxies, no individual stars but only GCs can be resolved. One could expect GCs from the same dwarf galaxy (DG) merger event, to move at the present time on similar orbits in the host galaxy, analogously to stellar streams in the MW. \\
+We investigate this idea in one galaxy of the cosmological N-body simulation suite Auriga \citep{AurigaGrand}. This is necessary and important since external galaxies are often assumed to be axisymmetric, both by observers and modelers. As a first step, we present an effective strategy to fit analytic, axisymmetric, time-dependent potential models with slowly varying parameters to the simulations that are good enough to estimate actions. \\
+Then, we select stellar particles born in dwarf galaxies as proxies for GCs and follow the evolution of their orbital actions during the merger process. These actions show a significant variation over time. As a result, at z=0, the stellar particles accreted in the same merger event show a very extended distribution in action space. The minimization of their spread, however, turned out not to be informative about the true potential since the action distribution and its evolution are affected by complex physical processes during mergers. In local observations, we find this result in the stars of Gaia-Enceladus, one of the few DG mergers of our MW that we know of. Their action distribution is smeared out extensively. Based on these results, modellers need to find the true distribution functions of GCs of a single merger event in simulations to be able to constrain the gravitational potential this way.
 
 %\vspace{2cm}
 \begin{center}
@@ -109,6 +113,7 @@
 \section*{Acronyms}
 \begin{acronym}[WIMPs]
     \acro{AGN}{active galactic nuclei}
+    \acro{CBE}{collisionless Boltzmann equation}
     \acro{CDM}{cold dark matter}
     \acro{CMB}{cosmic microwave background}
     \acro{DF}{distribution function}
@@ -117,15 +122,19 @@
 	\acro{DMO}{dark matter only}
 	\acro{D/T}{disk-to-total}
 	\acro{GC}{globular cluster}
+	\acro{HST}{Hubble Space Telescope}
 	\acro{IFU}{Integral Field Unit}
 	\acro{LCDM}[$\Lambda$CDM]{Lambda cold dark matter}
 	\acro{LG}{Local Group}
 	\acro{MGE}{Multi-Gaussian Expansion}
 	\acro{MHD}{magnetohydrodynamical}
+	\acro{ML}[M/L]{mass-to-light}
 	\acro{MN}{Miyamoto-Nagai}
 	\acro{MoND}{Modified Newtonian Dynamics}
 	\acro{MW}{Milky Way}
 	\acro{NFW}{Navarro-Frenk-White}
+	\acro{PM}{proper motion}
+	\acro{TF}{Tully-Fisher}
 	\acro{WDM}{warm dark matter}
 	\acro{WIMPs}{Weakly Interacting Massive Particles}
 
