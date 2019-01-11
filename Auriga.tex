@@ -1,4 +1,4 @@
-\section{An axisymmetric potential for a cosmological simulation.}\label{sec:Auriga}
+\section{An axisymmetric potential for a cosmological simulation}\label{sec:Auriga}
 In this Section, we first give an overview about hydrydynamical simulations in general and the Auriga simulations in particular in Section \ref{subsec:auriga}. In Section \ref{subsec:best_fit_pot}, we explain how we fit analytical potentials to Auriga galaxies and we finish in Section \ref{subsec:wrong_pot_fit} with an overview of tricky parts in that process.
 
 To get started with the analysis of Auriga galaxies, I was provided with code from Timo Halbesma, Federico Marinacci, Rob Grand and Wilma Trick. These code snippets were used to read in the simulation data and contained some base for the potential fit which were a starting point for my own implementation of a fitting routine. 
@@ -6,7 +6,7 @@ To get started with the analysis of Auriga galaxies, I was provided with code fr
 \subsection{About Auriga}\label{subsec:auriga}
 \subsubsection{Hydrodynamical galaxy simulations}\label{subsubsec:hydro_sim}
 To understand how our Universe and everything in it has formed and evolved, astronomers use simulations of it two ways: trying to match observations of real galaxies and thus checking if the input 'recipes' are correct and predicting observations which then are to be found by observers. These simulations stretch over a large range of astronomical scales, from stars and planets to the evolution of the cosmic web, but also over different numerical techniques, from more empirical, statistical Monte-Carlo methods to cosmological hydrodynamical \textit{N}-body simulations. To learn more about the formation and evolution of galaxies, these hydrodynamical cosmological simulations are a wealthy tool to exploit. 
-\\Hydrodynamical galaxy simulations are carried out by first evolving \ac{DM} only halos according to the chosen \ac{DM} scenario and adopted cosmological parameters from a very high redshift to redshift 0. Then, to find \ac{MW} like halos, one takes the most isolated halos in the mass range of the \ac{MW} halo - $1 < \mathrm{M}_{200} / 10^{12} \mathrm{M}_\odot < 2$ - of the simulated sample. In these halos, particles within a certain range are followed back to their initial conditions. In re-simulations, they are split up into a \ac{DM} part and gas cells. With an elaborate physics model, these gas cells produce stars within an empirical threshold and therefore galaxies form. Independent of specific recipes it is found that \ac{DM} forms in a web along filaments and stars follow the \ac{DM} distribution. 
+\\Hydrodynamical galaxy simulations are carried out by first evolving \ac{DM} only halos according to the chosen \ac{DM} scenario and adopted cosmological parameters from a very high redshift to redshift 0. Then, to find \ac{MW} like halos, one takes the most isolated halos in the mass range of the \ac{MW} halo - $1 < M_{200} / 10^{12} \mathrm{M}_\odot < 2$ - of the simulated sample. In these halos, particles within a certain range are followed back to their initial conditions. In re-simulations, they are split up into a \ac{DM} part and gas cells. With an elaborate physics model, these gas cells produce stars within an empirical threshold and therefore galaxies form. Independent of specific recipes it is found that \ac{DM} forms in a web along filaments and stars follow the \ac{DM} distribution. 
 \\This work uses the Auriga \citep{AurigaGrand} simulations, which try to recreate spiral galaxies such as our own. 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
@@ -23,10 +23,10 @@ To understand how our Universe and everything in it has formed and evolved, astr
     \end{subfigure}
     \caption{\ac{DM} (grey) and stellar (colors) particle distribution of the whole simulation Auriga24 at $\textit{z}=0$. The \ac{DM} forms the cosmic web, where the mass gathers along its filaments. Baryonic matter also follows these structures. At the most massive parts of the \ac{DM} distribution, the most stellar particles fell in. This structure is typical of hydrodynamical galaxy simulations.}\label{fig:DM_stars_AU24}
 \end{figure}
-In Figure \ref{fig:DM_stars_AU24}, we show the distribution of \ac{DM} in grey and stars in colors of the whole range of one selected simulated galaxy. The most bound particle is chosen to be the center at $(\mathrm{x,y,z}) = (0,0,0)$. The filaments of the \ac{DM} distribution are clearly visible. The stellar particles settle along these filaments and clump around the highest \ac{DM} structures. 
+In Figure \ref{fig:DM_stars_AU24}, we show the distribution of \ac{DM} in grey and stars in colors of the whole range of one selected simulated galaxy. The most bound particle is chosen to be the center at $(x,y,z) = (0,0,0)$. The filaments of the \ac{DM} distribution are clearly visible. The stellar particles settle along these filaments and clump around the highest \ac{DM} structures. 
 
 \subsubsection{Auriga}\label{subsubsec:auriga_intro}
-Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like galaxy. It is build with AREPO \citep{AREPO} and includes galaxy physics, \ac{AGN} feedback and magnetic fields. Its goal is to match the observables of the \ac{MW} today and to produce its history which can be compared to observations of spiral galaxies in earlier stages of development. All 30 galaxies are run in normal resolution and 3 selected are run in low and high resolution as well. It is consistent over these three resolution levels and therefore do not rely on numerical parameters but only on physical. Auriga is one of the first simulations where this is accomplished. The snapshots go from redshift 127, which is close to the beginning of the universe, to redshift 0, today.  At redshift = 0, different galaxy shapes are evolved. Most of them are spirals but a few are in a merger process. All galaxies have a rich merger history. \citep{AurigaGrand} finds that many properties of the \ac{MW} and \ac{MW} like external galaxies are reproduced by these simulations, such as the mass distribution and the circularity distribution. Others are found to be matching within certain limits, such as the SFR–stellar mass relation matches for low redshift $z<1$ but still results in consistent present-day metallicities, mean stellar ages and colours. The set-up and the results of this set of simulations make Auriga one of the most advanced and comprehensive magneto-hydrodynamical galaxy simulations and a very fruitful sample to carry out our investigations. \\
+Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like galaxy. It is build with AREPO \citep{AREPO} and includes galaxy physics, \ac{AGN} feedback and magnetic fields. Its goal is to match the observables of the \ac{MW} today and to produce its history which can be compared to observations of spiral galaxies in earlier stages of development. All 30 galaxies are run in normal resolution and 3 selected are run in low and high resolution as well. It is consistent over these three resolution levels and therefore do not rely on numerical parameters but only on physical. Auriga is one of the first simulations where this is accomplished. The snapshots go from redshift $127$, which is close to the beginning of the universe, to redshift $0$, today.  At redshift $z= 0$, different galaxy shapes are evolved. Most of them are spirals but a few are in a merger process. All galaxies have a rich merger history. \citep{AurigaGrand} finds that many properties of the \ac{MW} and \ac{MW} like external galaxies are reproduced by these simulations, such as the mass distribution and the circularity distribution. Others are found to be matching within certain limits, such as the SFR–stellar mass relation matches for low redshift $z<1$ but still results in consistent present-day metallicities, mean stellar ages and colours. The set-up and the results of this set of simulations make Auriga one of the most advanced and comprehensive magneto-hydrodynamical galaxy simulations and a very fruitful sample to carry out our investigations. \\
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
@@ -40,9 +40,9 @@ Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like
     	\includegraphics[width=\textwidth]{plots/Auriga/Au24_stars_xz_distribution_halo0.png}
     	\label{fig:Au24_stars_xz}
     \end{subfigure}
-    \caption{Stellar distribution of 0th halo at $\textit{z}=0$. The main galaxy is centered at (0,0,0). There are many \acp{DG} around the main galaxy which will eventually merge with it. In the evolution of the simulations, this galaxy has build up mass by merging with \acp{DG}. This mass build up is assumed for and observed in real galaxies.}\label{fig:Stars_AU24}
+    \caption{Stellar distribution of 0th halo at $\textit{z}=0$. The main galaxy is centered at $(0,0,0)$. There are many \acp{DG} around the main galaxy which will eventually merge with it. In the evolution of the simulations, this galaxy has build up mass by merging with \acp{DG}. This mass build up is assumed for and observed in real galaxies.}\label{fig:Stars_AU24}
 \end{figure}
-\\In Figure \ref{fig:Stars_AU24}, we present the distribution of stellar particles in x-y and x-z direction of the main galaxy and its associated \ac{DG} at redshift $z=0$. Over the course of time, many \ac{DG} already merged with the main galaxy. These make up some of the galaxy's mass and the remnants of these mergers are investigated in Section \ref{sec:Dynamics}.\\
+\\In Figure \ref{fig:Stars_AU24}, we present the distribution of stellar particles in $x-y$ and $x-z$ direction of the main galaxy and its associated \ac{DG} at redshift $z=0$. Over the course of time, many \ac{DG} already merged with the main galaxy. These make up some of the galaxy's mass and the remnants of these mergers are investigated in Section \ref{sec:Dynamics}.\\
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
@@ -63,19 +63,19 @@ Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like
 The best fit potential of a galaxy should be a analytic, axisymmetric potential so that we are able  to compare our results to the results of observers, since they mostly fit external galaxies in such a structure. We need to take into account that the galaxy evolved not isolated but went through many mergers and therefore its potential is either analytic nor axisymmetric but has a lot of substructure. The fit is only a vague approximation. Also it is self-consistent so changes in potential influence the velocities of the objects inside and changes on the positions of the objects will change the gravitational potential. Since we fit a potential to each snapshot we have a time-dependent potential. The routine and results in this Section are for the $z=0$ snapshot but the same routine was applied for all snapshots since a lookback time of \SI{10.5}{Gyr}. We also need to include a disk and bulge decomposition which is not natural in a cosmological simulation. As the gas evolves in cells, we cannot calculate its density easily. Therefore, we do not consider it in our potential fits. Since we want to recreate observers way of looking at galaxies we do not need to include gas as observers in e.g. \ac{MGE} fits \citep{MGE...Monnet, MGE...Emsellem} also only take stellar light into account. 
 
 \subsubsection{About the gravitational potential}\label{subsubsec:pot_theory}
-The distribution of stars can be described by their \ac{DF}, $\mathrm{f(\mathbf{x}, \mathbf{v}})$ which describes the observed positions and velocities of the stars. They can act as tracers of the gravitational potential $\Phi(\mathbf{x})$. Stars in the disk and the stellar halo are to an extremely good approximation a "collisionless fluid". For these stars, the \ac{CBE} describes their motions: 
+The distribution of stars can be described by their \ac{DF}, $f(\mathbf{x}, \mathbf{v})$ which describes the observed positions and velocities of the stars. They can act as tracers of the gravitational potential $\Phi(\mathbf{x})$. Stars in the disk and the stellar halo are to an extremely good approximation a "collisionless fluid". For these stars, the \ac{CBE} describes their motions: 
 \begin{align}\label{eq:CBE}
-    \frac{\mathrm{df}}{\mathrm{dt}} &= \mathrm{\frac{\partial f}{\partial t} + \frac{\partial f}{\partial \mathbf{x}} \cdot \frac{d\mathbf{x}}{dt} + \frac{\partial f}{\partial \mathbf{v}} \cdot \frac{d\mathbf{v}}{dt}}\\
-    &= \mathrm{\frac{\partial f}{\partial t} + \mathbf{\nabla}_x f \cdot \mathbf{v} + \mathbf{\nabla}_v f \cdot \mathbf{a}} = 0.
+    \frac{\mathrm{d}f}{\mathrm{d}t} &= \frac{\partial f}{\partial t} + \frac{\partial f}{\partial \mathbf{x}} \cdot \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t} + \frac{\partial f}{\partial \mathbf{v}} \cdot \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t}\\
+    &= \frac{\partial f}{\partial t} + \bm{\nabla}_x f \cdot \mathbf{v} + \bm{\nabla}_v f \cdot \mathbf{a} = 0.
 \end{align}
-Applying Newton's gravitational law $\mathrm{\mathbf{F} = -m\mathbf{\nabla}\Phi(\mathbf{x}) = m\mathbf{a}}$ to the last part of the equation and taking the Poisson equation into account to connect $\Phi(\mathbf{x})$ with the total mass we get the important equations:
+Applying Newton's gravitational law $\mathbf{F} = -m\bm{\nabla}\Phi(\mathbf{x}) = m\mathbf{a}$ to the last part of the equation and taking the Poisson equation into account to connect $\Phi(\mathbf{x})$ with the total mass we get the important equations:
 
 \begin{empheq}[box=\fbox]{alignat=2}
-  &\mathrm{CBE:} \quad&\frac{\mathrm{df}}{\mathrm{dt}} = \mathrm{\frac{\partial f}{\partial t} + \mathbf{\nabla}_x f \cdot \mathbf{v} - \mathbf{\nabla}_v f \cdot \mathbf{\nabla}_x \Phi(\mathbf{x})} \label{eq:CMB_phi}\\
-  &\mathrm{Poisson:}\quad&\mathbf{\nabla} \cdot \mathbf{\nabla} \Phi(\mathbf{x})= \mathbf{\nabla}^2 \Phi(\mathbf{x}) =4\pi \mathrm{G} \rho(\mathbf{x}) \label{eq:Poisson}
+  &\mathrm{CBE:} \quad&\frac{\mathrm{d}f}{\mathrm{d}t} = \frac{\partial f}{\partial t} + \bm{\nabla}_x f \cdot \mathbf{v} - \bm{\nabla}_v f \cdot \bm{\nabla}_x \Phi(\mathbf{x}) \label{eq:CMB_phi}\\
+  &\mathrm{Poisson:}\quad&\bm{\nabla} \cdot \bm{\nabla} \Phi(\mathbf{x})= \bm{\nabla}^2 \Phi(\mathbf{x}) =4\pi G \rho(\mathbf{x}) \label{eq:Poisson}
 \end{empheq}
-with the gravitational constant G and the total mass density of stars, gas and \ac{DM}, $\rho(\mathbf{x})$. 
-If the system is in "steady state", $\mathrm{\frac{\partial f}{\partial t} = 0}$, integrals of motion solve Equation \ref{eq:CMB_phi} (see Section \ref{sec:Dynamics}). The Poisson equation, Equation \ref{eq:Poisson}, is used to link densities and potentials in the upcoming descriptions of the potentials of the single components and presents a direct link between the gravitational potential and the total mass. 
+with the gravitational constant $G$ and the total mass density of stars, gas and \ac{DM}, $\rho(\mathbf{x})$. 
+If the system is in "steady state", $\partial f/\partial t = 0$, integrals of motion solve Equation \ref{eq:CMB_phi} (see Section \ref{sec:Dynamics}). The Poisson equation, Equation \ref{eq:Poisson}, is used to link densities and potentials in the upcoming descriptions of the potentials of the single components and presents a direct link between the gravitational potential and the total mass. 
 
 \subsubsection{galpy}\label{subsubsec:galpy}
 galpy \citep{Bovy...galpy...2015} is a well tested and well documented python package for galactic dynamics that is being developed on \url{http://github.com/jobovy/galpy}. The latest documentation can be found at \url{http://galpy.readthedocs.org/en/latest/}. It includes analytic spherical, axisymmetric and ellipsoidal triaxial potentials and fast routines, additionally implemented in C, for the calculation of orbits, action-angles and \acp{DF}. galpy has its own internal units which has to be considered and understood before using it.
@@ -92,11 +92,10 @@ $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ i
 \cite{AurigaGrand} uses two different methods two distinguish the components and to get their mass ratio:
 \begin{enumerate}
 \item Under the assumption, that the bulge has zero net rotation, mirror negative $\epsilon$ as bulge material, the rest belongs to the disk.
-\item All particles with $\epsilon > const$ are assigned to the disk, where $const = 0.7$ is set heuristically.
+\item All particles with $\epsilon > \mathrm{constant}$ are assigned to the disk, where $\mathrm{constant} = 0.7$ is set heuristically.
 \end{enumerate}
 
 \cite{AurigaGrand} find that the first method generally overestimates the \ac{D/T} ratio while the second approach underestimates it by choosing only kinematically very cold particles. Since we do not only want to get the mass ratio of \ac{D/T} but also want to tag each particle clearly, we use the second method. Nevertheless, the true assignment lies somewhere between these method. 
-
 \begin{SCfigure}%[htbp]
 \captionsetup{format=plain}
     \centering
@@ -144,8 +143,32 @@ where $M$ is the stellar mass of the spheroid and $a$ is its scale length. It ha
 We model the \ac{DM} halo with a \citet{NFWprofile} profile following the formula 
 \begin{equation}
     \frac{\rho(r)}{\rho_{crit}} = \frac{\delta_c}{(r/r_s)(1+r/r_s)^2} = \frac{\mathrm{amp}}{4 \pi a^3}\frac{1}{(r/a)(1+r/a)^2}
-\end{equation} with scale radius $r_s = a$, the critical density $\rho_{crit} = 3H^2 / 8\pi G $ and a characteristic and dimensionless density $\delta_c$ which can be rewritten as \(\rho_{crit}\cdot\delta_c = \frac{\mathrm{amp}}{4\pi a^3} \). The \ac{NFW} profile is derived from \ac{DM} only hydrodynamical simulations and found to accurately describe \ac{DM} halos. 
-\\With the best fit potentials for the stellar components, we set up a potential in galpy with all three components and fit it to the 'pot' value of 100000 randomly selected DM particles using the scipy.optimize.differential\_evolution routine. With that method, we find the best fit scale length of the DM halo, a$_{\mathrm{NFWH}}$as well as the total circular velocity v$_{0,\mathrm{tot}}$ at a given distance R$_0$. From that total circular velocity we can subtract the fraction from the stellar components to get the \ac{DM} component, $v_{0,\mathrm{NFWH}} = \sqrt{v_{0,\mathrm{tot}}^2 - v_{0, \mathrm{MND}}^2 - v_{0, \mathrm{HB}}^2}$. The resulting parameter values are summarized in Table \ref{tab:pot_best_fit_params}. 
+\end{equation} with scale radius $r_s = a$, the critical density $\rho_{crit} = 3H^2 / 8\pi G $ and a characteristic and dimensionless density $\delta_c$ which can be rewritten as \(\rho_{crit}\cdot\delta_c = \mathrm{amp}/4\pi a^3 \). The \ac{NFW} profile is derived from \ac{DM} only hydrodynamical simulations and found to accurately describe \ac{DM} halos. 
+\\With the best fit potentials for the stellar components, we set up a potential in galpy with all three components and fit it to the 'pot' value of 100000 randomly selected DM particles, shown in Figure \ref{fig:DM_part_selection},
+\begin{figure}[htbp]
+\captionsetup{format=plain}
+    \centering
+    \includegraphics[width=\textwidth]{plots/Auriga/DM_selected_part_dist_snap_127.png}
+    \caption{Selection of 100000 random \ac{DM} particles, used to fit to the \ac{NFW} halo. \textit{Left panel:} Distribution of particles in the x-z plane. \textit{Right panel:} Number of \ac{DM} particles depending on r. For radii > \SI{10}{kpc}, the distribution is constant while there are less particles for smaller radii. Since we are less interested in the innermost part of the halo, it is good that the weight for the fit lies in the outer parts. \ac{DM} particles with $r < \SI{3}{kpc}$ are excluded from the fit since it worsened the fit in the outer parts.}
+    \label{fig:DM_part_selection}
+\end{figure}
+using the scipy.optimize.differential\_evolution routine. With that method, we find the best fit scale length of the DM halo, $a_{\mathrm{NFWH}}$ as well as the total circular velocity $v_{0,\mathrm{tot}}$ at a given distance $R_0$. From that total circular velocity we can subtract the fraction from the stellar components to get the \ac{DM} component, $v_{0,\mathrm{NFWH}} = \sqrt{v_{0,\mathrm{tot}}^2 - v_{0, \mathrm{MND}}^2 - v_{0, \mathrm{HB}}^2}$. The resulting parameter values are summarized in Table \ref{tab:pot_best_fit_params}. 
+\begin{SCfigure}
+\captionsetup{format=plain}
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/Auriga/phi_model_and_data_snap_127.png}
+    \caption{Potential of data (selected \ac{DM} particles) and model depending on the radius r. Black dots are data, red dots from the best fit model. The innermost \SI{3}{kpc} are not included in the fit to make it better in the outer parts. The model lies everywhere within the data range but the slope seems less steep than the slope of the data.}
+    \label{fig:potential_best_fit}
+\end{SCfigure}
+In Figure \ref{fig:potential_best_fit} we see the 'pot' value of the selected \ac{DM} particles in black and the fitted \ac{NFW} potential overlaying in red. Even though the red dots lie within the distribution of the black dots, the slope seems to be different.
+\begin{figure}
+\captionsetup{format=plain}
+    \centering
+    \includegraphics[width=\textwidth]{plots/Auriga/rel_phi_error_snap_127.png}
+    \caption{Relative error $(\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data})$ of the \ac{DM} fit versus the three cylindrical coordinates $(R, \phi, z)$. The errors are within a good range (3-4\%) but the slopes are not constant as they should.}
+    \label{fig:potential_fit_rel_errors}
+\end{figure}
+To check, how good the slope of the \ac{DM} fit is, we plot the relative error $(\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data})$ versus the three cylindrical coordinates $(R, \phi, z)$. The slopes should be constant which they are not. We tried many different routines for the potential fit and this is the best we got and since the errors are relatively small (within 3-4\%) we still think the fit is good enough.
 
 \subsubsection{Total potential}\label{subsubsec:tot_pot}
 After fitting each component individually, we add them up to get a total potential. In Table \ref{tab:pot_best_fit_params}, we summarize our results for the last snapshot as described in the previous Sections. 
@@ -157,13 +180,13 @@ After fitting each component individually, we add them up to get a total potenti
          \toprule
          component& potential & parameters \& values &fitting method  \\
          \midrule
-         stellar disk& \makecell[tl]{Miyamoto\\-Nagai}&\makecell[tl]{a$_{\mathrm{MND}}$ = \SI{2.97}{kpc}\\b$_{\mathrm{MND}}$ = \SI{1.64}{kpc}\\v$_{0,\mathrm{MND}}$ = \SI{105.00}{km.s^{-1}}} & \makecell[tl]{\ac{MN} density fitted \\to density bins \\of disk in $(R,z)$.}\vspace{3mm}\\
+         stellar disk& \makecell[tl]{Miyamoto\\-Nagai}&\makecell[tl]{$a_{\mathrm{MND}}$ = \SI{2.97}{kpc}\\$b_{\mathrm{MND}}$ = \SI{1.64}{kpc}\\$v_{0,\mathrm{MND}}$ = \SI{105.00}{km.s^{-1}}} & \makecell[tl]{\ac{MN} density fitted \\to density bins \\of disk in $(R,z)$.}\vspace{3mm}\\
          %\midrule
-         \makecell[tl]{stellar\\ spheroid}& Hernquist&\makecell[tl]{a$_{\mathrm{HB}}$ = \SI{1.82}{kpc}\\v$_{0,\mathrm{HB}}$ = \SI{110.00}{km.s^{-1}}}& \makecell[tl]{Hernquist density fitted\\ to density shells of \\spheroid in $(r)$.}\vspace{3mm}\\
+         \makecell[tl]{stellar\\ spheroid}& Hernquist&\makecell[tl]{$a_{\mathrm{HB}}$ = \SI{1.82}{kpc}\\$v_{0,\mathrm{HB}}$ = \SI{110.00}{km.s^{-1}}}& \makecell[tl]{Hernquist density fitted\\ to density shells of \\spheroid in $(r)$.}\vspace{3mm}\\
          %\midrule
-         \ac{DM} halo&\ac{NFW}&\makecell[tl]{a$_{\mathrm{NFWH}}$ = \SI{25.47}{kpc}\\v$_{0,\mathrm{NFWH}}$ = \SI{160.66}{km.s^{-1}}}&\makecell[tl]{Total potential fitted to \\'pot' value of random \ac{DM} \\particles where \ac{NFW}\\ parameters were fitting \\parameters.}\vspace{3mm}\\
+         \ac{DM} halo&\ac{NFW}&\makecell[tl]{$a_{\mathrm{NFWH}}$ = \SI{25.47}{kpc}\\$v_{0,\mathrm{NFWH}}$ = \SI{160.66}{km.s^{-1}}}&\makecell[tl]{Total potential fitted to \\'pot' value of random \ac{DM} \\particles where \ac{NFW}\\ parameters were fitting \\parameters.}\vspace{3mm}\\
          %\midrule
-         total & \makecell[tl]{sum of these\\ potentials} & \makecell[tl]{at R$_0$ = \SI{8.03}{kpc} \\ v$_{0,\mathrm{tot}}$ = \SI{221.21}{km.s^{-1}}}& \makecell[tl]{R$_0$ is $1/3$ of the galaxy \\radius. v$_0$ is the sum of \\the fitted circular velocities.}\vspace{3mm}\\
+         total & \makecell[tl]{sum of these\\ potentials} & \makecell[tl]{at $R_0$ = \SI{8.00}{kpc} \\ $v_{0,\mathrm{tot}}$ = \SI{221.21}{km.s^{-1}}}& \makecell[tl]{R$_0$ is $1/3$ of the galaxy \\radius. v$_0$ is the sum of \\the fitted circular velocities.}\vspace{3mm}\\
          \bottomrule 
     \end{tabular}
     \caption{Best fit potential overview: components, used potentials, their parameters with best fit values and their fitting methods.}
@@ -175,7 +198,7 @@ In Figure \ref{fig:pot_val_evol}, we show the time evolution of the potential pa
 \captionsetup{format=plain}
 \centering
 \includegraphics[width=0.7\textwidth]{plots/Auriga/fitted_potential_evolution_jan19.png}
-\caption{Evolution of all fit parameters over time. R$_0$ and v$_0$ describe the overall evolution and the other parameters describe scale length - and height, if applicable - and their contribution to the circular velocity. The grey dots are the best fit values and the black lines are polynomial fits of 4th order for each parameter. The vertical lines mark the merger times of the three biggest merger events the main halo galaxy has experiences. The pink merger was the latest and biggest merger while the yellow merger contributed the least mass of these. In the first two panels, we see that the growth of the galaxy is continuous. The second merger flattened out the rise of the total circular velocity which is measured at R$_0 = 8$ kpc. It is kept constant throughout the time evolution to see how within a constant radius the mass changes over time. The spheroid's parameters are very constant since the second merger, while the disk and the \ac{DM} halo are affected by the last merger. While the disk seems to grow in size, its contribution to the total circular velocity decreases. On the contrary, the \ac{DM} halo contracts but its contribution to the velocity rises more steeply. This shows, that these mergers have a strong impact on the evolution of the potential of this galaxy. Nevertheless, with the fits of the values we can still assume a slowly varying potential which is essential for the action evolution.}\label{fig:pot_val_evol}
+\caption{Evolution of all fit parameters over time. $R_0$ and $v_0$ describe the overall evolution and the other parameters describe scale length - and height, if applicable - and their contribution to the circular velocity. The grey dots are the best fit values and the black lines are polynomial fits of 4th order for each parameter. The vertical lines mark the merger times of the three biggest merger events the main halo galaxy has experiences. The pink merger was the latest and biggest merger while the yellow merger contributed the least mass of these. In the first two panels, we see that the growth of the galaxy is continuous. The second merger flattened out the rise of the total circular velocity which is measured at $R_0 = \SI{8}{kpc}$. It is kept constant throughout the time evolution to see how within a constant radius the mass changes over time. The spheroid's parameters are very constant since the second merger, while the disk and the \ac{DM} halo are affected by the last merger. While the disk seems to grow in size, its contribution to the total circular velocity decreases. On the contrary, the \ac{DM} halo contracts but its contribution to the velocity rises more steeply. This shows, that these mergers have a strong impact on the evolution of the potential of this galaxy. Nevertheless, with the fits of the values we can still assume a slowly varying potential which is essential for the action evolution.}\label{fig:pot_val_evol}
 \end{figure}
 In the potential parameters, we see how the galaxy grows and how the growth is affected by mergers. The indicated mergers are described in more detail in the next Section and in Table \ref{tab:prog_overview}. The overall trend is very smooth and without any outliers. The spheroid remains very constant after the second biggest merger while the other components, especially the disk, have a larger scatter. The latest and biggest merger has a strong impact on the disk and the \ac{DM} halo. The fits of the values allow us to still carry out the action investigations (from Section \ref{subsec:GCs_action_space} on) under the assumption of a slowly varying potential. 
 
@@ -243,4 +266,4 @@ In the first Ansatz, we also worked with the three component analytic potential 
 
 
 
-\textbf{Put in table with parameter comparison }
+%\textbf{Put in table with parameter comparison }

@@ -1,15 +1,38 @@
 \section{Adaptive dynamics: Can actions of accreted globular clusters constrain the gravitational potential?}\label{sec:Dynamics}
-\subsection{Integrals of motion}
 
+\subsection{Integrals of motion}
+This Section is based on \S3.1, \S3.2 and \S3.5 of \citet{Binney...Tremaine...2008}. Objects (e.g., stars and \acp{GC}) move on orbits which are described by their positions and velocities in 6 dimensional phase space, (\textbf{x}, \textbf{v}). Functions $I$, which are constant along an orbit, are called integrals of motion \citep{Binney...Tremaine...2008}:
+\begin{equation}
+    I[\mathbf{x}(t_1), \mathbf{v}(t_1)] = I[\mathbf{x}(t_2), \mathbf{v}(t_2)]
+\end{equation}
+for any $t_1$ and $t_2$. This means, that the derivative of these integrals is 0:
+\begin{equation}
+    0 = \dot{I}
+\end{equation}
+In an axisymmetric potential as we assumed and fitted in Section \ref{sec:Auriga} there are three independent coordinates so we have a six dimensional phase space which can be described by three integrals of motion. 
 \subsubsection{Energy and angular momentum}
-mention lefthand orientation of coordinate system
+Energy E and some components of the angular momentum \textbf{L}, depending on the symmetry of the potential, are regarded as classical integrals of motion. In a spherical potential, all three components of $\textbf{L} = \textbf{x} \times \textbf{v}$ are integrals of motion while in the axisymmetric potential $\Phi$ only the axis about the potential is symmetric is the component of the angular momentum which is the integral of motion (usually $L_z$). The energy is given by the Hamiltonian H,
+\begin{equation}
+    H(\mathbf{x, v}) = \frac{1}{2}v^2 + \Phi = E
+\end{equation}
+with the total velocity $v$. In this axisymmetric potential the integrals of motion are supplemented by a third integral of motion, $I =$ constant, which, in general, does not have an analytic expression and therefore is a non-classical integral. 
 \subsubsection{Actions}
-\begin{itemize}
-    \item General action introduction (heuristic / properly)
-    \item explain Staeckel fudge
-    \item mention galpy
-    
-\end{itemize}
+\textbf{General introduction to actions} A particular set of integrals of motion are actions which, together with angles, create a canonical coordinate system. These actions are three momenta, $\mathbf{J} = (J_1, J_2, J_3)$, which describe the whole orbit while the angles, $\bm{\theta} = (\theta_1, \theta_2, \theta_3) $ define the position of the object on the orbit. Orbits for which actions can be calculated are called regular orbits. The three actions are given by the integral
+\begin{equation}
+    J_i = \frac{1}{2\pi}\oint_{\gamma_i}\mathbf{p}\cdot\mathrm{d}\mathbf{q} \qquad i = 1,2,3
+\end{equation}
+over the path $\gamma_i$ with vector $\mathbf{q}(t)$ and corresponding momentum $\mathbf{p}(t)$ given a Hamiltonian system which satisfies 
+\begin{equation}
+    \dot{\mathbf{q}} = \frac{\partial H}{\partial \mathbf{p}} \quad;\quad \dot{\mathbf{p}} = - \frac{\partial H}{\partial \mathbf{q}}. 
+\end{equation}
+The range of the angles is by construction $\theta_i = [0,2\pi]$ so that it moves periodically around the center of the galaxy. Since $0 = \dot{J} = -\partial H / \partial\theta_i$, the Hamiltonian is independent of $\bm{\theta}$. Its function of time t is therefore 
+\begin{equation}
+    \dot{\theta}_i = \frac{\partial H}{\partial J_i} \equiv \Omega_i(\mathbf{J}), \quad \mathrm{a\ constant} \quad \Rightarrow\quad \theta_i(t) = \theta_i(0) +  \Omega_i t
+\end{equation}
+with the circular frequency $\Omega = v_{circ}/r$. The components of $\bm{\theta}$ evolve linearly in time. 
+\\\\\textbf{Definition in cylindrical coordinates} In the axisymmetric potential we have the spatial coordinates $(R, \phi, z)$ which we can use for the axes along we examine the actions $\mathbf{J} = (J_R, J_\phi = L_z, J_z)$. The actions quantify the oscillation of the orbit along a given axis. $J_R$ described how the objects moves towards and away from the galactic center, the radial oscillation, and $J_z$ the oscillation above and below the equatorial plane while $J_\phi = L_z$ is the angular momentum along the symmetry axis. 
+
+\textbf{Numerical calculation of actions} Only in a simple spherical symmetric potential, the Isochrone potential $\Phi(r) = -GM/b + \sqrt{b^2+r^2}$ with scale length $b$, actions can be calculated analytically. To numerically calculate the actions of objects in our axisymmetric potential from Section \ref{sec:Auriga}, we need to use approximations. 
 
 \subsubsection{Excursion: coordinate transformations}
 private communication with Wilma Trick
@@ -28,7 +51,7 @@ Due to the resolution of the simulation, $\mathrm{M} = 5 \cdot 10 ^ 4\ M_{\odot}
     \centering
     \begin{tabular}{@{}lllll@{}}
         \toprule
-         \makecell[l]{name}& \makecell[l]{merger time \\[Gyr]}& \makecell[l]{mass of \ac{DG}\\ at merger} & \makecell[l]{num of \\accreted particles} & \makecell[l]{total mass of \\accreted particles}\\
+         \makecell[l]{name}& \makecell[l]{merger time [Gyr]}& \makecell[l]{mass of \ac{DG}\\ at merger} & \makecell[l]{num of \\accreted particles} & \makecell[l]{total mass of \\accreted particles}\\
          \midrule
          prog2& 3.15 & && &\\
          prog3& 8.70 & &&&\\
