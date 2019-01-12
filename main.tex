@@ -18,6 +18,7 @@
 \usepackage{empheq}
 \usepackage[export]{adjustbox}
 \usepackage[parfill]{parskip} 
+\usepackage{pdflscape}
 \usepackage{sidecap} % to have text next to figures
 \usepackage{url}
 \usepackage{subcaption}
@@ -74,7 +75,7 @@ Then, we select stellar particles born in dwarf galaxies as proxies for GCs and 
 \hspace{-12pt}Viele astrophysikalische und kosmologische Probleme im Galaxienmaßstab erfordern ein genau festgelegtes Gravitationspotential. Kugelsternhaufen (GCs), die Galaxien umgeben, können als dynamische Tracer für die Verteilung von Licht und dunkler Materie bei großen (kpc) Skalen verwendet werden. Dieses M.Sc. Projekt untersucht anhand der Auriga-Galaxiesimulationen und in Erwartung hochaufgelöster IFU-Daten externer Galaxien, ob ein neuartiger, wirkungsbasierter Ansatz eine Einschränkung für eine axialsymmetrische Approximation des Gravitationspotenzials darstellen könnte. \\
 In einem achsensymmetrischen Potential sind Wirkungen (radiale J$ _R$, vertikale J$_z$ und Drehimpuls L$_z$) Bewegungsintegrale und können verwendet werden, um Bahnen zu charakterisieren und zu kennzeichnen. In der Milchstraße (MW) wurde die Annahme, dass Sterne in kalten Strömen auf ähnlichen Bahnen liegen, als nützliche Einschränkung erster Ordnung für ihr Gravitationspotenzial befunden. In externen Galaxien können keine einzelnen Sterne, sondern nur GCs aufgelöst werden. Man könnte erwarten, dass sich GCs aus demselben Zwerggalaxie (DG) Verschmelzungsereignis derzeit auf ähnlichen Bahnen in der Wirtsgalaxie bewegen, analog zu Sternströmen im MW, und sollten daher ähnliche Wirkungen im wahren (axialsymmetrischen) Potenzial haben. \\
 Wir untersuchen diese Idee in einer Galaxie der kosmologischen N-Körper Simulationen Auriga  \citep{AurigaGrand}. Dies ist notwendig und wichtig, da externe Galaxien sowohl von Beobachtern als auch von Modellierern als axialsymmetrisch angenommen werden. Als ersten Schritt präsentieren wir eine effektive Strategie, um analytische, achsensymmetrische, zeitabhängige Potenzialmodelle mit langsam variierenden Parametern an die Simulation zu fitten, die für die Abschätzung von Witkungen geeignet sind. \\
-Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter für GCs aus und verfolgen die Entwicklung ihrer Orbitalaktionen während des Fusionsprozesses. Diese Wirkungen zeigen im Laufe der Zeit einen erheblichen Unterschied. Bei $z=0$ zeigen die im selben Verschmelzungsereignis angehäuften Sternpartikel daher eine sehr ausgedehnte Verteilung im Wirkungssraum. Die Minimierung ihrer Ausbreitung erwies sich jedoch als nicht aussagekräftig für das wahre Potenzial, da die Wirkungssverteilung und ihre Entwicklung durch komplexe physikalische Prozesse bei Wechselwirkungen beeinflusst werden. In lokalen Beobachtungen bestätigen wir dieses Ergebnis in den Sternen von Gaia-Enceladus, einer der wenigen Fusionen der DG unseres MW, die wir kennen. Ihre Wirkungsverteilung ist weitgehend verschmiert. Basierend auf diesen Ergebnissen schlagen wir vor, dass Modellierer in Simulationen realistischere Verteilungsfunktionen für GCs eines einzelnen DG-Fusionsereignisses suchen und entwickeln müssen, bevor sie das Gravitationspotenzial externer Galaxien mithilfe aktionsbasierter dynamischer Modellierung von GCs einschränken können.
+Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter für GCs aus und verfolgen die Entwicklung ihrer Orbitalaktionen während des Fusionsprozesses. Diese Wirkungen zeigen im Laufe der Zeit einen erheblichen Unterschied. Bei $z=0$ zeigen die im selben Verschmelzungsereignis angehäuften Sternpartikel daher eine sehr ausgedehnte Verteilung im Wirkungssraum. Die Minimierung ihrer Ausbreitung erwies sich jedoch als nicht aussagekräftig für das wahre Potenzial, da die Wirkungssverteilung und ihre Entwicklung durch komplexe physikalische Prozesse bei Wechselwirkungen beeinflusst werden. In lokalen Beobachtungen bestätigen wir dieses Ergebnis in den Sternen von Gaia-Enceladus, einer der wenigen Fusionen der DG unseres MW, die wir kennen. Ihre Wirkungsverteilung ist weitgehend verschmiert. Basierend auf diesen Ergebnissen schlagen wir vor, dass Modellierer in Simulationen realistischere Verteilungsfunktionen für GCs eines einzelnen DG-Fusionsereignisses suchen und entwickeln müssen, bevor sie das Gravitationspotenzial externer Galaxien mithilfe wirkungsbasierter dynamischer Modellierung von GCs einschränken können.
 
 \end{abstract}
 
@@ -93,13 +94,13 @@ Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter fü
 
 \fancyhf{}
 \fancyhead{}
-\fancyhead[RO,LE]{\thesubsection.\ \Subsectionname}
+\fancyhead[RO]{\thesubsection.\ \Subsectionname}
+\fancyhead[LE]{\thesection.\ \Sectionname}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
 \fancyfoot[LO,RE]{}
 \include{Introduction}
 
-%\include{Theory}
 
 \include{Auriga}
 
@@ -107,6 +108,7 @@ Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter fü
 
 \include{Discussion}
 
+\include{Sum_Conc}
 
 \newpage
 \fancyhf{}
@@ -129,6 +131,7 @@ Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter fü
 	\acro{GC}{globular cluster}
 	\acro{HST}{Hubble Space Telescope}
 	\acro{IFU}{Integral Field Unit}
+	\acro{IoMs}{integrals of motion}
 	\acro{LCDM}[$\Lambda$CDM]{Lambda cold dark matter}
 	\acro{LG}{Local Group}
 	\acro{MGE}{Multi-Gaussian Expansion}
