@@ -1,23 +1,23 @@
 \section[Adaptive dynamics]{Adaptive dynamics: Can actions of accreted globular clusters constrain the gravitational potential?}\label{sec:Dynamics}
 
 \subsection{Integrals of motion}
-This Section is based on \S3.1, \S3.2 and \S3.5 of \citet{Binney...Tremaine...2008}. Objects (e.g., stars and \acp{GC}) move on orbits which are described by their positions and velocities in 6 dimensional phase space, (\textbf{x}, \textbf{v}). Functions $I$, which are constant along an orbit, are called integrals of motion \citep{Binney...Tremaine...2008}:
+This Section is based on \S3.1, \S3.2 and \S3.5 of \citet{Binney...Tremaine...2008}. Objects (e.g., stars and \acp{GC}) move on orbits which are described by their positions and velocities in 6 dimensional phase space, (\textbf{x}, \textbf{v}). Functions $I$, which are constant along an orbit, are called \acf{IoM} \citep{Binney...Tremaine...2008}:
 \begin{equation}
     I[\mathbf{x}(t_1), \mathbf{v}(t_1)] = I[\mathbf{x}(t_2), \mathbf{v}(t_2)]
 \end{equation}
-for any $t_1$ and $t_2$. This means, that the derivative of these integrals is 0:
+for any $t_1$ and $t_2$. This means, that the derivative of these \ac{IoM} is 0:
 \begin{equation}\label{eq:der_IoM}
     0 = \dot{I}
 \end{equation}
-In an axisymmetric potential as we assumed and fitted in Section \ref{sec:Auriga} there are three independent coordinates so we have a six dimensional phase space which can be described by three integrals of motion. 
+In an axisymmetric potential as we assumed and fitted in Section \ref{sec:Auriga} there are three independent coordinates so we have a six dimensional phase space which can be described by three \ac{IoM}. 
 \subsubsection{Energy and angular momentum}
-Energy E and some components of the angular momentum \textbf{L}, depending on the symmetry of the potential, are regarded as classical integrals of motion. In a spherical potential, all three components of $\textbf{L} = \textbf{x} \times \textbf{v}$ are integrals of motion while in the axisymmetric potential $\Phi$ only the axis about the potential is symmetric is the component of the angular momentum which is the integral of motion (usually $L_z$). The energy is given by the Hamiltonian H,
+Energy E and some components of the angular momentum \textbf{L}, depending on the symmetry of the potential, are regarded as classical \ac{IoM}. In a spherical potential, all three components of $\textbf{L} = \textbf{x} \times \textbf{v}$ are \ac{IoM} while in the axisymmetric potential $\Phi$ only the axis about the potential is symmetric is the component of the angular momentum which is the integral of motion (usually $L_z$). The energy is given by the Hamiltonian H,
 \begin{equation}\label{eq:energy_hamiltonian}
     H(\mathbf{x, v}) = \frac{1}{2}v^2 + \Phi = E
 \end{equation}
-with the total velocity $v$. In this axisymmetric potential the integrals of motion are supplemented by a third integral of motion, $I =$ constant, which, in general, does not have an analytic expression and therefore is a non-classical integral. 
+with the total velocity $v$. In this axisymmetric potential the \ac{IoM} are supplemented by a third integral of motion, $I =$ constant, which, in general, does not have an analytic expression and therefore is a non-classical integral. 
 \subsubsection{Actions}
-\textbf{General introduction to actions} A particular set of integrals of motion are actions which, together with angles, create a canonical coordinate system. These actions are three momenta, $\mathbf{J} = (J_1, J_2, J_3)$, which describe the whole orbit while the angles, $\bm{\theta} = (\theta_1, \theta_2, \theta_3) $ define the position of the object on the orbit. Orbits for which actions can be calculated are called regular orbits. The three actions are given by the integral
+\textbf{General introduction to actions} A particular set of \ac{IoM} are actions which, together with angles, create a canonical coordinate system. These actions are three momenta, $\mathbf{J} = (J_1, J_2, J_3)$, which describe the whole orbit while the angles, $\bm{\theta} = (\theta_1, \theta_2, \theta_3) $ define the position of the object on the orbit. Orbits for which actions can be calculated are called regular orbits. The three actions are given by the integral
 \begin{equation}
     J_i = \frac{1}{2\pi}\oint_{\gamma_i}\mathbf{p}\cdot\mathrm{d}\mathbf{q} \qquad i = 1,2,3
 \end{equation}
@@ -41,8 +41,7 @@ with $(u,v)$ defined by
     R = \Delta \sinh{u} \sin{v}\quad ; \quad z = \Delta \cosh{u}\cos{v}
 \end{equation}
 
-\subsubsection{Excursion: coordinate transformations}
-private communication with Wilma Trick
+
 
 \iffalse
 \subsection{Merger tree}
@@ -125,7 +124,7 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
 \captionsetup{format=plain}
     \centering
     \includegraphics[width=1.0\textwidth]{plots/Dynamics/prog234_actions_snap_127.png}
-    \caption{Selected \acp{GC} from three different \acp{DG} in action space. The diagonal elements show histograms of each action and the other panels show 2d histograms of each action pair. In pink/blue/yellow, we see the action distribution of the remnants of prog2/prog3/prog4. Since we have many more particles from prog2, the histograms in the diagonal elements are dominated by their distribution. In the correlation panels, we can clearly distinguish prog 2 and prog 4 while prog 3 is very dispersed and does not have an identifiable center in any action. Even though the merger of prog4 happened the longest ago, it is still very clumped in all combinations, with the most clumpiness in $J_R - L_z$. The distribution of prog2 is narrow in $L_z$ but very broad in $J_R - J_z$. prog2 is corotating with the disk but with a higher angular momentum than the disk has (\(\overline{L_z} = SI{-2235}{kpc.km.s^{-1}}\)). prog4 is clearly counter rotating.}
+    \caption{Selected \acp{GC} from three different \acp{DG} in action space. The diagonal elements show histograms of each action and the other panels show 2D histograms of each action pair. In pink/blue/yellow, we see the action distribution of the remnants of prog2/prog3/prog4. Since we have many more particles from prog2, the histograms in the diagonal elements are dominated by their distribution. In the correlation panels, we can clearly distinguish prog 2 and prog 4 while prog 3 is very dispersed and does not have an identifiable center in any action. Even though the merger of prog4 happened the longest ago, it is still very clumped in all combinations, with the most clumpiness in $J_R - L_z$. The distribution of prog2 is narrow in $L_z$ but very broad in $J_R - J_z$. prog2 is corotating with the disk but with a higher angular momentum than the disk has (\(\overline{L_z} = SI{-2235}{kpc.km.s^{-1}}\)). prog4 is clearly counter rotating.}
     \label{fig:act_all_merg_best_pot}
 \end{figure}
 We calculate the actions of the remnants of each progenitor in the best fit potential and plot them in Figure \ref{fig:act_all_merg_best_pot}. The remnants of the different merger events are best distinguishable in L$_\mathrm{Z}$. Prog2 is corotating with the disk but with higher angular momentum. Prog4 is counter rotating. Prog3 is more dispersed in L$_\mathrm{Z}$ but its mean is corotating with the disk as well. In the vertical action, the three remnant groups are not distinguishable and have means at \SI{1000-2000}{kpc.km.s^{-1}}. In J$_\mathrm{R}$, the groups are again distinguishable. 
@@ -141,10 +140,11 @@ To vary the potential in way it should affect the groups the most, we vary the \
    \parbox[b][.3\textheight]{.48\textwidth}%
      {\vskip-\abovecaptionskip\RawCaption{\caption{Standard deviations of the radial and vertical actions of all three mergers (prog2-pink / prog3-blue / prog4-yellow) in potentials with varying scale length of the \ac{DM} halo and all other parameters kept on their best fit value. We would expect the standard deviation to be mimized at the best fit potential which is indicated with the vertical grey line. We see that the radial action would prefer a lower scale length (at \SI{17}{kpc}) while two of the three vertical actions would prefer higher scale lengths. The differences in $\sigma_{J_z}$ are much smaller than the one in $\sigma_{J_R}$.}\vfill\label{fig:a_NFW_diagnostic_plots}}}
 \end{figure}
-In Figure \ref{fig:a_NFW_diagnostic_plots}, we see how the standard deviations of the radial and vertical actions evolve in the different potentials. For all three \acp{GC} groups we see that in the radial action they would prefer a smaller scale length of the halo potential. The changes in vertical action are very small but two of three groups would prefer a larger scale length. This leads us to the conclusion that in the 'true' potential, the \acp{DF} of accreted \acp{GC} of one \ac{DG} are not Delta functions but more complex. We cannot constrain an analytic axisymmetric gravitational potential by only minimizing the spread of these \acp{GC} in action space.
+In Figure \ref{fig:a_NFW_diagnostic_plots}, we see how the standard deviations of the radial and vertical actions evolve in the different potentials. For all three \acp{GC} groups we see that in the radial action they would prefer a smaller scale length of the halo potential. The changes in vertical action are very small but two of three groups would prefer a larger scale length. 
+\\\\This leads us to the conclusion that in the 'true' potential, the \acp{DF} of accreted \acp{GC} of one \ac{DG} are not $\delta$-functions but more complex. We cannot constrain an analytic axisymmetric gravitational potential by only minimizing the spread of these \acp{GC} in action space.
 
 \subsection{Time evolution of actions}\label{subsec:time_evo_actions}
-We evaluate the time evolution of the orbits of the accreted \acp{GC} to investigate how the actions evolved and to see if there was a point - probably shortly after their mergers - where the \acp{GC} were more clumped in action space and the \ac{DF} could have been a Delta function. If that would be true, we could at least determine the potential of galaxies which are in a state shortly after a minor merger. We calculate the actions of the selected particles in the best fit potential in each snapshot.  
+We evaluate the time evolution of the orbits of the accreted \acp{GC} to investigate how the actions evolved and to see if there was a point - probably shortly after their mergers - where the \acp{GC} were more clumped in action space and the \ac{DF} could have been a $\delta$-function. If that would be true, we could at least determine the potential of galaxies which are in a state shortly after a minor merger. We calculate the actions of the selected particles in the best fit potential in each snapshot.  
 
 \subsubsection{Best fit potential}\label{subsubsec:GCs_action_time_right_pot}
 With the method described in Section \ref{subsec:best_fit_pot} we fit an analytic axisymmetric potential to each snapshot individually. We trace back the \acp{GC} we considered as merged and calculate their actions in each snapshot for both after and before the merger. 
@@ -211,7 +211,7 @@ In the time regime since the last merger we calculated the actions of each proge
 \fi
 
 \subsubsection{Energy evolution}\label{subsubsec:energy_evol}
-Another assumption under which we calculated the radial and vertical actions were the use of St\"ackel potentials. To test if variations and the missing of clumpiness could be due to numerical problems in this approach we can have a look at the other \ac{IoMs}, angular momentum and energy. Since $L_z$ was rather constant in Figures \ref{fig:actions_time_evolution_prog2} - \ref{fig:actions_time_evolution_prog2} and \ref{fig:comparison_actions_time_evolution_mean_pot_prog2} we now evaluate the energy. It is calculated according to Equation \ref{eq:energy_hamiltonian} where $v = \Sigma v_i$. We can derive the energy directly from the data by taking the potential value from the simulation and we compare it to our potential model. The kinematic term of Equation \ref{eq:energy_hamiltonian} is identical for data and model.
+Another assumption under which we calculated the radial and vertical actions were the use of St\"ackel potentials. To test if variations and the missing of clumpiness could be due to numerical problems in this approach we can have a look at the other \ac{IoM}, angular momentum and energy. Since $L_z$ was rather constant in Figures \ref{fig:actions_time_evolution_prog2} - \ref{fig:actions_time_evolution_prog2} and \ref{fig:comparison_actions_time_evolution_mean_pot_prog2} we now evaluate the energy. It is calculated according to Equation \ref{eq:energy_hamiltonian} where $v = \Sigma v_i$. We can derive the energy directly from the data by taking the potential value from the simulation and we compare it to our potential model. The kinematic term of Equation \ref{eq:energy_hamiltonian} is identical for data and model.
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
@@ -220,7 +220,8 @@ Another assumption under which we calculated the radial and vertical actions wer
 	\caption{Time evolution of the energy of the particles of prog2. \textit{Upper panel}: The true energy, which the particles have according to their kinetic energy and their potential value. \textit{Middle panel}: Energy calculated in the best fit potential. \textit{Lower panel}: Angular momentum.}\label{fig:energy_time_evolution_prog2}
 \end{figure}
 
-We show the energy evolution in Figure \ref{fig:energy_time_evolution_prog2}. Here it again becomes obvious, that the potential fit could be better since the model overestimates the energy by a few \SI{1000}{km^{2}.s^{-2}}. The overall trend is still similar. As the \ac{DG} spirals in it falls deeper into the potential well. This trend continues even after the merger so. Therefore it still gains energy which makes it even less constant than the actions. We find the same trend for prog3 and prog4. This gives another evidence that within our goal to evaluate the galaxy in an analytic axisymmetric form we do not have problems with our assumptions but it seems that the simulation is just too complex to model it that simple.
+We show the energy evolution in Figure \ref{fig:energy_time_evolution_prog2}. Here it again becomes obvious, that the potential fit could be better since the model overestimates the energy by a few \SI{1000}{km^{2}.s^{-2}}. The overall trend is still similar. As the \ac{DG} spirals in it falls deeper into the potential well. This trend continues even after the merger so. Therefore it still gains energy which makes it even less constant than the actions. We find the same trend for prog3 and prog4. 
+\\\\This gives another evidence that within our goal to evaluate the galaxy in an analytic axisymmetric form we do not have problems with our assumptions but it seems that the simulation is just too complex to model it that simple.
 
 \iffalse
 \begin{figure}
@@ -238,7 +239,7 @@ We show the energy evolution in Figure \ref{fig:energy_time_evolution_prog2}. He
 \end{figure}
 \fi
 
-\subsection{Test: evolution of \acp{GC} on same orbit at $z=0$}\label{subsec:box_GCs}
+\subsection{Test: evolution of globular clusters on same orbit at $z=0$}\label{subsec:box_GCs}
 In Section \ref{subsec:GCs_action_space} we found that the overall \ac{GC} distribution in action space is not very clumped. In Section \ref{subsec:time_evo_actions} we saw a rather constant evolution of the actions but with a large scatter. Now we investigate \acp{GC} which actions are close together in the last snapshot. The selection of these 'box \acp{GC}' is made by taking the mean of each action and find all \acp{GC} within a cube centered on the means with a gradually increasing side length. For prog2, we want to look at a larger sample of 20 particles. To have 20 particles in this cube required a side length of \SI{650}{kpc.km.s^{-1}}. Since we have fewer particles accreted from prog3 and prog4, they needed bigger side lengths and therefore the orbits of their box particles are a priori not as close.  
 
 \begin{figure}[htbp]
@@ -249,7 +250,7 @@ In Section \ref{subsec:GCs_action_space} we found that the overall \ac{GC} distr
     \label{fig:box_GCs_distr}
 \end{figure}
 
-Their spatial distribution is presented in Figure \ref{fig:box_GCs_distr}. 
+Their spatial distribution is presented in Figure \ref{fig:box_GCs_distr}. There is a small clustering around $x = \SI{50}{kpc}$ but all other selected GCs are well distributed in phase-space. 
 
 
 \begin{figure}[htbp]
@@ -259,6 +260,7 @@ Their spatial distribution is presented in Figure \ref{fig:box_GCs_distr}.
 
 	\caption{Action time evolution of 17 particles of prog2 which are found to be on similar orbits in the $z=0$ snapshot. }\label{fig:actions_box_time_evolution_prog2}
 \end{figure}
+In Figure \ref{fig:actions_box_time_evolution_prog2}, we plot the evolution of these actions. At the last snapshot, we see how close they are in all three actions. But already one snapshot before, they spread out widely and do not have any connection. Going back in time, the spread approximately stays constant. So even though we find similar orbit parameters at the very end, they do not evolve similarly. If we found \acp{GC} clumped together in actions today, they could have a similar evolution and would just be on the same orbit now by chance.
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
@@ -273,7 +275,8 @@ Their spatial distribution is presented in Figure \ref{fig:box_GCs_distr}.
     \end{subfigure}
     \caption{.}\label{fig:comparison_actions_time_evolution_box_prog2}
 \end{figure}
-
+We compare the evolution of the box particles to the evolution of all accreted particles from prog2 in Figure \ref{fig:comparison_actions_time_evolution_box_prog2}. The median and standard deviations evolve around the same values. This is another confirmation that at $z=0$ the box particles ave only by chance similar orbit parameters and evolve within the overall distribution over time. \\\\
+We constructed a case in which we find a few \acp{GC} on similar orbits at the current time as we find them in observations. These could be used to constrain the potential by minimizing their spread. Looking at their time evolution leads to the conclusion that they are only on same orbits right now by chance and will have different properties soon again. So even if constraining the potential by minimizing the spread of accreted \acp{GC} in action would work we need to be careful in the selection of these \acp{GC}.
 \iffalse
 \begin{figure}
 \captionsetup{format=plain}
@@ -289,3 +292,4 @@ Their spatial distribution is presented in Figure \ref{fig:box_GCs_distr}.
     \caption{Action time evolution of xx particles of prog4 which are on as similar orbits as possible. }\label{fig:actions_box_time_evolution_prog4}
 \end{figure}
 \fi
+

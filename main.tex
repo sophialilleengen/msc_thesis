@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,abstracton, twoside]{scrartcl}
+\documentclass[a4paper,12pt,abstracton, twoside, headings=optiontohead]{scrartcl}
 %\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry} % for printed thesis
 \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=10mm]{geometry}
 \usepackage[onehalfspacing]{setspace}
@@ -54,6 +54,10 @@
 \begin{document}
 
 \bibliographystyle{glenn_new} 
+\defcitealias{Bland-Hawthorn...MW...2016}{B-H\&G16}
+\defcitealias{AurigaGrand}{G+17}
+\defcitealias{Vanhollebeke...bulge...2009}{VGG09}
+
 \pagenumbering{roman}
 \renewcommand{\bibname}{Bibliography}
 
@@ -108,6 +112,12 @@ Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter fü
 
 \include{Discussion}
 
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RO,LE]{5. Summary \& conclusion}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{}
 \include{Sum_Conc}
 
 \newpage
@@ -131,7 +141,7 @@ Anschließend wählen wir Sternpartikel aus Zwerggalaxien als Stellvertreter fü
 	\acro{GC}{globular cluster}
 	\acro{HST}{Hubble Space Telescope}
 	\acro{IFU}{Integral Field Unit}
-	\acro{IoMs}{integrals of motion}
+	\acro{IoM}[IoMs]{integrals of motion}
 	\acro{LCDM}[$\Lambda$CDM]{Lambda cold dark matter}
 	\acro{LG}{Local Group}
 	\acro{MGE}{Multi-Gaussian Expansion}
