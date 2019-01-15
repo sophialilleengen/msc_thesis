@@ -88,17 +88,18 @@ galpy \citep{Bovy...galpy...2015} is a well tested and well documented python pa
 \subsubsection{Component decomposition}\label{subsubsec:decomp}
 To fit a potential to each component, we first need to decompose the different parts. We assume that all \ac{DM} particles belonging to the main galaxy make up its halo. The stellar particles belong to either the central spheroid or the disk. We distinguish these components by the use of the circularity parameter \citep{Abadi...circularity...2003}
 \begin{equation}\label{eq:circularity}
-    \epsilon = \frac{L_z}{L_{z,max}(E)}
+    \epsilon = \frac{L_\mathrm{z}}{L_\mathrm{z,max}(E)}
 \end{equation}
-where $L_{z,max}(E)$ is the maximum angular momentum allowed for the orbital energy $E$. 
+where $L_\mathrm{z,max}(E)$ is the maximum angular momentum allowed for the orbital energy $E$. 
 $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ is a retrograde circular orbit in the disc plane. $\epsilon \sim 0$ is an orbit with a very low $z$-component of angular momentum which may be highly inclined to the disc spin axis and/or be highly eccentric.  
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
     \includegraphics[width = 0.6\textwidth]{plots/Auriga/decomposition_elz_snap_127.png}
-    \caption{Energy vs angular momentum of all stellar particles within the galaxy radius. $L_{z,max}$ is the right border of the distribution. Stars which lie close to that edge are therefore disk stars which is very good visible in the overdensity there. \textcolor{red}{Muss Mpc sein in x achse}}
+    \caption{Energy vs angular momentum of all stellar particles within the galaxy radius. $L_\mathrm{z,max}$ is the right border of the distribution. Stars which lie close to that edge are therefore disk stars which is very good visible in the overdensity there. \textcolor{red}{Muss Mpc sein in x achse}}
     \label{fig:e_lz_dist}
 \end{SCfigure}
+
 \cite{AurigaGrand} uses two different methods two distinguish the components and to get their mass ratio:
 \begin{enumerate}
 \item Under the assumption, that the bulge has zero net rotation, mirror negative $\epsilon$ as bulge material, the rest belongs to the disk.
@@ -113,9 +114,40 @@ $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ i
 \caption{Decomposition of stellar disk and spheroid by their circularity. It was carried out for all stellar particles within the galaxy radius. The black line represents the total circularity. The green area is the the spheroid component and the blue is the disk component. The disk particles were selected by having a circularity above 0.7. The disk to total number ratio is 0.47.}\label{fig:decomposition}
 \end{SCfigure}
 \\In Figure \ref{fig:decomposition}, we show a histogram of the circularity with our decomposition. The blue part is the disk portion while the green part is the spheroid. Together they add up to the black solid line, the total number. The \ac{D/T} ratio is 0.47.
-Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to. 
+Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to.
+\iffalse
+\begin{figure}
+\captionsetup{format=plain}
+    \centering
+    \begin{subfigure}
+        \centering
+	    \includegraphics[width=0.8\textwidth]{plots/Auriga/spheroid_selection_Rz_snap_127.png}
+    \end{subfigure}
+    ~
+    \begin{subfigure}
+        \centering
+	    \includegraphics{plots/Auriga/disk_selection_Rz_snap_127.png}
+    \end{subfigure}
+    \caption{Caption}
+    \label{fig:disk_spheroid_dist}
+\end{figure}
+\fi
 
-
+\begin{figure}[htbp]
+\captionsetup{format=plain}
+    \centering
+    \begin{subfigure}[c]{0.45\textwidth}
+    \centering
+    	\includegraphics[height=0.25\textheight]{plots/Auriga/spheroid_selection_Rz_snap_127.png}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[c]{0.45\textwidth}
+        \centering
+    	\includegraphics[height=0.25\textheight]{plots/Auriga/disk_selection_Rz_snap_127.png}
+    \end{subfigure}
+    \label{fig:disk_spheroid_dist}
+\end{figure}
 \subsubsection{Disk potential}\label{subsubsec:disk_pot}
 We fit the disk with a \citet{MNprofile} (\acsu{MN}) potential following the profile 
 \begin{equation}\label{eq:MND}
@@ -130,6 +162,7 @@ with scale length $a$ and scale height $b$ which provides a disk with a finite t
     \caption{Density fit of the \ac{MN} profile to the disk. \textit{Left panel:} in $(R,z)$ binned mass density of the simulation data. \textit{Middle panel:} in $(R,z)$ binned mass density of the best fit \ac{MN} profile. \textit{Right panel:} relative errors \(\Delta_\rho = (\rho_{\mathrm{fit}}- \rho_{\mathrm{data}})/\rho_{\mathrm{data}}\) of the best fit.}
     \label{fig:MND}
 \end{figure}
+
 \\The best fit is shown in Figure \ref{fig:MND}. In the left panel, we see the binned data. Due to the kinematic selection of disk particles, the disk appears to be flaring. This is negligible since the density falls off quickly above an absolute height of \SI{1.5}{kpc}. At the black parts of the histogram, there was no data. Therefore, they weights of the fit lay on the actual disk. In the middle panel, we show the binned density of the best fit \ac{MN} profile. We can clearly see the disk. Since it is an analytic potential, the density can be calculated for every bin in $(R, z)$. In the right panel, the relative errors \(\Delta_\rho = (\rho_{\mathrm{fit}}- \rho_{\mathrm{data}})/\rho_{\mathrm{data}}\) are plotted. In the edges of the data, these errors are very high. This is most probably due to selection effects and cutting the data there while the fitted density is still smooth there. In the disk and outer regions, the relative error is smaller than at the edges. We discuss problems with the disk fit in Section \ref{subsec:wrong_pot_fit}. Even though the errors are quite big, we think this is the best fit of the analytic \ac{MN} potential to the non-analytic and selected-through-decomposition disk. 
 
 
