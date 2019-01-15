@@ -160,8 +160,8 @@ We select 100000 \ac{DM} particles randomly which we present in Figure \ref{fig:
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.7\textwidth]{plots/Auriga/phi_model_and_data_snap_127.png}
-    \caption{Potential of data (selected \ac{DM} particles) and model depending on the radius r. Black dots are data, red dots from the best fit model. The innermost \SI{3}{kpc} are not included in the fit to make it better in the outer parts. The model lies everywhere within the data range but the slope seems less steep than the slope of the data.}
+    \includegraphics[width=0.7\textwidth]{plots/Auriga/phi_model_and_data_snap_with_rel_error_127.png}
+    \caption{Potential of data (selected \ac{DM} particles) and model depending on the radius r. Black dots are data, red dots from the best fit model. The innermost \SI{3}{kpc} are not included in the fit to make it better in the outer parts. The model lies everywhere within the data range but the slope seems less steep than the slope of the data. The relative error is within a good range (<4\%).}
     \label{fig:potential_best_fit}
 \end{SCfigure}
 The result is shown in Figure \ref{fig:potential_best_fit} where we see the 'pot' value of the selected \ac{DM} particles in black and the fitted \ac{NFW} potential overlaying in red. Even though the red dots lie within the distribution of the black dots, the slope seems to be different. We find the best fit scale length of the \ac{DM} halo, $a_{\mathrm{NFWH}}$ as well as the total circular velocity $v_{0,\mathrm{tot}} \equiv v_{\mathrm{circ}}(R_0 = \SI{8}{kpc}) $. From that total circular velocity we can subtract the fraction from the stellar components to get the \ac{DM} component, $v_{0,\mathrm{NFWH}} = \sqrt{v_{0,\mathrm{tot}}^2 - v_{0, \mathrm{MND}}^2 - v_{0, \mathrm{HB}}^2}$. The resulting parameter values are summarized in Table \ref{tab:pot_best_fit_params}. 
@@ -169,9 +169,9 @@ The result is shown in Figure \ref{fig:potential_best_fit} where we see the 'pot
 \begin{figure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=\textwidth]{plots/Auriga/rel_phi_error_snap_127.png}
-    \caption{Relative error $(\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data})$ of the \ac{DM} fit versus the three cylindrical coordinates $(R, \phi, z)$. The errors are within a good range (3-4\%) but the slopes are not constant as they should. \textcolor{red}{update rel errors coming}}
-    \label{fig:potential_fit_rel_errors}
+    \includegraphics[width=\textwidth]{plots/Auriga/total_phi_error_snap_127.png}
+    \caption{Total error $\Phi_\mathrm{model} - \Phi_\mathrm{data})$ of the \ac{DM} fit versus the three Radius an height $(R, z)$.}
+    \label{fig:potential_fit_abs_errors}
 \end{figure}
 To check, how good the slope of the \ac{DM} fit is, we plot the relative error $(\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data})$ versus the three cylindrical coordinates $(R, \phi, z)$. The slopes should be constant which they are not. We tried many different routines for the potential fit and this is the best we got and since the errors are relatively small (within 3-4\%) we still think the fit is good enough.
 
@@ -275,7 +275,7 @@ In Table \ref{tab:pot_best_fit_params}, we summarize our results for the last sn
 \captionsetup{format=plain}
 \centering
 \includegraphics[width=0.8\textwidth]{plots/Auriga/best_fit_circular_velocity_via_formula_snap_127.png}
-\caption{Circular velocity at \textit{z} = 0: data (grey circles), total (black solid line), disk (blue dashed dotted line), bulge (green dotted line) and halo (orange). The data is the mean tangential velocity of all stars which have $\epsilon > 0.95$. The other components and the total distribution are calculated analytically. The total curve matches the data within its errors. Disk and spheroid overlay in the outer parts which is due to the decomposition where their proportion is nearly $1:1$. The \ac{DM} distribution has a peak in the center. This is probably due to an underestimation of the spheroid component in the center which we can see find in the density fit in Figure \ref{fig:spheroid_fit}. In the outer parts ($R>R_0$), the curves behave as they are expected to do.}. \label{fig:circ_vel_fit}
+\caption{Circular velocity at \textit{z} = 0: data (grey circles), total (black solid line), disk (blue dashed dotted line), bulge (green dotted line) and halo (orange). The data is the mean tangential velocity of all stars which have $\epsilon > 0.95$. The other components and the total distribution are calculated analytically. The total curve matches the data within its errors. Disk and spheroid overlay in the outer parts which is due to the decomposition where their proportion is nearly $1:1$. The \ac{DM} halo dominates in this parts, as expected. In the center, the circular velocity is underestimated. This is probably due to an underestimation of the spheroid component in the center which we can see find in the density fit in Figure \ref{fig:spheroid_fit}. In the outer parts ($R>R_0$), the curves behave as they are expected to do.}. \label{fig:circ_vel_fit}
 \end{figure}
 \\To verify the goodness of the total potential, we show the circular velocity curve in Figure \ref{fig:circ_vel_fit}. While in the innermost part the \ac{DM} proportion might be too high due to an underestimation of the stellar spheroid, the \ac{DM} proportion in the outer part seems correct. The disk is underestimated due to the sharp decomposition. In overall, the total circular velocity matches the data and the fit in the outer parts, where the particles we investigate in Section \ref{sec:Dynamics} are, is reliable.  
 
