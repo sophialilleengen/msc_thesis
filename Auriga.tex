@@ -92,7 +92,13 @@ To fit a potential to each component, we first need to decompose the different p
 \end{equation}
 where $L_{z,max}(E)$ is the maximum angular momentum allowed for the orbital energy $E$. 
 $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ is a retrograde circular orbit in the disc plane. $\epsilon \sim 0$ is an orbit with a very low $z$-component of angular momentum which may be highly inclined to the disc spin axis and/or be highly eccentric.  
-
+\begin{SCfigure}
+\captionsetup{format=plain}
+    \centering
+    \includegraphics[width = 0.6\textwidth]{plots/Auriga/decomposition_elz_snap_127.png}
+    \caption{Energy vs angular momentum of all stellar particles within the galaxy radius. $L_{z,max}$ is the right border of the distribution. Stars which lie close to that edge are therefore disk stars which is very good visible in the overdensity there. \textcolor{red}{Muss Mpc sein in x achse}}
+    \label{fig:e_lz_dist}
+\end{SCfigure}
 \cite{AurigaGrand} uses two different methods two distinguish the components and to get their mass ratio:
 \begin{enumerate}
 \item Under the assumption, that the bulge has zero net rotation, mirror negative $\epsilon$ as bulge material, the rest belongs to the disk.
@@ -104,7 +110,7 @@ $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ i
 \captionsetup{format=plain}
     \centering
     \includegraphics[width=0.6\textwidth]{plots/Auriga/decomposition_snap_127.png}
-\caption{Decomposition of stellar disk and spheroid by their circularity. It was carried out for all stellar particles within the galaxy radius. The black line represents the total circularity. The green area is the the spheroid component and the blue is the disk component. The disk particles were selected by having a circularity above 0.7. The disk to total number ratio is 0.47. \textcolor{red}{update ylabel coming}}\label{fig:decomposition}
+\caption{Decomposition of stellar disk and spheroid by their circularity. It was carried out for all stellar particles within the galaxy radius. The black line represents the total circularity. The green area is the the spheroid component and the blue is the disk component. The disk particles were selected by having a circularity above 0.7. The disk to total number ratio is 0.47.}\label{fig:decomposition}
 \end{SCfigure}
 \\In Figure \ref{fig:decomposition}, we show a histogram of the circularity with our decomposition. The blue part is the disk portion while the green part is the spheroid. Together they add up to the black solid line, the total number. The \ac{D/T} ratio is 0.47.
 Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to. 
@@ -138,7 +144,7 @@ where $M$ is the stellar mass of the spheroid and $a$ is its scale length. It ha
 \captionsetup{format=plain}
     \centering
     \includegraphics[width=0.7\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
-    \caption{Spheroid density: data with errors (grey dots) and best fit (green line). The data is binned logarithmically in r. Their standard deviation is too small to be seen. In the inner part, r $<10$kpc, the density is both under and over estimated. In the outer parts, the fit matches the data. \textcolor{red}{update ylabel coming}}
+    \caption{Spheroid density: data with errors (grey dots) and best fit (green line). The data is binned logarithmically in r. Their standard deviation is too small to be seen. In the inner part, r $<10$kpc, the density is both under and over estimated. In the outer parts, the fit matches the data.}
     \label{fig:spheroid_fit}
 \end{SCfigure}
 \\Since the Hernquist density is spherically symmetric, we bin the spheroid particles to logarithmic bins in the spherical radius $r$. The data and best fit densities are shown in Figure \ref{fig:spheroid_fit}. While in the inner part the fit does not match the data too well, in the outer parts it fits. Since most of the particles we investigate in Section \ref{sec:Dynamics} are more far away from the center than \SI{10}{kpc}, the fit is acceptable to carry out this analysis.
