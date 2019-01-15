@@ -29,7 +29,7 @@ The range of the angles is by construction $\theta_i = [0,2\pi]$ so that it move
 \begin{equation}
     \dot{\theta}_i = \frac{\partial H}{\partial J_i} \equiv \Omega_i(\mathbf{J}), \quad \mathrm{a\ constant} \quad \Rightarrow\quad \theta_i(t) = \theta_i(0) +  \Omega_i t
 \end{equation}
-with the circular frequency $\Omega = v_{circ}/r$. The components of $\bm{\theta}$ evolve linearly in time. 
+with the circular frequency $\Omega = v_\mathrm{circ}/r$. The components of $\bm{\theta}$ evolve linearly in time. 
 \\\\\textbf{Definition in cylindrical coordinates} In the axisymmetric potential we have the spatial coordinates $(R, \phi, z)$ which we can use for the axes along we examine the actions $\mathbf{J} = (J_R, J_\phi = L_z, J_z)$. The actions quantify the oscillation of the orbit along a given axis. $J_R$ described how the objects moves towards and away from the galactic center, the radial oscillation, and $J_z$ the oscillation above and below the equatorial plane while $J_\phi = L_z$ is the angular momentum along the symmetry axis. 
 
 \textbf{Numerical calculation of actions} Only in a simple spherical symmetric potential, the Isochrone potential $\Phi(r) = -GM/b + \sqrt{b^2+r^2}$ with scale length $b$, actions can be calculated analytically. To numerically calculate the actions of objects in our axisymmetric potential from Section \ref{sec:Auriga}, we need to use approximations. Axisymmetric potentials can be treated like St\"ackel potentials \citep{deZeeuw...Staeckel..1985} which have the form
@@ -49,7 +49,7 @@ We say th
 figure: Merger tree of Auriga 24. 
 \fi
 \subsection{Globular cluster sample selection}\label{subsec:GC_selection}
-Due to the resolution of the simulation, $M = 5 \cdot 10 ^ 4\ \mathrm{M}_{\odot}$, we set one stellar particle as one \ac{GC}. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $R_\mathrm{d} = 0.1  R_{200}$ and the height $z_\mathrm{d} = 0.03\ R_\mathrm{d}$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - or changed signs between successive snapshots while being inside the disk radius since we assume that in these cases the \ac{GC} would be disrupted. 
+Due to the resolution of the simulation, $M = 5 \cdot 10 ^ 4\ \mathrm{M}_{\odot}$, we set one stellar particle as one \ac{GC}. All stellar particles which were accreted by the main halo are followed through the evolution and kept as accreted \acp{GC} as long as they do not cross the disk in a sense that they either are directly in the disk - defined per snapshot as within the radius $R_\mathrm{d} = 0.1  R_{200}$ and the height $z_\mathrm{d} = 0.03\ R_\mathrm{d}$ to match the \ac{MW} disk's height in the $z = 0$ snapshot - since we assume that in that case the \ac{GC} would be disrupted. 
 
 \begin{table}[htbp]
 \captionsetup{format=plain}
@@ -67,7 +67,7 @@ Due to the resolution of the simulation, $M = 5 \cdot 10 ^ 4\ \mathrm{M}_{\odot}
     \caption{Progenitor parameters. The selected progenitors ar}
     \label{tab:prog_overview}
 \end{table}
-
+ We select the three biggest merger events and present their properties in Table \ref{tab:prog_overview}. In einer externen Galaxie will man die DGs mithilfe der Age-Metallicity Relation auseinander klamüsern. Je größer der Dwarf, desto mehr GCs, desto eher kann der Merger Event und die dazugehörigen GCs identifiziert werden.
 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
@@ -151,7 +151,7 @@ With the method described in Section \ref{subsec:best_fit_pot} we fit an analyti
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
-	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_hist_mean_prog2.png}
+	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_wodisk_hist_mean.png}
 
 	\caption{Evolution of actions of prog2 \acp{GC} over time. The pink vertical line indicates the time of the merger. The other pink lines follow the median (bright pink) and the standard deviation (light pink). \textit{Upper panel}: Radial action. \textit{Middle panel}: Angular momentum. \textit{Lower panel}: Vertical action. Before the merger, radial and vertical action were much higher and all three actions had higher standard deviations. With the merger, they have settled and$L_z$ and $J_z$ have a constant mean and standard deviation. $J_R$ has minimized in median and standard deviation shortly before the merger but since then both have increased again.}\label{fig:actions_time_evolution_prog2}
 \end{figure}
@@ -166,7 +166,7 @@ With the method described in Section \ref{subsec:best_fit_pot} we fit an analyti
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
-	\includegraphics[width=\textwidth]{plots/Dynamics/prog4/action_time_evolution_hist_mean_prog4.png}
+	\includegraphics[width=\textwidth]{plots/Dynamics/prog4/action_time_evolution_wodisk_hist_mean.png}
     \caption{Prog4's \acp{GC} time evolution in action space. The pink, blue and yellow lines indicate times of the mergers of prog2, prog3 and prog4, respectively. The yellow lines are median and standard deviation. The panels are the same as in Figure \ref{fig:actions_time_evolution_prog2}. During the merger of prog4, radial and vertical actions have a steep rise while $L_z$ drops below 0. Something similar happens shortly after the merger of prog3. Since \SI{7.5}{Gyr} the actions stay constant and with the merger of prog2, the scatter in $J_R$ and $J_z$ becomes even less.}\label{fig:actions_time_evolution_prog4}
 \end{figure}
 In Figures \ref{fig:actions_time_evolution_prog2}, \ref{fig:actions_time_evolution_prog3} and \ref{fig:actions_time_evolution_prog4} we present these time evolutions for the \acp{GC} of prog2 / prog3 / prog4, respectively. For the prog2 \acp{GC}, Figure \ref{fig:actions_time_evolution_prog2}, we see nicely how before the merger the actions where very widely spread and towards the merger and especially afterwards their variance becomes smaller and the mean of each action stays constant. Since the merger, more significant clumping than in the last snapshot is not seen. In prog3, we find a strong clump shortly after the merger. The actions of prog4 are strongly varying shortly after the merger for about \SI{2}{Gyr} before they become steady.
@@ -184,7 +184,7 @@ In Figure \ref{fig:potential_mean_evolution}, we show again the parameter evolut
 \captionsetup{format=plain}
     \begin{subfigure}[c]{0.48\textwidth}
     \centering
-    	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_hist_mean_prog2.png}
+    	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_wodisk_hist_mean.png}
     \end{subfigure}
     ~
     \begin{subfigure}[c]{0.48\textwidth}
@@ -266,7 +266,7 @@ In Figure \ref{fig:actions_box_time_evolution_prog2}, we plot the evolution of t
 \captionsetup{format=plain}
     \begin{subfigure}[c]{0.48\textwidth}
     \centering
-    	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_hist_mean_prog2.png}
+    	\includegraphics[width=\textwidth]{plots/Dynamics/prog2/action_time_evolution_wodisk_hist_mean.png}
     \end{subfigure}
     ~
     \begin{subfigure}[c]{0.48\textwidth}
