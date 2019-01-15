@@ -81,22 +81,36 @@ There are many different approaches to measure the mass and the potential of the
     \item \textbf{Satellite dynamics:} To constrain the mass of the outer halo we can use the dynamics of satellite galaxies. The methods are similar to the ones used for \ac{GC} estimates. From position and velocity of the most distant dwarf Leo I (r $= 257.8_{{-35.1}}^{+16.8} $ kpc), \citet{GaiaDR...GCs...2018} provided a lower limit on the \ac{MW} mass. \citet{MWmass...sat...dyn} calculate in the hydrodynamical simulations \acp{DF} of specific energy and angular momentum, with given 6D phase space information, which vary according to the galaxy host mass, estimate this mass by a maximum likelihood and apply this method to the \ac{MW}.
 \end{itemize}
 
-An overview of the results is shown in Table \ref{tab:MW_mass_estimations}.
+An overview of the results is shown in Table \ref{tab:MW_mass_estimations}. 
+
 \begin{table}[htbp]
 \captionsetup{format=plain}
     \centering
-    \begin{tabular}{@{}llll@{}}
+    \begin{tabular}{@{}lrrrrl@{}}
          \toprule
-         Method& Virial mass [$10^{12} \mathrm{M}_\odot$] & Rotational velocity [km s$^{-1}$]&Reference  \\
-         
+         \makecell[tl]{Method}& \makecell[tr]{$M_\mathrm{MW}$\\\newline[$10^{11} \mathrm{M}_\odot$]} & \makecell[tr]{at $R$ \\\newline[kpc]}&\makecell[tr]{$v_\mathrm{circ}$ \\\newline[km s$^{-1}$]\\at $R_\odot$}&$q$ & \makecell[tl]{Reference}  \\
          \midrule
+         Stellar & $4.1 \pm 0.4$& 100 &&&\citetalias{Gibbons...sagstream...2014} \\
+         streams& $<10$&&&&\citetalias{Dierickx...sagstream..2017}\\
+         &$2.6$&$60$&&&\citetalias{Newberg...orphanstream..2010}\\ 
+         &&&$224_{{-14}}^{+12}$&$0.87_{{-0.04}}^{+0.07}$&\citetalias{Koposov...GD1stream...2010}\\
+         &&&$227.3_{{-18.2}}^{+15.6}$&$0.9_{{-0.1}}^{+0.04}$&\citetalias{Bowden...GD1stream...2015}\\
+         &$1.75_{{-0.05}}^{+0.06}$&$14.5$&$244.4_{{-2}}^{+6}$&$0.86_{{-0.07}}^{+0.04}$&\citetalias{Malhan...GD1stream...2018}\\
+         &$2.1\pm0.4$&$19$&$253\pm16$&$0.95_{{-0.12}}^{+0.16}$&\citetalias{Kupper...pal5stream...2015}\vspace{3mm}\\
+         &$1.1\pm0.1$&$20$&&$0.94\pm0.05$&\citetalias{Streams..GD1..Pal5...Bovy...2016}\vspace{3mm}\\
+         \ac{GC}&$2.2_{{-0.03}}^{+0.04}$&21.1&&&\citetalias{MWmass...GCmotions...Watkins...2018}\\
+         distribution&$1.91_{{-0.17}}^{+0.18}$&$20$&&&\citetalias{Posti...MWmassGCs...2019}\\
+         &$6_{{-0.09}}^{+0.14}$&$50$&&&\citetalias{Vasiliev...GCdynsGaiaDR2...2018}\\
+         &$6.1_{{-0.12}}^{+0.18}$&$39.5$&&&\citetalias{Sohn...GCsHST..2018}\vspace{3mm}\\
+         Satellites&$9.1_{{-2.6}}^{+6.2}$&$257.8_{{-35.1}}^{+16.8}$&&&\citetalias{GaiaDR...GCs...2018}\\
+         &$10.4_{{-0.14}}^{+0.23}$&\makecell[tr]{$R_{200}$\\not specified}&&&\citetalias{MWmass...sat...dyn}\\
 
          \bottomrule 
     \end{tabular}
     \caption{Mass estimation results of the \ac{MW} }
     \label{tab:MW_mass_estimations}
 \end{table}
-
+ The estimates where q is given use a logarithmic halo potential for the \ac{DM} halo given by $\Phi(R,z) = \frac{v_\mathrm{circ}^2}{2} \mathrm{ln}(R^2 +z^2/q^2 + \mathrm{core}^2)$ where the core is the radius at which the logarithm is cut and q is the $z$-flattening parameter which defines the ellipticity (oblate or prolate) of the \ac{DM} halo (see e.g. \citealp{Malhan...GD1stream...2018}).  
 
 \subsection{Strategies to measure the mass of external galaxies}\label{subsec:mass_est_ext}
 In external galaxies, we cannot resolve single stars but, depending on mass, luminosity and distance of the galaxy, we can go from observing the whole galaxy as a point source in the sky down to resolving objects in the halo of a galaxy such as \acp{GC}. To get a constraint on their mass it is useful to measure the rotational velocity of the galaxy (see Equation \ref{eq:circ_vel}). Different techniques evolved over time and telescope resolution, from measuring one value of the velocity to having spectra for each observed pixel.
