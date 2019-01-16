@@ -11,7 +11,7 @@ for any $t_1$ and $t_2$. This means, that the time derivative of these \ac{IoM} 
 \end{equation}
 In an axisymmetric 3D potential as we assumed and fitted in Section \ref{sec:Auriga} orbits can have up to three \ac{IoM}. 
 \subsubsection{Energy and angular momentum}
-Energy E and some components of the angular momentum \textbf{L}, depending on the symmetry of the potential, are regarded as classical \ac{IoM}. In a spherical potential, all three components of $\textbf{L} = \textbf{x} \times \textbf{v}$ are \ac{IoM} while in the axisymmetric potential $\Phi$ only the axis, around which the potential is symmetric, is the component of the angular momentum which is the integral of motion (usually $L_z$). The energy is given by the Hamiltonian H,
+Energy E and some components of the angular momentum \textbf{L}, depending on the symmetry of the potential, are regarded as classical \ac{IoM}. In a spherical potential, all three components of $\textbf{L} = \textbf{x} \times \textbf{v}$ are \ac{IoM} while in the axisymmetric potential $\Phi$, the only component of the angular momentum which is an integral of motion is $L_z$, i.e. the component aligned with the symmetry. The energy is given by the Hamiltonian H,
 \begin{equation}\label{eq:energy_hamiltonian}
     H(\mathbf{x, v}) = \frac{1}{2}v^2 + \Phi(\mathbf{x}) = E
 \end{equation}
@@ -32,7 +32,7 @@ The range of the angles is by construction $\theta_i = [0,2\pi]$ so that it move
 with the fundamental frequencies $\Omega_i$. The components of $\bm{\theta}$ evolve linearly in time. 
 \\\\\textbf{Definition in cylindrical coordinates} In the axisymmetric potential we have the spatial coordinates $(R, \phi, z)$ and velocities $(v_R, v_\phi, v_z)$ which we can use for the planes ($x_i, v_i$) in which we examine the actions $\mathbf{J} = (J_R, J_\phi = L_z, J_z)$. The actions quantify the oscillation of the orbit in the given coordinate direction. $J_R$ describes how the object moves towards and away from the galactic center, the radial oscillation, and $J_z$ the oscillation above and below the equatorial plane while $J_\phi = L_z$ is the angular momentum along the symmetry axis. Circular orbits do not oscillate in $R$ and $z$ so the actions in these directions are ($J_R, J_z$) = 0.
 
-\textbf{Numerical calculation of actions} Only in a simple spherical symmetric potential, the Isochrone potential $\Phi(r) = -GM/b + \sqrt{b^2+r^2}$ with scale length $b$, actions can be calculated analytically without at single integration. To numerically calculate the actions of objects in our axisymmetric potential from Section \ref{sec:Auriga}, we need to use approximations. Axisymmetric potentials could for example be treated like St\"ackel potentials \citep{deZeeuw...Staeckel..1985} which have the form
+\textbf{Numerical calculation of actions} Only in a simple spherical symmetric potential, the Isochrone potential $\Phi(r) = -GM/(b + \sqrt{b^2+r^2})$ with scale length $b$, actions can be calculated analytically without at single integration. To numerically calculate the actions of objects in our axisymmetric potential from Section \ref{sec:Auriga}, we need to use approximations. Axisymmetric potentials could for example be treated like St\"ackel potentials \citep{deZeeuw...Staeckel..1985} which have the form
 \begin{equation}\label{eq:Stackel_pot}
     \Phi(u,v) = \frac{U(u)-V(v)}{\sinh^2u + \sin^2v}
 \end{equation}
@@ -40,7 +40,7 @@ with $(u,v)$ defined by
 \begin{equation}
     R = \Delta \sinh{u} \sin{v}\quad ; \quad z = \Delta \cosh{u}\cos{v}
 \end{equation}
-even if they are not perfect St\"ackel potentials. This method is called St\"ackel Fudge \citep{Binney...StaeckelFudge...2012}. This algorithm is implemented in galpy and we use is for the action calculations
+even if they are not perfect St\"ackel potentials. This method is called St\"ackel Fudge \citep{Binney...StaeckelFudge...2012}. This algorithm is implemented in \texttt{galpy} and we use is for the action calculations
 \textcolor{red}{Bisschen anschaulicher erklaren. Focallaänge erwaähnen und sagen wie ich sie mitgenommen hab.}
 
 
@@ -54,7 +54,7 @@ Due to the resolution of the simulation, $M = 5 \cdot 10 ^ 4\ \mathrm{M}_{\odot}
 
 \begin{table}[htbp]
 \captionsetup{format=plain}
-    \caption{Progenitor parameters. The selected progenitors ar}
+    \caption{Progenitor parameters. The selected progenitors are the same as in Figure \ref{fig:progenitors_distribution}.}
 
     \centering
     \begin{tabular}{@{}lllll@{}}
@@ -128,8 +128,8 @@ Now, we look at the \ac{GC} distribution in action space. Our assumption is that
     \caption{Selected \acp{GC} from three different \acp{DG} in action space. The diagonal elements show histograms of each action and the other panels show 2D histograms of each action pair. In pink/blue/yellow, we see the action distribution of the remnants of prog2/prog3/prog4. Since we have many more particles from prog2, the histograms in the diagonal elements are dominated by their distribution. In the correlation panels, we can clearly distinguish prog 2 and prog 4 while prog 3 is very dispersed and does not have an identifiable center in any action. Even though the merger of prog4 happened the longest ago, it is still very clumped in all combinations, with the most clumpiness in $J_R - L_z$. The distribution of prog2 is narrow in $L_z$ but very broad in $J_R - J_z$. prog2 is corotating with the disk but with a higher angular momentum than the disk has (\(\overline{L_z} = SI{-2235}{kpc.km.s^{-1}}\)). prog4 is clearly counter rotating.}
     \label{fig:act_all_merg_best_pot}
 \end{figure}
-We calculate the actions of the remnants of each progenitor in the best fit potential from the coordinates ($R, \phi, z, v_r, v_\phi, v_z$) at \textit{z=0} and plot them in Figure \ref{fig:act_all_merg_best_pot}. \textcolor{red}{check plot description since it changed...}The remnants of the different merger events are best distinguishable in L$_\mathrm{Z}$. Prog2 is corotating with the disk but with higher angular momentum. Prog4 is counter rotating. Prog3 is more dispersed in L$_\mathrm{Z}$ but its mean is corotating with the disk as well. In the vertical action, the three remnant groups are not distinguishable and have means at \SI{1000-2000}{kpc.km.s^{-1}}. In J$_\mathrm{R}$, the groups are again distinguishable. 
-\\The idea of this method is that in the right potential, these groups minimize their spread in action space. Prog4 is the most compact group, while especially prog3 is very dispersed. None of the distributions looks like a $\delta$-function. To quantify the compactness, we measure the standard deviation of each action. In the next Section, we compare the standard deviations of the radial and vertical actions of each group in different potentials to see, if we minimize them in the 'true' potential.
+We calculate the actions of the remnants of each progenitor in the best fit potential from the coordinates ($R, \phi, z, v_r, v_\phi, v_z$) at \textit{z=0} and plot them in Figure \ref{fig:act_all_merg_best_pot}. \textcolor{red}{check plot description since it changed...}The remnants of the different merger events are most distinguishable in L$_\mathrm{Z}$. Prog2 is corotating with the disk but with higher angular momentum. Prog4 is counter rotating. Prog3 is more dispersed in L$_\mathrm{Z}$ but its mean is corotating with the disk as well. In the vertical action, the three remnant groups are not distinguishable and have means at \SI{1000-2000}{kpc.km.s^{-1}}. In J$_\mathrm{R}$, the groups are again distinguishable. 
+\\The idea of this method is that in the right potential, these groups minimize their spread in action space. Prog4 is the most compact group, while especially prog3 is very dispersed. None of the distributions looks like a $\delta$-function. To quantify the compactness, we measure the standard deviation of each action. In the next Section, we compare the standard deviations of the radial and vertical actions of each group in different potentials to see, if we minimize them in the "true" potential.
 
 \subsubsection{Varying potentials}\label{subsubsec:GCs_actions_varying_pot}
 The \acp{GC} are at distances where the potential is dominated by the \ac{DM} halo (see Figure \ref{fig:circ_vel_fit}). Variations in that component should have the biggest impact on their action space distributions. Therefore, we vary the \ac{DM} halo by keeping all best fit potential parameters constant and only vary the scale length $a_\mathrm{NFW}$. For the three groups in these potentials, we calculate the actions in the $z=0$ snapshot.
@@ -141,7 +141,7 @@ The \acp{GC} are at distances where the potential is dominated by the \ac{DM} ha
    \parbox[b][.3\textheight]{.48\textwidth}%
      {\vskip-\abovecaptionskip\RawCaption{\caption{Standard deviations of the radial and vertical actions of all three mergers (prog2-pink / prog3-blue / prog4-yellow) in potentials with varying scale length of the \ac{DM} halo and all other parameters kept on their best fit value. We would expect the standard deviation to be mimized at the best fit potential which is indicated with the vertical grey line. We see that the radial action would prefer a lower scale length (at \SI{17}{kpc}) while two of the three vertical actions would prefer higher scale lengths. The differences in $\sigma_{J_z}$ are much smaller than the one in $\sigma_{J_R}$. \textcolor{red}{update with new selected GCs coming}}\vfill\label{fig:a_NFW_diagnostic_plots}}}
 \end{figure}
-In Figure \ref{fig:a_NFW_diagnostic_plots}, we see how the standard deviations of the radial and vertical actions evolve in the different potentials. For all three \acp{GC} groups we see that in the radial action they would prefer a smaller scale length of the halo potential. The changes in vertical action are very small but two of three groups would prefer a larger scale length. 
+In Figure \ref{fig:a_NFW_diagnostic_plots}, we see how the standard deviations of the radial and vertical actions evolve in the different potentials. For all three \acp{GC} groups we see that in the radial action they would prefer a smaller scale length than the true value of the halo potential. The changes in vertical action are very small but two of three groups would prefer a larger scale length than the true one. 
 \\\\This leads us to the conclusion that in the "true" potential, accreted \acp{GC} of one \ac{DG} are not on similar orbits but have a \ac{DF} that is more complex. We cannot constrain an analytic axisymmetric gravitational potential by only minimizing the spread of these \acp{GC} in action space.
 
 \subsection{Time evolution of actions}\label{subsec:time_evo_actions}
