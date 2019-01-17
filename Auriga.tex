@@ -1,5 +1,5 @@
 \section{An axisymmetric potential for a cosmological galaxy simulation}\label{sec:Auriga}
-In this Section, we first give an overview about hydrodynamical simulations in general and the Auriga simulations in particular in Section \ref{subsec:auriga}. In Section \ref{subsec:best_fit_pot}, we explain how we fit analytical potentials to Auriga galaxies and we finish in Section \ref{subsec:wrong_pot_fit} with an overview of tricky parts in that process.
+We first give an overview about hydrodynamical simulations in general and the Auriga simulations in particular in Section \ref{subsec:auriga}. In Section \ref{subsec:best_fit_pot}, we explain how we fit analytical potentials to Auriga galaxies and we finish in Section \ref{subsec:wrong_pot_fit} with an overview of tricky parts in that process.
 
 \iffalse
 To get started with the analysis of Auriga galaxies, I was provided with code from Timo Halbesma, Federico Marinacci, Rob Grand and Wilma Trick. These code snippets were used to read in the simulation data and contained some base for the potential fit which were a starting point for my own implementation of a fitting routine. 
@@ -7,11 +7,9 @@ To get started with the analysis of Auriga galaxies, I was provided with code fr
 
 \subsection{About the Auriga simulation suite}\label{subsec:auriga}
 \subsubsection{Hydrodynamical Milky Way-like galaxy simulations}\label{subsubsec:hydro_sim}
-To understand how our Universe and everything in it has formed and evolved, astronomers use simulations of it two ways: trying to match observations of real galaxies and thus checking if the input "recipes" are correct, and predicting observations which then are to be tested by observers. These simulations stretch over a large range of astronomical scales, from stars and planets to the evolution of the cosmic web, but also over different numerical techniques, from more empirical, statistical Monte-Carlo methods to cosmological hydrodynamical \textit{N}-body simulations. \textcolor{red}{cosmological = 'universe in a box' and hydrodynamical = properties and internal structures of galaxies; hydrodynamics = gas and star formation; SPH vs AMR vs AREPO} 
-To learn more about the formation and evolution of galaxies, these hydrodynamical cosmological simulations are a rich tool to exploit. 
-\\Hydrodynamical zoom-in galaxy simulations are carried out by first evolving \ac{DM} only halos according to the chosen \ac{DM} scenario and adopted cosmological parameters from a very high redshift to redshift 0. Then, to find \ac{MW} like halos, one takes the most isolated halos in the mass range of the \ac{MW} halo - $1 < M_{200} / 10^{12} \mathrm{M}_\odot < 2$ - of the simulated sample. In these halos, particles within a certain range are followed back to their initial conditions. In re-simulations, they are split up into a \ac{DM} part and gas cells. With an elaborate physics model, these gas cells produce stars within an empirical threshold and therefore galaxies form. It is found that \ac{DM} forms in a web along filaments and stars follow the \ac{DM} distribution. 
-\textcolor{red}{WHy: LCDM hierarchical growth; effectove theory, \textit{average} gal pop,; outliersand scatter; complex: assumption required; calibration vs observations needed; predictive regimes (not tuning based on observations ) ; model x\textit{validation} = elucidate physical mechanisms and pathway o} subggrid: everything but gravity and hydrodynamics (aka unresolved in the beginning) "comprehensive galaxy formation model"
-\\This work uses the Auriga \citep{AurigaGrand} simulations, which try to recreate spiral galaxies such as our own. 
+To understand how our Universe and everything in it has formed and evolved, astronomers use simulations of it two ways: trying to match observations of real galaxies and thus checking if the input "recipes" are correct, and predicting observations which then are to be tested by observers. These simulations stretch over a large range of astronomical scales, from stars and planets to the evolution of the cosmic web, but also over different numerical techniques, from more empirical, statistical Monte-Carlo methods to cosmological hydrodynamical \textit{N}-body simulations. \\Cosmological simulations try to create the "Universe in a box". The implemented hydrodynamics follow gas and star formation and reveal properties and internal structures of galaxies. To learn more about the formation and evolution of galaxies, these hydrodynamical cosmological simulations are a rich tool to exploit. The implementation of these simulations is very complex and requires many assumptions. A calibration of the theoretical results vs. observations is always needed. However, if successful in creating observed properties, they can come into predictive regimes where there is no tuning based on observations. These findings then need validation from the observers. These galaxy simulations are therefore powerful tools for observers and modellers.
+\\Hydrodynamical zoom-in galaxy simulations are carried out by first evolving \ac{DMO} halos according to the chosen \ac{DM} scenario and adopted cosmological parameters from a very high redshift to redshift 0. Then, to find \ac{MW} like halos, one takes the most isolated halos in the mass range of the \ac{MW} halo - $1 < M_{200} / 10^{12} \mathrm{M}_\odot < 2$ - of the simulated sample. In these halos, particles within a certain range are followed back to their initial conditions. In re-simulations, they are split up into a \ac{DM} part and gas cells. With an elaborate physics model, these gas cells produce stars within an empirical threshold and therefore galaxies form. \ac{DM} forms in a web along filaments and stars follow the \ac{DM} distribution. 
+\\This work uses the Auriga (\citealp{AurigaGrand}, hereafter \citetalias{AurigaGrand}) simulations, which try to recreate spiral galaxies such as our own. 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
@@ -27,23 +25,14 @@ To learn more about the formation and evolution of galaxies, these hydrodynamica
     \end{subfigure}
     \caption{\ac{DM} (grey) and stellar (colors) particle distribution of the whole simulation Auriga24 at $\textit{z}=0$. The \ac{DM} forms the cosmic web, where the mass gathers along its filaments. Baryonic matter also follows these structures. At the most massive parts of the \ac{DM} distribution, the most stellar particles fell in. This structure is typical of hydrodynamical galaxy simulations.}\label{fig:DM_stars_AU24}
 \end{figure}
-In Figure \ref{fig:DM_stars_AU24}, we show the distribution of \ac{DM} in grey and stars in colors of one selected simulated galaxy (halo 24). The most bound particle is chosen to be the center at $(x,y,z) = (0,0,0)$. The filaments of the \ac{DM} distribution are clearly visible. The stellar particles settle along these filaments and clump inside the densest \ac{DM} structures. 
+In Figure \ref{fig:DM_stars_AU24}, we show the distribution of \ac{DM} in grey and stars in colors of one selected simulated galaxy (halo 24) in which we carry out all investigations. The most bound particle is chosen to be the center at $(x,y,z) = (0,0,0)$. The filaments of the \ac{DM} distribution are clearly visible. The stellar particles settle along these filaments and clump inside the densest \ac{DM} structures. 
 
 \subsubsection{Auriga}\label{subsubsec:auriga_intro}
-Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like galaxy. It is build with the moving-mesh AREPO \citep{AREPO} code and includes galaxy physics, active galactic nuclei feedback and magnetic fields. Its goal is to match the observables of the \ac{MW} today and to produce its history which can be compared to observations of spiral galaxies in earlier stages of development. All 30 galaxies are run in normal resolution (\ac{DM} particle mass: $m_\mathrm{DM} = 3\cdot10^5$; Baryonic matter particle mass: $m_\mathrm{b} = 5\cdot10^4$) and 3 selected are run in low ($m_\mathrm{DM} = 2\cdot10^6$; $m_\mathrm{b} = 4\cdot10^5$) and high resolution ($m_\mathrm{DM} = 4\cdot10^4$; $m_\mathrm{b} = 6\cdot10^3$) as well \citep{AurigaGrand}. They are consistent over these three resolution levels and therefore do not rely on numerical parameters but only on physical. Auriga is one of the first simulations where this is accomplished. The snapshots go from redshift $127$, which is close to the beginning of the universe, to redshift $0$, today.  At redshift $z= 0$, different galaxy shapes have evolved. Most of them are spirals but a few are in a merger process. All galaxies have a rich merger history. \citet{AurigaGrand} finds that many properties of the \ac{MW} and \ac{MW} like external galaxies are reproduced by these simulations, such as the mass distribution and the circularity distribution. Others are found to be matching within certain limits, such as the star formation rate–stellar mass relation matches for low redshift $z<1$ but \textcolor{red}{check: confused about what i wrote and what prash corrected} results are still inconsistent for present-day metallicities, mean stellar ages and colours. The set-up and the results of this set of simulations make Auriga one of the most advanced and comprehensive magneto-hydrodynamical galaxy simulations and a very fruitful sample to carry out our investigations. \\
+Auriga is a magneto-hydrodynamical zoom-in simulation of an isolated \ac{MW} like galaxy. It is build with the moving-mesh code \texttt{AREPO} \citep{AREPO} and includes galaxy physics, active galactic nuclei feedback and magnetic fields. Its goal is to match the observables of the \ac{MW} today and to produce its history which can be compared to observations of spiral galaxies in earlier stages of development. All 30 galaxies are run in normal resolution (\ac{DM} particle mass: $m_\mathrm{DM} = 3\cdot10^5$; baryonic matter particle mass: $m_\mathrm{b} = 5\cdot10^4$) and 3 selected are run in low ($m_\mathrm{DM} = 2\cdot10^6$; $m_\mathrm{b} = 4\cdot10^5$) and high resolution ($m_\mathrm{DM} = 4\cdot10^4$; $m_\mathrm{b} = 6\cdot10^3$) as well \citepalias{AurigaGrand}. They are consistent over these three resolution levels and therefore do not rely on numerical parameters but only on physical ones. Auriga is one of the first simulations where this is accomplished. The snapshots go from redshift $13.3$, which is close to the beginning of the universe, to redshift $0$, today.  At redshift $z= 0$, different galaxy shapes have evolved. Most of them are spirals but a few are in a merger process. All galaxies have a rich merger history. \citetalias{AurigaGrand} find that many properties of the \ac{MW} and \ac{MW} like external galaxies are reproduced by these simulations, such as the mass distribution and the circularity distribution. Others are found to be lower than observed, such as the star formation rate–stellar mass relation, however, results are consistent for present-day metallicities, mean stellar ages and colours. The set-up and the results of this set of simulations make Auriga one of the most advanced and comprehensive magneto-hydrodynamical galaxy simulations and a very fruitful sample to carry out our investigations. \\
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
-    \begin{subfigure}[b]{0.8\textwidth}
-	    \includegraphics[width=\textwidth]{plots/Auriga/Au24_stars_xy_distribution_halo0.png}
-	    \label{fig:Au24_stars_xy}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{0.8\textwidth}
-    \centering
-    	\includegraphics[width=\textwidth]{plots/Auriga/Au24_stars_xz_distribution_halo0.png}
-    	\label{fig:Au24_stars_xz}
-    \end{subfigure}
+    	\includegraphics[width=0.8\textwidth]{plots/Auriga/Au24_stars_xz_distribution_halo0.png}
     \caption{Stellar distribution of 0th halo at $\textit{z}=0$. The main galaxy is centered at $(0,0,0)$. There are many \acp{DG} around the main galaxy which will eventually merge with it. In the evolution of the simulations, this galaxy has built up mass by merging with \acp{DG}. \iffalse This mass build-up is assumed for and observed in real galaxies.\fi}\label{fig:Stars_AU24}
 \end{figure}
 \\In Figure \ref{fig:Stars_AU24}, we present the distribution of stellar particles in $x-y$ and $x-z$ direction of the main galaxy in halo 24 and its associated \acp{DG} at redshift $z=0$. Over the course of time, many \acp{DG} already merged with the main galaxy. These make up some of the galaxy's mass and the \ac{DG} stars involved in these mergers are investigated in Section \ref{sec:Dynamics}.\\
@@ -60,7 +49,7 @@ Auriga is a magnetohydrodynamical zoom-in simulation of an isolated \ac{MW} like
     	\includegraphics[width=\textwidth]{plots/Auriga/Au24_stars_xz_distribution_halo0_zoomin.png}
     	\label{fig:Au24_stars_xz_zoomin}
     \end{subfigure}
-    \caption{Stellar distribution of main galaxy at $\textit{z}=0$. In the upper panel, the galaxy is seen face-on. There, the presence of non-axisymmetric substructure such as spiral arms and a bar is visible. In the lower panel it seen is edge-on. Disk and bulge are clearly present and a close \ac{DG} is visible.}\label{fig:Stars_AU24_zoomin}
+    \caption{Stellar distribution of main galaxy at $\textit{z}=0$. In the upper panel, the galaxy is seen face-on. There, the presence of non-axisymmetric substructure such as spiral arms and a bar is visible. In the lower panel it seen is edge-on. Disk and bulge are clearly present.}\label{fig:Stars_AU24_zoomin}
 \end{figure}
 \\A face-on and edge-on view of the main galaxy is presented in Figure \ref{fig:Stars_AU24_zoomin}. We can see axisymmetric features such as bulge and disk and clear non-axisymmetric features such as a bar and spiral arms. This galaxy resembles the \ac{MW} and other late-type galaxies.
 \subsection{Fitting axisymmetric potential models}\label{subsec:best_fit_pot}
@@ -90,31 +79,31 @@ To fit a potential to each component, we first need to decompose the different p
 \begin{equation}\label{eq:circularity}
     \epsilon = \frac{L_\mathrm{z}}{L_\mathrm{z,max}(E)}
 \end{equation}
-where $L_\mathrm{z,max}(E)$ is the maximum angular momentum allowed for the orbital energy $E$. 
-$\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ is a retrograde circular orbit in the disc plane. $\epsilon \sim 0$ is an orbit with a very low $z$-component of angular momentum which may be highly inclined to the disc spin axis and/or be highly eccentric.  
+where $L_\mathrm{z,max}(E)$ is the maximum angular momentum allowed for the orbital energy $E$. The distribution of all stars in $E-L_z$ is plotted in Figure \ref{fig:e_lz_dist}. The overdensity on the right edge of the distribution is where $\epsilon \approx 1$. Therefore, these are the disk stars.
+$\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ is a retrograde circular orbit in the disc plane. $\epsilon \sim 0$ is an orbit with a very low $z$-component of the angular momentum which may be highly inclined to the disc spin axis and/or be highly eccentric.  
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width = 0.6\textwidth]{plots/Auriga/decomposition_elz_snap_127.png}
-    \caption{Energy vs angular momentum of all stellar particles within the galaxy radius. $L_\mathrm{z,max}$ is the right border of the distribution. Stars which lie close to that edge are therefore disk stars which is very good visible in the overdensity there. \textcolor{red}{Muss Mpc sein in x achse}}
+    \includegraphics[width = 0.7\textwidth]{plots/Auriga/decomposition_elz_snap_127.png}
+    \caption{Energy vs angular momentum of all stellar particles within the galaxy radius. $L_\mathrm{z,max}$ is the right border of the distribution. Stars which lie close to that edge are therefore disk stars which is very good visible in the overdensity there.}
     \label{fig:e_lz_dist}
 \end{SCfigure}
 
-\cite{AurigaGrand} uses two different methods two distinguish the components and to get their mass ratio:
+\citetalias{AurigaGrand} use two different methods two distinguish the components and to get their mass ratio:
 \begin{enumerate}
 \item Under the assumption, that the bulge has zero net rotation, mirror negative $\epsilon$ as bulge material, the rest belongs to the disk.
 \item All particles with $\epsilon > \mathrm{constant}$ are assigned to the disk, where $\mathrm{constant} = 0.7$ is set heuristically.
 \end{enumerate}
 
-\cite{AurigaGrand} find that the first method generally overestimates the \ac{D/T} ratio while the second approach underestimates it by choosing only kinematically very cold particles. Since we do not only want to get the mass ratio of \ac{D/T} but also want to tag each particle clearly, we use the second method. Nevertheless, the true assignment lies somewhere between these methods. 
+\citetalias{AurigaGrand} find that the first method generally overestimates the \ac{D/T} ratio while the second approach underestimates it by choosing only kinematically very cold particles. Since we do not only want to get the mass ratio of \ac{D/T} but also want to tag each particle clearly, we use the second method. Nevertheless, the true assignment lies somewhere between these methods. 
 \begin{SCfigure}%[htbp]
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.6\textwidth]{plots/Auriga/decomposition_snap_127.png}
-\caption{Decomposition of stellar disk and spheroid by their circularity. It was carried out for all stellar particles within the galaxy radius. The black line represents the total circularity. The green area is the the spheroid component and the blue is the disk component. The disk particles were selected by having a circularity above 0.7. The disk to total number ratio is 0.47. The overlap is due to the way how this plot is made but, in the analysis, there is a strict cut at 0.7.}\label{fig:decomposition}
+    \includegraphics[width=0.55\textwidth]{plots/Auriga/decomposition_snap_127.png}
+\caption{Decomposition of stellar disk and spheroid by their circularity. It was carried out for all stellar particles within the galaxy radius. The black line represents the total circularity. The green area is the the spheroid component and the blue is the disk component. The disk particles were selected by having a circularity above 0.7. The disk to total number ratio is 0.47. The overlap is due to the way how this plot is made, however, in the analysis, there is a strict cut at 0.7.}\label{fig:decomposition}
 \end{SCfigure}
 \\In Figure \ref{fig:decomposition}, we show a histogram of the circularity with our decomposition. The blue part is the disk portion while the green part is the spheroid. Together they add up to the black solid line, the total number. The \ac{D/T} ratio is 0.47.
-Since we can assign the particles to be in the spheroid or disk easily, we use this composition to find the disk and spheroid where we fit our potential to.
+
 \iffalse
 \begin{figure}
 \captionsetup{format=plain}
@@ -138,36 +127,39 @@ Since we can assign the particles to be in the spheroid or disk easily, we use t
     \centering
     \begin{subfigure}[c]{0.45\textwidth}
     \centering
-    	\includegraphics[height=0.25\textheight]{plots/Auriga/spheroid_selection_Rz_snap_127.png}
+    \includegraphics[height=0.25\textheight]{plots/Auriga/disk_selection_Rz_snap_127.png}    	
     \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
     %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[c]{0.45\textwidth}
-        \centering
-    	\includegraphics[height=0.25\textheight]{plots/Auriga/disk_selection_Rz_snap_127.png}
+    \centering
+    \includegraphics[height=0.25\textheight]{plots/Auriga/spheroid_selection_Rz_snap_127.png}
     \end{subfigure}
+    \caption{Spatial distribution in radius and height of the decomposed stellar particles. \textit{Left panel}: Disk stars; \textit{right panel:} spheroid stars. The shapes of the distributions are as expected. The disk is clearly visible even though it flares at higher $R$. The spheroid is centrally concentrated.}
     \label{fig:disk_spheroid_dist}
 \end{figure}
+Since we can assign the particles to be in the spheroid or disk easily, we use this decomposition to find the disk and spheroid, shown in Figure \ref{fig:disk_spheroid_dist}, where we fit the stellar components of the potential to.
+
 \subsubsection{Disk potential}\label{subsubsec:disk_pot}
 We fit the disk with a \citet{MNprofile} (\acsu{MN}) potential following the profile 
 \begin{equation}\label{eq:MND}
 \Phi(R,z) = -\frac{GM}{\sqrt{R^2+(a+\sqrt{z^2+b^2})^2}}
 \end{equation} 
-with scale length $a$ and scale height $b$ which provides a disk with a finite thickness. If $b\rightarrow 0$, the disk will be infinite thin and if $b\rightarrow 0$ and $a \rightarrow 0$, the potential has a spherical density distribution. $b/a$ therefore defines the flattening of the system. It is a rather simple model with only small computational costs as forces and densities can be calculated analytically from Equation \ref{eq:MND}. Therefore it is widely used. It has limitations in the mid-plane ($z=0$) at high $R$ as the density behaves as $R^−3$ for $R\gg a$ and the large-radius density fall-off is therefore simply a power-law of $R$ rather than exponential. The \ac{MN} density remains too high at large radii (e.g., at $R\gg15$ kpc for the \ac{MW}) compared to realistic models of galactic disks. 
-\\To fit the disk potential, we bin the stellar disk in $(R, z)$ in step sizes of \SI{0.5}{kpc} and calculate the density of each bin. Then, we fit the \ac{MN} density (Equation \ref{eq:MND}) to the data using the scipy \citep{scipy....2001} routine optimize.curve\_fit \textcolor{red}{chi$^2$}. For the \ac{MN} potential, we have the scale length $a_{\mathrm{MND}}$, the scale height $b_{\mathrm{MND}}$ and the contribution to the total circular velocity $v_{0, \mathrm{MND}}$ at $ R_0 = \SI{8}{kpc}$ as fit parameters. The best fit parameters are listed in Table \ref{tab:pot_best_fit_params}.
+with scale length $a$ and scale height $b$, which provides a disk with a finite thickness. If $b\rightarrow 0$, the disk will be infinite thin and if $b\rightarrow 0$ and $a \rightarrow 0$, the potential has a spherical density distribution. $b/a$ therefore defines the flattening of the system. It is a rather simple model with only small computational costs as forces and densities can be calculated analytically from Equation \ref{eq:MND}. Therefore it is widely used. It has limitations in the mid-plane ($z=0$) at high $R$ as the density behaves as $R^−3$ for $R\gg a$ and the large-radius density fall-off is therefore simply a power-law of $R$ rather than exponential. 
+\\To fit the disk potential, we bin the stellar disk in $(R, z)$ in step sizes of \SI{0.5}{kpc} and calculate the density of each bin. Then, we fit the \ac{MN} density (Equation \ref{eq:MND}) to the binned data using the \texttt{scipy} \citep{scipy....2001} routine \texttt{optimize.curve\_fit}. For the \ac{MN} potential, we have the scale length $a_{\mathrm{MND}}$, the scale height $b_{\mathrm{MND}}$ and the contribution to the total circular velocity $v_{0, \mathrm{MND}}$ at $ R_0 = \SI{8}{kpc}$ as fit parameters. The best fit parameters are listed in Table \ref{tab:pot_best_fit_params}.
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
     \includegraphics[width = \textwidth]{plots/Auriga/MND_best_fit_snap_127.png}
-    \caption{Density fit of the \ac{MN} profile to the disk. \textit{Left panel:} in $(R,z)$ binned mass density of the simulation data. \textit{Middle panel:} in $(R,z)$ binned mass density of the best fit \ac{MN} profile. \textit{Right panel:} relative errors \(\Delta_\rho = (\rho_{\mathrm{fit}}- \rho_{\mathrm{data}})/\rho_{\mathrm{data}}\) of the best fit.}
+    \caption{Density fit of the \ac{MN} profile to the disk. \textit{Left panel:} in $(R,z)$ binned mass density of the simulation data. \textit{Middle panel:} in $(R,z)$ binned mass density of the best fit \ac{MN} profile. \textit{Right panel:} relative errors \(\Delta_\rho = (\rho_{\mathrm{fit}}- \rho_{\mathrm{data}})/\rho_{\mathrm{data}}\) of the best fit. The relative errors are very high at the edges of the data distribution. In the disk and the outer regions, the error is smaller. }
     \label{fig:MND}
 \end{figure}
-\\The best fit is shown in Figure \ref{fig:MND}. In the left panel, we see the binned data. Due to the kinematic selection of disk particles, the disk appears to be flaring. This is negligible since the density falls off quickly above an absolute height of \SI{1.5}{kpc}. At the black parts of the histogram, there was no data. Therefore, the weights of the fit lay on the actual disk. In the middle panel, we show the binned density of the best fit \ac{MN} profile. We can clearly see the disk. Since it is an analytic potential, the density can be calculated for every bin in $(R, z)$. In the right panel, the relative errors \(\Delta_\rho = (\rho_{\mathrm{fit}}- \rho_{\mathrm{data}})/\rho_{\mathrm{data}}\) are plotted. In the edges of the data, these errors are very high. This is most probably due to selection effects and cutting the data there while the fitted density is still smooth there. In the disk and outer regions, the relative error is smaller than at the edges. We discuss problems with the disk fit in Section \ref{subsec:wrong_pot_fit}. Even though the errors are quite big, we think this is the best fit of the analytic \ac{MN} potential to the non-analytic and selected-through-decomposition disk. 
+\\The best fit is shown in Figure \ref{fig:MND}. In the left panel, we see the binned data. Due to the kinematic selection of disk particles, the disk appears to be flaring. This is negligible since the density falls off quickly above an absolute height of \SI{1.5}{kpc}. At the black parts of the histogram, there was no data. Therefore, the weights of the fit lay on the actual disk. In the middle panel, we show the binned density of the best fit \ac{MN} profile. We can clearly see the disk. Since it is an analytic potential, the density can be calculated for every bin in $(R, z)$. In the right panel, the relative errors \(\Delta_\rho = (\rho_{\mathrm{fit}}- \rho_{\mathrm{data}})/\rho_{\mathrm{data}}\) are plotted. In the edges of the data, these errors are very high. This is probably due to selection effects and cutting the data there while the fitted density is still smooth there. In the disk and outer regions, the relative error is smaller than at the edges. We discuss problems with the disk fit in Section \ref{subsec:wrong_pot_fit}. Even though the errors are quite big, we think this is the best fit of the analytic \ac{MN} potential to the non-analytic and selected-through-decomposition disk. 
 
 
 \subsubsection{Spheroid potential}\label{subsubsec:spher_pot}
 For the central stellar spheroid, we apply a \citet{Hernquistprofile} potential which has the density 
-\begin{equation}
+\begin{equation}\label{eq:Hernquist_spheroid_dens}
     \rho = \frac{M}{2\pi}\frac{a}{r}\frac{1}{(r+a)^3}
 \end{equation}
 where $M$ is the stellar mass of the spheroid and $a$ is its scale length. It has a gentle power-law cusp and at large radii, it declines like $r^{-4}$. \citet{Hernquistprofile} has shown that it reproduces properties of elliptical galaxies and spherical bulges. 
@@ -175,49 +167,50 @@ where $M$ is the stellar mass of the spheroid and $a$ is its scale length. It ha
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.7\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
-    \caption{Spheroid density: data with errors (grey dots) and best fit (green line). The data is binned logarithmically in r. Their standard deviation is too small to be seen. In the inner part, r $<10$kpc, the density is both under and over estimated. In the outer parts, the fit matches the data.}
+    \includegraphics[width=0.6\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
+    \caption{Spheroid density: data with errors (grey dots) and best fit (green line). The data is binned logarithmically in r. Their standard deviation is too small to be seen. In the inner part, $r<\SI{10}{kpc}$, the density is both under and over estimated. In the outer parts, the fit matches the data.}
     \label{fig:spheroid_fit}
 \end{SCfigure}
-\\Since the Hernquist density is spherically symmetric, we bin the spheroid particles to logarithmic bins in the spherical radius $r$. The data and best fit densities are shown in Figure \ref{fig:spheroid_fit}. While in the inner part the fit does not match the data too well, in the outer parts it fits. Since most of the particles we investigate in Section \ref{sec:Dynamics} are more far away from the center than \SI{10}{kpc}, the fit is acceptable to carry out this analysis.
+\\Since the Hernquist density is spherically symmetric, we bin the spheroid particles in logarithmic bins in the spherical radius $r$ and in the density $\rho$. We fit Equation \ref{eq:Hernquist_spheroid_dens} to the binned data using \texttt{optimize.curve\_fit} again. The data and best fit densities are shown in Figure \ref{fig:spheroid_fit}. While in the inner part the fit does not match the data too well, in the outer parts it does. Since most of the particles we investigate in Section \ref{sec:Dynamics} are more far away from the center than \SI{10}{kpc}, the fit is acceptable to carry out this analysis.
 
 \subsubsection{Halo potential}\label{subsubsec:halo_pot}
 We model the \ac{DM} halo with a \acsu{NFW} \citep{NFWprofile} profile following the formula 
 \begin{equation}
     \rho(r) = \frac{\rho_{crit} \cdot \delta_c}{(r/r_s)(1+r/r_s)^2} = \frac{M}{4 \pi a^3}\frac{1}{(r/a)(1+r/a)^2}
-\end{equation} with scale radius $r_s = a$, the critical density $\rho_{crit} = 3H^2 / 8\pi G $, the mass $M$ of the \ac{DM} halo and a characteristic and dimensionless density $\delta_c$ which can be rewritten as \(\rho_{crit}\cdot\delta_c = M/4\pi a^3 \). The \ac{NFW} profile is derived from \ac{DMO} simulations and found to accurately describe \ac{DM} halos. 
-\\All particles in the simulation have a potential value, "pot",  which is the potential they feel at their position from the total surrounding matter (not only from the host galaxy). Since the total halo (shown in Figure \ref{fig:Stars_AU24}) is isolated and the main matter contribution comes from the main galaxy and its halo, we still consider this a value where we can fit the potential of the analytic model to. 
+\end{equation} with scale radius $r_s = a$, the critical density $\rho_{crit} = 3H^2 / 8\pi G $, the mass $M$ of the \ac{DM} halo and a characteristic and dimensionless density $\delta_c$ which can be rewritten as \(\rho_{crit}\cdot\delta_c = M/4\pi a^3 \). The \ac{NFW} profile is derived from \ac{DMO} simulations and found to accurately describe \ac{DM} halos \citep{NFWprofile}. 
+\\All particles in the simulation have a potential value, "pot", which is the potential they feel at their position from the total surrounding matter (not only from the host galaxy). Since the total halo (shown in Figure \ref{fig:Stars_AU24}) is isolated and the main matter contribution comes from the main galaxy and its halo, we still consider this a value where we can fit the potential of the analytic model to. 
 \begin{figure}[htbp]
 \captionsetup{format=plain}
     \centering
     \includegraphics[width=\textwidth]{plots/Auriga/DM_selected_part_dist_snap_127.png}
-    \caption{Selection of 100000 random \ac{DM} particles, used to fit to the \ac{NFW} halo. \textit{Left panel:} Distribution of particles in the x-z plane. \textit{Right panel:} Number of \ac{DM} particles depending on r. For radii > \SI{10}{kpc}, the distribution is constant while there are less particles for smaller radii. Since we are less interested in the innermost part of the halo, it is good that the weight for the fit lies in the outer parts. \ac{DM} particles with $r < \SI{3}{kpc}$ are excluded from the fit since it worsened the fit in the outer parts.}
+    \caption{Selection of 100000 random \ac{DM} particles, used to fit to the \ac{NFW} halo. \textit{Left panel:} Distribution of particles in the $x-z$ plane. \textit{Right panel:} Number of \ac{DM} particles depending on $r$. For $r > \SI{10}{kpc}$, the distribution is constant while there are less particles for smaller radii. Since we are less interested in the innermost part of the halo, it is good that the weight for the fit lies in the outer parts. \ac{DM} particles with $r < \SI{3}{kpc}$ are excluded from the fit since it worsened the fit in the outer parts.}
     \label{fig:DM_part_selection}
 \end{figure}
 We select 100000 \ac{DM} particles randomly which we present in Figure \ref{fig:DM_part_selection}. With the best fit potentials for the stellar components, we set up a potential in \texttt{galpy} with all three components. We need to do this superposition of the potential because fitting a three component potential at once gives us a potential where the halo is overestimated (see Section \ref{subsec:wrong_pot_fit}). Since we want to fit the \ac{DM} halo to the potential values provided by the simulation, we need other routines for the stellar components. Therefore, we fit the densities of stellar spheroid and disk. When fitting the total potential, only the \ac{NFW} parameters are the free ones. We calculate the value of the potential for each of the randomly selected particles in the model and fit these to the true potential with the \texttt{scipy.optimize.differential\_evolution} routine by minimizing their squared relative errors.
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.7\textwidth]{plots/Auriga/phi_model_and_data_snap_with_rel_error_127.png}
-    \caption{Potential of data (selected \ac{DM} particles) and model depending on the radius r. Black dots are data, red dots from the best fit model. The innermost \SI{3}{kpc} are not included in the fit to make it better in the outer parts. The model lies everywhere within the data range but the slope seems less steep than the slope of the data. The relative error is within a good range (<4\%).}
+    \includegraphics[width=0.6\textwidth]{plots/Auriga/phi_model_and_data_snap_with_rel_error_127.png}
+    \caption{\textit{Upper panel:} Potential of data (selected \ac{DM} particles) and model depending on the radius $r$. Black dots are data, red dots from the best fit model. The innermost \SI{3}{kpc} are not included in the fit to make it better in the to us more important outer parts. The model lies everywhere within the data. \textit{Lower panel:} The relative error $\Delta_\mathrm{rel}\Phi = (\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data}$ is within a good range (<4\%).}
     \label{fig:potential_best_fit}
 \end{SCfigure}
-The result is shown in Figure \ref{fig:potential_best_fit} where we see the 'pot' value of the selected \ac{DM} particles in black and the fitted \ac{NFW} potential overlaying in red. Even though the red dots lie within the distribution of the black dots, the slope seems to be different. We find the best fit scale length of the \ac{DM} halo, $a_{\mathrm{NFWH}}$ as well as the total circular velocity $v_{0,\mathrm{tot}} \equiv v_{\mathrm{circ}}(R_0 = \SI{8}{kpc}) $. From that total circular velocity we can subtract the fraction from the stellar components to get the \ac{DM} component, $v_{0,\mathrm{NFWH}} = \sqrt{v_{0,\mathrm{tot}}^2 - v_{0, \mathrm{MND}}^2 - v_{0, \mathrm{HB}}^2}$. The resulting parameter values are summarized in Table \ref{tab:pot_best_fit_params}. 
-
+The result is shown in Figure \ref{fig:potential_best_fit} where we see the "pot" value of the selected \ac{DM} particles in black and the fitted \ac{NFW} potential overlaying in red. Even though the red dots lie within the distribution of the black dots, the slope seems to be different. 
 \begin{figure}
 \captionsetup{format=plain}
     \centering
     \includegraphics[width=\textwidth]{plots/Auriga/total_phi_error_snap_127.png}
-    \caption{Total error $\Phi_\mathrm{model} - \Phi_\mathrm{data})$ of the \ac{DM} fit versus the three Radius an height $(R, z)$.}
+    \caption{Total error $\Phi_\mathrm{model} - \Phi_\mathrm{data}$ of the \ac{DM} fit versus the radius $R$ (\textit{left}) and height $z$ (\textit{right}). While the error in $R$ is still pretty symmetrically distributed around $\Phi_\mathrm{model} - \Phi_\mathrm{data} = 0$, we see a large systematic error in the disk around $z=0$.}
     \label{fig:potential_fit_abs_errors}
 \end{figure}
-To check, how good the slope of the \ac{DM} fit is, we plot the relative error $(\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data})$ versus the three cylindrical coordinates $(R, \phi, z)$. The slopes should be constant which they are not. We tried many different routines for the potential fit and this is the best we got and since the errors are relatively small (within 3-4\%) we still think the fit is good enough.
+The absolute errors in Figure \ref{fig:potential_fit_abs_errors} reveal more difficulties in the fit of the disk. This might come from the earlier problems in the fits of the stellar disk and spheroid. We discuss this in Section \ref{subsec:wrong_pot_fit}. However, since the errors are relatively small (within 3-4\%) we think the fit is good enough. 
 
+\\We find the best fit scale length of the \ac{DM} halo, $a_{\mathrm{NFWH}}$ as well as the total circular velocity $v_{0,\mathrm{tot}} \equiv v_{\mathrm{circ}}(R_0 = \SI{8}{kpc}) $. From that total circular velocity we can subtract the fraction from the stellar components to get the \ac{DM} component, $v_{0,\mathrm{NFWH}} = \sqrt{v_{0,\mathrm{tot}}^2 - v_{0, \mathrm{MND}}^2 - v_{0, \mathrm{HB}}^2}$. The resulting parameter values are summarized in Table \ref{tab:pot_best_fit_params}. 
 \subsubsection{Total potential}\label{subsubsec:tot_pot}
 After fitting each component individually, we add them up to get a total potential.
 \begin{table}[htbp]
 \captionsetup{format=plain}
     \centering
+    \caption{Best fit potential overview: components, used potentials, their parameters with best fit values and their fitting methods.}
     \begin{tabular}{@{}llll@{}}
          \toprule
          component& potential & parameters \& values &fitting method  \\
@@ -226,42 +219,14 @@ After fitting each component individually, we add them up to get a total potenti
          %\midrule
          \makecell[tl]{stellar\\ spheroid}& Hernquist&\makecell[tl]{$a_{\mathrm{HB}}$ = \SI{1.82}{kpc}\\$v_{0,\mathrm{HB}}$ = \SI{110.00}{km.s^{-1}}}& \makecell[tl]{Hernquist density fitted\\ to density shells of \\spheroid in $(r)$.}\vspace{3mm}\\
          %\midrule
-         \ac{DM} halo&\ac{NFW}&\makecell[tl]{$a_{\mathrm{NFWH}}$ = \SI{25.47}{kpc}\\$v_{0,\mathrm{NFWH}}$ = \SI{160.66}{km.s^{-1}}}&\makecell[tl]{Total potential fitted to \\'pot' value of random \ac{DM} \\particles where \ac{NFW}\\ parameters were fitting \\parameters.}\vspace{3mm}\\
+         \ac{DM} halo&\ac{NFW}&\makecell[tl]{$a_{\mathrm{NFWH}}$ = \SI{25.47}{kpc}\\$v_{0,\mathrm{NFWH}}$ = \SI{160.66}{km.s^{-1}}}&\makecell[tl]{Total potential fitted to \\"pot" value of random \ac{DM} \\particles where \ac{NFW}\\ parameters were fitting \\parameters.}\vspace{3mm}\\
          %\midrule
          total & \makecell[tl]{sum of these\\ potentials} & \makecell[tl]{$R_0$ = \SI{8.00}{kpc} \\ $v_{0,\mathrm{tot}}$ = \SI{221.21}{km.s^{-1}}}& \makecell[tl]{$v_0$ is the total circular \\ velocity at $R_0$.}\vspace{3mm}\\
          \bottomrule 
     \end{tabular}
-    \caption{Best fit potential overview: components, used potentials, their parameters with best fit values and their fitting methods. \textcolor{red}{update absolute error and hist2d coming}}
     \label{tab:pot_best_fit_params}
 \end{table}
 In Table \ref{tab:pot_best_fit_params}, we summarize our results for the last snapshot as described in the previous Sections. 
- 
-\begin{table}[htbp]
-\captionsetup{format=plain}
-    \caption{Comparison of some of the structural parameters of our results with the Auriga \citep{AurigaGrand} analysis and \ac{MW} values taken from \citet{Bland-Hawthorn...MW...2016}.}
-    \centering
-    \begin{tabular}{@{}lllll@{}}
-         \toprule
-         Quantity & Unit& \makecell[tr]{This work} & \makecell[tr]{Auriga \\\citetalias{AurigaGrand} }&\makecell[tr]{Milky Way\\ \citetalias{Bland-Hawthorn...MW...2016}}\\
-         \midrule
-         \makecell[tl]{Disk scale length}& [kpc] & \makecell[tr]{2.97}&\makecell[tr]{5.57} & \makecell[tr]{$2.6\pm0.5$ \\(thin disk)}\\
-         \makecell[tl]{Bulge scale length}& [kpc] & \makecell[tr]{1.82}&\makecell[tr]{0.95} & \makecell[tr]{$1.9-2.8$ \\\citetalias{Vanhollebeke...bulge...2009}}\\
-         \makecell[tl]{\ac{DM} halo scale length}& [kpc] & \makecell[tr]{25.47}&\makecell[tr]{none} & \makecell[tr]{$25 \pm 10 $}\vspace{3mm}\\
-         \makecell[tl]{Disk mass \\ within $0.1R_{200}$} & [$10^{10}\mathrm{M}_\odot$] &  \makecell[tr]{3.15}&\makecell[tr]{3.76} & \makecell[tr]{$3.5\pm1$\\(thin disk)}\\
-         \makecell[tl]{Spheroid / bulge mass \\ within $0.1R_{200} $}& [$10^{10}\mathrm{M}_\odot$] &\makecell[tr]{3.40} &\makecell[tr]{2.19}& \makecell[tr]{$1.4-1.7$}\\
-         \makecell[tl]{Total stellar mass \\ within $0.1R_{200}$ }& [$10^{10}\mathrm{M}_\odot$] & \makecell[tr]{6.55} &\makecell[tr]{6.55}& \makecell[tr]{$5 \pm 1$}\\
-         \makecell[tl]{\ac{D/T}} & & \makecell[tr]{0.47}&\makecell[tr]{0.63} & \makecell[tr]{0.7 \\(thin disk)}\vspace{3mm}\\ 
-         %\midrule
-         \makecell[tl]{$R_{200}=R(\rho = 200 \rho_\mathrm{crit}$)} & [kpc] &\makecell[tr]{240.86}  & \makecell[tr]{240.86} & \makecell[tr]{$209 \pm 23$}\\
-         \makecell[tl]{$M_{200}=M(\rho = 200 \rho_\mathrm{crit})$} & [$10^{12}\mathrm{M}_\odot$] & \makecell[tr]{149.18}  & \makecell[tr]{149.18} & \makecell[tr]{$1.1 \pm 0.3$}\vspace{3mm}\\
-         %\midrule
-         \makecell[tl]{total circular velocity\\ at $R_0 = \SI{8}{kpc}$}&  [$\mathrm{km\ s}^{-1}$]& \makecell[tr]{221.21} & \makecell[tr]{none \\explicitly}& \makecell[tr]{$238 \pm 15$}\vspace{3mm}\\
-         \bottomrule 
-    \end{tabular}
-
-    \label{tab:disk_quant_comparison}
-\end{table}
-
 
 
 
@@ -316,7 +281,34 @@ In Table \ref{tab:pot_best_fit_params}, we summarize our results for the last sn
 \includegraphics[width=0.8\textwidth]{plots/Auriga/best_fit_circular_velocity_via_formula_snap_127.png}
 \caption{Circular velocity at $z = 0$: data (grey circles), total (black solid line), disk (blue dashed dotted line), bulge (green dotted line) and halo (orange). The data is the mean tangential velocity of all stars which have $\epsilon > 0.95$ and the error is their standard deviation. The model components and the total distribution are calculated analytically. The total curve matches the data within its errors. Disk and spheroid overlay in the outer parts which is due to the decomposition where their proportion is nearly $1:1$. The \ac{DM} halo dominates in this parts, as expected. In the center, the circular velocity is underestimated. This is probably due to an underestimation of the spheroid component in the center which we can see find in the density fit in Figure \ref{fig:spheroid_fit}. In the outer parts ($R>R_0$), the curves behave as they are expected to do.}. \label{fig:circ_vel_fit}
 \end{figure}
-\\To verify the goodness of the total potential, we show the circular velocity curve in Figure \ref{fig:circ_vel_fit}. While in the innermost part the \ac{DM} proportion might be too high due to an underestimation of the stellar spheroid, the \ac{DM} proportion in the outer part seems correct. The disk is underestimated due to the sharp decomposition. In overall, the total circular velocity matches the data and the fit in the outer parts, where the particles we investigate in Section \ref{sec:Dynamics} are, is reliable.  
+\\To verify the goodness of the total potential, we show the circular velocity curve in Figure \ref{fig:circ_vel_fit}. The innermost part is underestimated due to an underestimation of the stellar spheroid or disk. The \ac{DM} proportion in the outer part seems correct. The disk is underestimated due to the sharp decomposition. In overall, the total circular velocity matches the data and the fit in the outer parts, where the particles we investigate in Section \ref{sec:Dynamics} are, is reliable.  
+ 
+\begin{table}[htbp]
+\captionsetup{format=plain}
+    \caption{Comparison of some of the structural parameters of our results with the Auriga \citepalias{AurigaGrand} analysis and \ac{MW} values taken from \citet{Bland-Hawthorn...MW...2016}.}
+    \centering
+    \begin{tabular}{@{}lllll@{}}
+         \toprule
+         Quantity & Unit& \makecell[tr]{This work} & \makecell[tr]{Auriga \\\citetalias{AurigaGrand} }&\makecell[tr]{Milky Way\\ \citetalias{Bland-Hawthorn...MW...2016}}\\
+         \midrule
+         \makecell[tl]{Disk scale length}& [kpc] & \makecell[tr]{2.97}&\makecell[tr]{5.57} & \makecell[tr]{$2.6\pm0.5$ \\(thin disk)}\\
+         \makecell[tl]{Bulge scale length}& [kpc] & \makecell[tr]{1.82}&\makecell[tr]{0.95} & \makecell[tr]{$1.9-2.8$ \\\citetalias{Vanhollebeke...bulge...2009}}\\
+         \makecell[tl]{\ac{DM} halo scale length}& [kpc] & \makecell[tr]{25.47}&\makecell[tr]{none} & \makecell[tr]{$25 \pm 10 $}\vspace{3mm}\\
+         \makecell[tl]{Disk mass \\ within $0.1R_{200}$} & [$10^{10}\mathrm{M}_\odot$] &  \makecell[tr]{3.15}&\makecell[tr]{3.76} & \makecell[tr]{$3.5\pm1$\\(thin disk)}\\
+         \makecell[tl]{Spheroid / bulge mass \\ within $0.1R_{200} $}& [$10^{10}\mathrm{M}_\odot$] &\makecell[tr]{3.40} &\makecell[tr]{2.19}& \makecell[tr]{$1.4-1.7$}\\
+         \makecell[tl]{Total stellar mass \\ within $0.1R_{200}$ }& [$10^{10}\mathrm{M}_\odot$] & \makecell[tr]{6.55} &\makecell[tr]{6.55}& \makecell[tr]{$5 \pm 1$}\\
+         \makecell[tl]{\ac{D/T}} & & \makecell[tr]{0.47}&\makecell[tr]{0.63} & \makecell[tr]{0.7 \\(thin disk)}\vspace{3mm}\\ 
+         %\midrule
+         \makecell[tl]{$R_{200}=R(\rho = 200 \rho_\mathrm{crit}$)} & [kpc] &\makecell[tr]{240.86}  & \makecell[tr]{240.86} & \makecell[tr]{$209 \pm 23$}\\
+         \makecell[tl]{$M_{200}=M(\rho = 200 \rho_\mathrm{crit})$} & [$10^{12}\mathrm{M}_\odot$] & \makecell[tr]{1.49}  & \makecell[tr]{1.49} & \makecell[tr]{$1.1 \pm 0.3$}\vspace{3mm}\\
+         %\midrule
+         \makecell[tl]{total circular velocity\\ at $R_0 = \SI{8}{kpc}$}&  [$\mathrm{km\ s}^{-1}$]& \makecell[tr]{221.21} & \makecell[tr]{none \\explicitly}& \makecell[tr]{$238 \pm 15$}\vspace{3mm}\\
+         \bottomrule 
+    \end{tabular}
+
+    \label{tab:disk_quant_comparison}
+\end{table}
+In Table \ref{tab:disk_quant_comparison}, we compare some of our potential quantities to the ones derived in \citetalias{AurigaGrand} and to typical \ac{MW} values. The comparison to the \ac{MW} is not direct but rather to get an idea of typical quantities of spiral galaxies. Also, different methods and models are applied. However, many of our results are in a similar regime, such as scale lengths and the circular velocity. The difference in our work and in \citetalias{AurigaGrand} in masses is due to the decomposition: while \citetalias{AurigaGrand} used the first method described in Section \ref{subsubsec:decomp} to derive these values, we use the second. The difference in scale lengths is due to different models.
 
 \subsubsection{Time evolution}
 To make sure we can assume a slowly varying potential and to carry out investigations of e.g. the action evolution we need to know the potential for each snapshot. Using the fitting routine described in the previous Sections, we fit a potential to each snapshot individually, without taking the results of the neighbouring snapshots into account, e.g. as a prior. Therefore, the fitting of the time evolution is unbiased in that sense. 
@@ -324,9 +316,9 @@ To make sure we can assume a slowly varying potential and to carry out investiga
 \captionsetup{format=plain}
 \centering
 \includegraphics[width=0.7\textwidth]{plots/Auriga/fitted_potential_evolution_jan19.png}
-\caption{Evolution of all fit parameters over time. $v_0 = v_\mathrm{circ}(R_0)$ describes the overall $M(<R_0)$ evolution (see Equation \ref{eq:circ_vel} and the other parameters describe scale length - and height, if applicable - and their contribution to the circular velocity at $R_0$. The grey dots are the best fit values and the black lines are polynomial fits of 4th order for each parameter. The vertical lines mark the merger times of the three biggest merger events the main halo galaxy has experienced. The pink merger was the latest and biggest merger while the yellow merger contributed the least mass of these. In the second panel, we see that the mass growth of the galaxy within $R_0$ is continuous. The second merger flattened out the rise of the total circular velocity which is measured at $R_0 = \SI{8}{kpc}$. It is kept constant throughout the time evolution to see how within a constant radius the mass changes over time. The spheroid's parameters are very constant since the second merger, while the disk and the \ac{DM} halo are affected by the last merger. While the disk seems to grow in size, its contribution to the total circular velocity decreases. On the contrary, the \ac{DM} halo contracts but its contribution to the velocity rises more steeply. This shows, that these mergers have a strong impact on the evolution of the potential of this galaxy. Nevertheless, with the fits of the values we can still assume a slowly varying potential which is essential for the action evolution. \textcolor{red}{move some part of the discussion to text?}}\label{fig:pot_val_evol}
+\caption{Evolution of all fit parameters over time. $v_0 = v_\mathrm{circ}(R_0)$ describes the overall $M(<R_0)$ evolution (see Equation \ref{eq:circ_vel}) and the other parameters describe scale length - and height, if applicable - and their contribution to the circular velocity at $R_0$. The grey dots are the best fit values and the black lines are polynomial fits of 4th order for each parameter. The vertical lines mark the merger times of the three biggest merger events the main halo galaxy has experienced. The pink merger was the latest and biggest merger while the yellow merger contributed the least mass of these. $R_0$ is kept constant throughout the time evolution to see how within a constant radius the mass changes over time. In the second panel, we see that the mass growth of the galaxy within $R_0$ is continuous. The second merger flattened out the rise of the total circular velocity which is measured at $R_0 = \SI{8}{kpc}$. More discussion is in the text.}\label{fig:pot_val_evol}
 \end{figure}
-In Figure \ref{fig:pot_val_evol}, we show the time evolution of the potential parameters for the last \SI{10.5}{Gyr}. In the potential parameters, we see how the galaxy grows and how the growth is affected by mergers. The indicated mergers are described in more detail in the next Section and in Table \ref{tab:prog_overview}. The overall trend is very smooth and without any outliers. The spheroid remains very constant after the second biggest merger while the other components, especially the disk, have a larger scatter. The latest and biggest merger has a strong impact on the disk and the \ac{DM} halo. The fits of the values allow us to still carry out the action investigations (from Section \ref{subsec:GCs_action_space} on) under the assumption of a slowly varying potential (see also Section 3.6.1 in \citealp{Binney...Tremaine...2008}). 
+In Figure \ref{fig:pot_val_evol}, we show the time evolution of the potential parameters for the last \SI{10.5}{Gyr}. In the potential parameters, we see how the galaxy grows and how the growth is affected by mergers. The indicated mergers are described in more detail in the next Section and in Table \ref{tab:prog_overview}. The overall trend is very smooth and without any outliers. The spheroid's parameters are very constant since the second merger, while the disk and the \ac{DM} halo are affected by the last merger. While the disk seems to grow in size, its contribution to the total circular velocity decreases. On the contrary, the \ac{DM} halo contracts but its contribution to the velocity rises more steeply. This shows, that these mergers have a strong impact on the evolution of the potential of this galaxy. Nevertheless, with the interpolation (black line) of the values we still can assume a slowly varying potential which is essential for the action investigations (from Section \ref{subsec:GCs_action_space} on - see also Section 3.6.1 in \citealp{Binney...Tremaine...2008}). 
 
 \subsection{What (not) to do when fitting a gravitational potential to simulations}\label{subsec:wrong_pot_fit}
 Even though the total circular velocity of our model matches the data, the single component fits we carry out in Section \ref{subsec:best_fit_pot} have regions with large errors. We now explain some of the steps we took to develop this algorithm, what did not work and how we can deal with these errors.
@@ -335,18 +327,17 @@ Even though the total circular velocity of our model matches the data, the singl
 In the first try, we worked with the three component analytic potential as well but we assumed that we can just fit the combined potential to the "pot" value of a different amount of random particles (up to 1 million) of the simulation data. It resulted in a big overestimation of the halo and we had no control in giving each component its proportion.
 
 \textbf{Decomposition}
-To then fit a potential to each component we carried out a decomposition (Section \ref{subsubsec:decomp}). This decomposition only takes dynamically cold disk particles into account. We therefore probably underestimated the disk. Doing the decomposition kinematically is a good start but the recipe could be expanded by some more complex disk characteristics, e.g. different or more flexible models beyond the \ac{MN}-family. To get around the decomposition one could try to fit all stellar particles to a combination of disk and spheroid potential.
+To then fit a potential to each component we carried out a decomposition (Section \ref{subsubsec:decomp}). This decomposition only takes dynamically cold disk particles into account. We therefore probably underestimated the disk. Doing the decomposition kinematically is a good start but the recipe could be expanded by some more complex disk characteristics, e.g. different or more flexible models beyond the \ac{MN}-family. To get around the decomposition one could try to fit all stellar particles to a combination of disk and spheroid potentials.
 
 \textbf{Binning and weighting of the data}
 Once we made a selection of disk and spheroid particles, we had to bin our densities to fit models to them. Depending on bin distances (e.g. linear or logarithmic bin edges), sizes and weights, the focus of the fit is given to particular regions of the data. This has to be taken into account when preparing the data to be fitted.
 
 \textbf{Fitting routines}
-There are many methods of fitting models to data and these different methods offer a wide range of different implementations. We tried several for the different components. The first we used was \texttt{scipy.optimize.minimize} looking for the minimum of the relative error between data and model. This fitting routine finds local minima. Therefore it sometimes ran into very unphysical parameters and found them to be the best fit. This routine was therefore too simple. We tried fitting the parameters with a MCMC algorithm, \texttt{emcee} \textcolor{red}{reference}, but this did not always converge so it was also not the best choice for us. Another \texttt{scipy.optimize} routine is \texttt{differential\_evolution} which finds the global minimum. So here again we minimized the relative error. This worked on the 1D models in the spherical potentials, where we fitted the logarithmic density log($\rho$) in logarithmic radii bins rather than $rho$ over $r$. It did not fit the 2D \ac{MN} potential as the algorithm just tried to set the model to 0 which would give in a small relative error but it resulted in extremely flat and elongated disks ($a_\mathrm{MND} = $ upper boundary and $b_\mathrm{MND} = 0$). The last fitting routine we then used on the \ac{MN} disk was \texttt{scipy.optimize.curve\_fit} which fits absolute differences between data and model but only requires the binned density and the model as input without the need to define how it minimizes the problem. This then worked for the disk the best. 
+There are many methods of fitting models to data and these different methods offer a wide range of different implementations. We tried several for the different components. The first we used was \texttt{scipy.optimize.minimize} looking for the minimum of the relative error between data and model. This fitting routine finds local minima. Therefore it sometimes ran into very unphysical parameters and found them to be the best fit. This routine was therefore too simple. We tried fitting the parameters with a MCMC algorithm, \texttt{emcee} \citep{DFM...emcee...2013}, but this did not always converge so it was also not the best choice for us. Another \texttt{scipy.optimize} routine is \texttt{differential\_evolution} which finds the global minimum. So here again we minimized the relative error. This worked on the 1D models in the spherical potentials and we used it for the halo potential It did not fit the 2D \ac{MN} potential as the algorithm just tried to set the model to 0 which would give in a small relative error but it resulted in extremely flat and elongated disks ($a_\mathrm{MND} = $ upper boundary and $b_\mathrm{MND} = 0$). The last fitting routine we then used on the \ac{MN} disk was \texttt{scipy.optimize.curve\_fit} which fits absolute differences between data and model but only requires the binned density and the model as input without the need to define how it minimizes the problem. This then worked for the disk the best. We also used it to fit the stellar spheroid density in logarithmic bins log($\rho$) and log($r$) rather than in $\rho$ over $r$.
 
 \textbf{Find proper fitting characteristics}
-We fitted the stellar components to the stellar densities and the \ac{DM} profile to the potential value. We could also consider fitting all three components in addition to their circular velocities. This would give us a constraint from the dynamical side and could make the fit better.
-
-\\\\ \textcolor{red}{umformulieren}Taking into account all these steps which we have to consider fitting a potential and getting still such a good circular velocity curve (Figure \ref{fig:circ_vel_fit}) in the end, we are confident that this potential fit is good enough to carry out further investigations in this model but we also want to emphasize that there is still room for improvement.
-
+We fitted the stellar components to the stellar densities and the \ac{DM} profile to the potential value. In addition, we could also consider fitting all three components in addition to their circular velocities. This would give us a constraint from the dynamical side and could make the fit better.
+\\\\
+To fit an analytic axisymmetric potential to a hydrodynamical galaxy simulation is not easy and requires some assumptions. We have some problems, i.e. with the fits in the disk. Still, the circular velocity curve of our model matches the data (Figure \ref{fig:circ_vel_fit}) reasonably well. We are confident that this potential fit is good enough to carry out further investigations in this model but we also want to emphasize that there is still room for improvement
 
 %\textbf{Put in table with parameter comparison }
