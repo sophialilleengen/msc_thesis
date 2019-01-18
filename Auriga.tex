@@ -70,8 +70,8 @@ Applying Newton's gravitational law $\mathbf{F} = -m\bm{\nabla}\Phi(\mathbf{x}) 
 with the gravitational constant $G$ and the total mass density of stars, gas and \ac{DM}, $\rho(\mathbf{x})$. 
 If the system is in "steady state", $\partial f/\partial t = 0$, distribution functions that are functions of the \ac{IoM} solve Equation \ref{eq:CMB_phi} (see Section \ref{sec:Dynamics}). The Poisson equation, Equation \ref{eq:Poisson}, is used to link densities and potentials in the upcoming descriptions of the potentials of the single components and presents a direct link between the gravitational potential and the total mass. 
 
-\subsubsection{\texttt{galpy} - A python package for galactic dynamics}\label{subsubsec:galpy}
-\texttt{galpy} \citep{Bovy...galpy...2015} is a well tested and well documented python package for galactic dynamics that is being developed on \url{http://github.com/jobovy/galpy}. The latest documentation can be found at \url{http://galpy.readthedocs.org/en/latest/}. It includes analytic spherical, axisymmetric and ellipsoidal triaxial potentials and fast routines, additionally implemented in C, for the calculation of orbits, action-angles and \acp{DF}. \texttt{galpy} has its own internal units which have to be considered and understood before using it.
+\subsubsection{\texttt{galpy} - A \texttt{python} package for galactic dynamics}\label{subsubsec:galpy}
+\texttt{galpy} \citep{Bovy...galpy...2015} is a well tested and well documented \texttt{python} package for galactic dynamics that is being developed on \url{http://github.com/jobovy/galpy}. The latest documentation can be found at \url{http://galpy.readthedocs.org/en/latest/}. It includes analytic spherical, axisymmetric and ellipsoidal triaxial potentials and fast routines, additionally implemented in \texttt{C}, for the calculation of orbits, action-angles and \acp{DF}. \texttt{galpy} has its own internal units which have to be considered and understood before using it.
 \\In this work, we first fit a set of analytic potentials to the simulation which is described in the remainder of this Section. Then, we calculate actions of accreted \acp{GC} in a variety of potentials in \texttt{galpy} and investigate the results in the next Section. 
 
 \subsubsection{Component decomposition}\label{subsubsec:decomp}
@@ -84,7 +84,7 @@ $\epsilon = 1$ is a prograde circular orbit in the disc plane. $\epsilon = -1$ i
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width = 0.7\textwidth]{plots/Auriga/decomposition_elz_snap_127.png}
+    \includegraphics[width = 0.73\textwidth]{plots/Auriga/decomposition_elz_snap_127.png}
     \caption{Energy vs angular momentum of all stellar particles within the galaxy radius. $L_\mathrm{z,max}$ is the right border of the distribution. Stars which lie close to that edge are therefore disk stars which is very good visible in the overdensity there.}
     \label{fig:e_lz_dist}
 \end{SCfigure}
@@ -167,8 +167,8 @@ where $M$ is the stellar mass of the spheroid and $a$ is its scale length. It ha
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.6\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
-    \caption{Spheroid density: data with errors (grey dots) and best fit (green line). The data is binned logarithmically in r. Their standard deviation is too small to be seen. In the inner part, $r<\SI{10}{kpc}$, the density is both under and over estimated. In the outer parts, the fit matches the data.}
+    \includegraphics[width=0.65\textwidth]{plots/Auriga/spheroid_density_fit_snap_127.png}
+    \caption{Spheroid density: data with errors (grey dots) and best fit (green line). The data is binned logarithmically in $r$. Their standard deviation is too small to be seen. In the inner part, $r<\SI{10}{kpc}$, the density is both under and over estimated. In the outer parts, the fit matches the data.}
     \label{fig:spheroid_fit}
 \end{SCfigure}
 \\Since the Hernquist density is spherically symmetric, we bin the spheroid particles in logarithmic bins in the spherical radius $r$ and in the density $\rho$. We fit Equation \ref{eq:Hernquist_spheroid_dens} to the binned data using \texttt{optimize.curve\_fit} again. The data and best fit densities are shown in Figure \ref{fig:spheroid_fit}. While in the inner part the fit does not match the data too well, in the outer parts it does. Since most of the particles we investigate in Section \ref{sec:Dynamics} are more far away from the center than \SI{10}{kpc}, the fit is acceptable to carry out this analysis.
@@ -190,7 +190,7 @@ We select 100000 \ac{DM} particles randomly which we present in Figure \ref{fig:
 \begin{SCfigure}
 \captionsetup{format=plain}
     \centering
-    \includegraphics[width=0.6\textwidth]{plots/Auriga/phi_model_and_data_snap_with_rel_error_127.png}
+    \includegraphics[width=0.65\textwidth]{plots/Auriga/phi_model_and_data_snap_with_rel_error_127.png}
     \caption{\textit{Upper panel:} Potential of data (selected \ac{DM} particles) and model depending on the radius $r$. Black dots are data, red dots from the best fit model. The innermost \SI{3}{kpc} are not included in the fit to make it better in the to us more important outer parts. The model lies everywhere within the data. \textit{Lower panel:} The relative error $\Delta_\mathrm{rel}\Phi = (\Phi_\mathrm{model} - \Phi_\mathrm{data})/\Phi_\mathrm{data}$ is within a good range (<4\%).}
     \label{fig:potential_best_fit}
 \end{SCfigure}

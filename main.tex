@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,abstracton, twoside, headings=optiontohead]{scrartcl}
 %\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry} % for printed thesis
-\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=10mm]{geometry}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm, bindingoffset=15mm]{geometry}
 \usepackage[onehalfspacing]{setspace}
 \usepackage[ngerman, english]{babel}
 \usepackage[utf8]{inputenc}
@@ -92,6 +92,7 @@ In an axisymmetric potential, actions (radial $J_R$, vertical $J_z$ and angular 
 We investigate this idea in one galaxy of the cosmological N-body simulation suite Auriga \citep{AurigaGrand}. As a first step, we present an effective strategy to fit analytic, axisymmetric, time-dependent potential models with slowly varying parameters to the simulation that are good enough to estimate actions. \\
 Then, we select stellar particles born in dwarf galaxies as proxies for GCs and follow the evolution of their orbital actions during the process of merging with a more massive galaxy. These actions show a significant variation over time. As a result, at $z=0$, the stellar particles accreted in the same merger event show a very extended distribution in action space. We find that minimizing this distribution, however, cannot constrain the true potential since actions and their evolution are affected by complex physical processes during mergers. \\
 In local observations, we confirm this result in the stars of Gaia-Enceladus, one of the few DG mergers of our MW that we know of. Their action distribution is smeared out extensively. Based on these results, we propose that modellers need to find and develop more realistic distribution functions for GCs of a single DG merger event in simulations before being able to constrain the gravitational potential of external galaxies using action-based dynamical modelling of GCs.
+
 \newpage
 %\vspace{2cm}
 \thispagestyle{empty}
@@ -105,14 +106,18 @@ Dann w\"ahlen wir Sternpartikel, die in Zwerggalaxien geboren sind, als Stellver
 In lokalen Beobachtungen best\"atigen wir dieses Ergebnis in den Sternen von Gaia-Enceladus, einer der wenigen Zwerggalaxienfusionen unserer MW, die wir gut kennen. Ihre Wirkungsverteilung ist weitgehend verschmiert. Basierend auf diesen Ergebnissen schlagen wir vor, dass Modellierer in Simulationen realistischere Verteilungsfunktionen für GCs eines einzelnen DG-Fusionsereignisses suchen und entwickeln müssen, bevor sie das Gravitationspotenzial externer Galaxien mithilfe wirkungsbasierter dynamischer Modellierung von GCs einschränken können.
 
 \end{abstract}
-
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
 \newpage
 \fancyhf{}
 \fancyhead{}
 \fancyhead[RO,LE]{Contents}
 \fancyfoot{}
-\fancyfoot[LE,RO]{\thepage}
+%depends on how many pages before the stars are, 1 could start on an even page what it does here.......
 \fancyfoot[LO,RE]{}
+\fancyfoot[LE,RO]{\thepage}
 
 \addtocontents{toc}{}
 \tableofcontents
@@ -121,8 +126,8 @@ In lokalen Beobachtungen best\"atigen wir dieses Ergebnis in den Sternen von Gai
 
 \fancyhf{}
 \fancyhead{}
-\fancyhead[RO]{\thesubsection.\ \Subsectionname}
-\fancyhead[LE]{\thesection.\ \Sectionname}
+\fancyhead[LE]{\thesubsection.\ \Subsectionname}
+\fancyhead[RO]{\thesection.\ \Sectionname}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
 \fancyfoot[LO,RE]{}
